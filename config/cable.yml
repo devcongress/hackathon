@@ -1,17 +1,18 @@
-# Async adapter only works within the same process, so for manually triggering cable updates from a console,
-# and seeing results in the browser, you must do so from the web console (running inside the dev process),
-# not a terminal started via bin/rails console! Add "console" to any action or any ERB template view
-# to make the web console appear.
-development:
-  adapter: async
-
-test:
-  adapter: test
-
-production:
+default: &default
   adapter: solid_cable
+  polling_interval: 1.second
+  keep_messages_around_for: 1.day
   connects_to:
     database:
       writing: cable
+
+development:
+  <<: *default
+  silence_polling: true
+
+test:
+  <<: *default
+
+production:
+  <<: *default
   polling_interval: 0.1.seconds
-  message_retention: 1.day

@@ -9,6 +9,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+cable: &cable
+  <<: *default
+  migrations_paths: db/cable_migrate
+  database: storage/<%= Rails.env %>-cable.sqlite3
+
 cache: &cache
   <<: *default
   migrations_paths: db/cache_migrate
@@ -25,6 +30,7 @@ development:
     database: storage/development.sqlite3
   queue: *queue
   cache: *cache
+  cable: *cable
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -35,6 +41,7 @@ test:
     database: storage/test.sqlite3
   queue: *queue
   cache: *cache
+  cable: *cable
 
 
 # Store production database in the storage/ directory, which by default
@@ -57,3 +64,4 @@ production:
     migrations_paths: db/cable_migrate
   queue: *queue
   cache: *cache
+  cable: *cable
