@@ -50,9 +50,6 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
@@ -69,3 +66,5 @@ end
 gem "plutonium", "~> 0.19.2"
 
 gem "annotated", "~> 0.1.1", :group => :development
+
+gem "standard", ">= 1.35.1", :group => :development
