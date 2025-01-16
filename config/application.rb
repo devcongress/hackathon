@@ -32,5 +32,8 @@ module Hackathon
     # Ensure authorization is enabled for the Solid Queue web UI
     config.mission_control.jobs.base_controller_class = "MissionControl::BaseController"
     config.solid_queue.silence_polling = true
+
+    # Configure Solid Cache as the cache store
+    config.cache_store = :solid_cache_store
   end
 end
