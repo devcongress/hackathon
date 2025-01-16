@@ -70,3 +70,5 @@ gem "annotated", "~> 0.1.1", :group => :development
 gem "standard", ">= 1.35.1", :group => :development
 
 gem "letter_opener", "~> 1.10", :group => :development
+# Add a web UI for Solid Queue
+gem "mission_control-jobs", "~> 0.3"
