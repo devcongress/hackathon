@@ -1,3 +1,5 @@
+@import "gem:plutonium/src/css/plutonium.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

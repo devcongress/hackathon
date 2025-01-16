@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import { registerControllers } from "@radioactive-labs/plutonium"
+registerControllers(application)
