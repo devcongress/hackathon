@@ -72,3 +72,5 @@ gem "standard", ">= 1.35.1", :group => :development
 gem "letter_opener", "~> 1.10", :group => :development
 # Add a web UI for Solid Queue
 gem "mission_control-jobs", "~> 0.3"
+# Add Solid Errors for error monitoring
+gem "solid_errors", "~> 0.5"

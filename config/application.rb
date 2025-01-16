@@ -35,5 +35,13 @@ module Hackathon
 
     # Configure Solid Cache as the cache store
     config.cache_store = :solid_cache_store
+
+    # Configure Solid Errors
+    config.solid_errors.connects_to = {database: {writing: :errors}}
+    config.solid_errors.send_emails = ENV["SOLID_ERRORS_SEND_EMAILS"]
+    config.solid_errors.email_from = ENV["SOLID_ERRORS_EMAIL_FROM"]
+    config.solid_errors.email_to = ENV["SOLID_ERRORS_EMAIL_TO"]
+    config.solid_errors.username = ENV["SOLID_ERRORS_USERNAME"]
+    config.solid_errors.password = ENV["SOLID_ERRORS_PASSWORD"]
   end
 end
