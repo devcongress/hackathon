@@ -1,0 +1,2 @@
+class HackerDefinition < ::ResourceDefinition
+end

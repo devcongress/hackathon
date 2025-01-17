@@ -1,0 +1,2 @@
+class HackersController < ::ResourceController
+end

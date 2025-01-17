@@ -1,0 +1,32 @@
+<%= render Plutonium::UI::Layout::Header.new do |header| %>
+  <% header.with_brand_logo do %>
+    <%= resource_logo_tag(classname: "h-10") %>
+  <% end %>
+  <% header.with_action do %>
+    <%=
+      render Plutonium::UI::NavGridMenu.new(label: "Apps", icon: Phlex::TablerIcons::Apps) do |menu|
+        menu.with_item(name: "Dashboard", icon: Phlex::TablerIcons::Dashboard, href: "#")
+        menu.with_item(name: "Settings", icon: Phlex::TablerIcons::Settings, href: "#")
+        menu.with_item(name: "Profile", icon: Phlex::TablerIcons::User, href: "#")
+      end
+    %>
+  <% end %>
+  <% header.with_action do %>
+    <%=
+      render Plutonium::UI::NavUser.new(
+        name: nil,
+        email: current_user.try(:email) || current_user
+      ) do |nav|
+        nav.with_section do |section|
+          if current_user.profile
+            section.with_link(label: "My profile", href: resource_url_for(current_user.profile))
+          end
+        end
+
+        nav.with_section do |section|
+          section.with_link(label: "Sign out", href: try(:logout_url) || "#", class: "rounded-b-lg", data: {turbo: false})
+        end
+      end
+    %>
+  <% end %>
+<% end %>

@@ -74,3 +74,17 @@ gem "letter_opener", "~> 1.10", :group => :development
 gem "mission_control-jobs", "~> 0.3"
 # Add Solid Errors for error monitoring
 gem "solid_errors", "~> 0.5"
+
+gem "bcrypt", "~> 3.1"
+
+gem "sequel-activerecord_connection", "~> 2.0"
+
+gem "tilt", "~> 2.6"
+
+gem "rodauth-rails", "~> 2.0"
+
+
+gem "omniauth-google-oauth2", "~> 1.2"
+gem "omniauth-github", "~> 2.0"
+
+gem "rodauth-omniauth", "~> 0.6.0"
