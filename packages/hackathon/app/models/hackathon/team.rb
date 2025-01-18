@@ -21,6 +21,7 @@ require_relative "../hackathon"
 
 class Hackathon::Team < Hackathon::ResourceRecord
   has_many :hackers, class_name: "Profile", dependent: :destroy
+  has_many :invited_hackers, class_name: "Hackathon::InvitedHacker", dependent: :destroy
   belongs_to :owner, class_name: "Hacker", foreign_key: "hacker_id"
   validates :name, presence: true, uniqueness: true
 

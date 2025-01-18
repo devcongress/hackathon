@@ -33,6 +33,10 @@ class Hackathon::TeamPolicy < Hackathon::ResourcePolicy
   # Associations
 
   def permitted_associations
-    %i[owner hackers]
+    if admin? || user.owns_team?(record)
+      %i[owner hackers invited_hackers]
+    else
+      %i[owner hackers]
+    end
   end
 end
