@@ -185,11 +185,17 @@ class HackerRodauthPlugin < RodauthPlugin
       throw_error_status(422, "name", "must be present") if param("name").empty?
       throw_error_status(422, "role", "must be present") if param("role").empty?
       throw_error_status(422, "team_name", "must be present") if param("team_name").empty?
+      throw_error_status(422, "telephone_number", "must be present") if param("telephone_number").empty?
     end
 
     # Perform additional actions after the account is created.
     after_create_account do
-      @profile = Profile.new(name: param("name"), role: param("role"), hacker_id: account[:id])
+      @profile = Profile.new(
+        name: param("name"),
+        role: param("role"),
+        hacker_id: account[:id],
+        telephone_number: param("telephone_number")
+      )
       @team = Hackathon::Team.find_by(name: param("team_name"))
       unless @team
         @team = Hackathon::Team.create!(name: param("team_name"), hacker_id: account[:id])
@@ -197,8 +203,6 @@ class HackerRodauthPlugin < RodauthPlugin
 
       @profile.team = @team
       @profile.save!
-      # @profile.partners = @team.members
-      # @profile.save!
     end
 
     # Do additional cleanup after the account is closed.
