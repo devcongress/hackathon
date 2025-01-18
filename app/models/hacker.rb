@@ -13,10 +13,10 @@
 #
 class Hacker < ResourceRecord
   include Rodauth::Rails.model(:hacker)
-  has_one :owned_team, class_name: "Hackathon::Team"
+  has_one :owned_team, class_name: "Hackathon::Team", dependent: :destroy
   validates :email, presence: true
   has_one :profile, dependent: :destroy
-  has_one :team, through: :profile, foreign_key: "hacker_id", dependent: :destroy
+  has_one :team, through: :profile, dependent: :destroy
 
   scope :associated_with_team, -> (team) { joins(:profile).where(profile: {team_id: team.id}) }
 
