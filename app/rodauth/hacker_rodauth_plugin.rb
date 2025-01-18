@@ -185,7 +185,6 @@ class HackerRodauthPlugin < RodauthPlugin
       throw_error_status(422, "name", "must be present") if param("name").empty?
       throw_error_status(422, "role", "must be present") if param("role").empty?
       throw_error_status(422, "team_name", "must be present") if param("team_name").empty?
-      throw_error_status(422, "telephone_number", "must be present") if param("telephone_number").empty?
     end
 
     # Perform additional actions after the account is created.
@@ -196,9 +195,16 @@ class HackerRodauthPlugin < RodauthPlugin
         hacker_id: account[:id],
         telephone_number: param("telephone_number")
       )
-      @team = Hackathon::Team.find_by(name: param("team_name"))
+      team_name = param("team_name")
+
+      # Team names will be encoded with base64 when sent to invited members
+      if team_name.base64_encoded?
+        team_name = Base64.decode64(team_name)
+      end
+
+      @team = Hackathon::Team.find_by(name: team_name)
       unless @team
-        @team = Hackathon::Team.create!(name: param("team_name"), hacker_id: account[:id])
+        @team = Hackathon::Team.create!(name: team_name, hacker_id: account[:id])
       end
 
       @profile.team = @team
