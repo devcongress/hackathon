@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_17_115024) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_18_152130) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -56,6 +56,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_17_115024) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hacker_id"], name: "index_hackathon_teams_on_hacker_id", unique: true
+    t.index ["name"], name: "index_hackathon_teams_on_name", unique: true
   end
 
   create_table "hacker_login_change_keys", force: :cascade do |t|
