@@ -3,7 +3,9 @@ class Hackathon::TeamPolicy < Hackathon::ResourcePolicy
 
   def create?
     return false if admin?
-    hacker? && user.owned_team.nil? || user.team.nil?
+    return false if hacker? && user.owned_team.present?
+
+    true
   end
 
   def show?
@@ -16,10 +18,6 @@ class Hackathon::TeamPolicy < Hackathon::ResourcePolicy
 
   def update?
     hacker? && user.owns_team?(record)
-  end
-
-  def destroy?
-    update?
   end
 
   # Core attributes
