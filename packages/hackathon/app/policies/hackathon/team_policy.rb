@@ -5,7 +5,7 @@ class Hackathon::TeamPolicy < Hackathon::ResourcePolicy
     return false if admin?
     return false if hacker? && user.owned_team.present?
 
-    true
+    true if hacker? && user.profile.nil?
   end
 
   def show?
