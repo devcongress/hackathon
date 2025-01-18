@@ -9,27 +9,23 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  hacker_id        :integer          not null
-#  partner_id       :integer
 #  team_id          :integer          not null
 #
 # Indexes
 #
-#  index_profiles_on_hacker_id   (hacker_id)
-#  index_profiles_on_partner_id  (partner_id)
-#  index_profiles_on_team_id     (team_id)
+#  index_profiles_on_hacker_id  (hacker_id)
+#  index_profiles_on_team_id    (team_id)
 #
 # Foreign Keys
 #
-#  hacker_id   (hacker_id => hackers.id)
-#  partner_id  (partner_id => profiles.id)
-#  team_id     (team_id => hackathon_teams.id)
+#  hacker_id  (hacker_id => hackers.id)
+#  team_id    (team_id => hackathon_teams.id)
 #
 class Profile < ::ResourceRecord
   belongs_to :team, class_name: "Hackathon::Team"
   belongs_to :hacker, class_name: "Hacker"
 
-  has_many :partners, class_name: "Profile", dependent: :nullify
-  belongs_to :partner, class_name: "Profile", optional: true
+  has_many :partners, class_name: "Profile"
 
   validates :role, :name, presence: true
 
