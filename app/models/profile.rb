@@ -28,7 +28,7 @@ class Profile < ::ResourceRecord
   belongs_to :team, class_name: "Hackathon::Team"
   belongs_to :hacker, class_name: "Hacker"
 
-  has_many :partners, class_name: "Profile", foreign_key: "partner_id", dependent: :nullify
+  has_many :partners, class_name: "Profile", dependent: :nullify
   belongs_to :partner, class_name: "Profile", optional: true
 
   validates :role, :name, presence: true
@@ -40,7 +40,9 @@ class Profile < ::ResourceRecord
     product_manager: "Product Manager"
   )
 
+  # self association (completes the partner association)
   scope :associated_with_profile, -> (profile) { where(team: profile.team) }
 
+  # association with hacker (parent)
   scope :associated_with_hacker, -> (hacker) { where(team: hacker.team) }
 end
