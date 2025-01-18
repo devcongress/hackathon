@@ -9,6 +9,10 @@ class HackerPolicy < ::ResourcePolicy
     true
   end
 
+  def destroy?
+    owner?
+  end
+
   # Core attributes
 
   def permitted_attributes_for_create
@@ -23,5 +27,11 @@ class HackerPolicy < ::ResourcePolicy
 
   def permitted_associations
     %i[]
+  end
+
+  private
+
+  def owner?
+    user == record
   end
 end

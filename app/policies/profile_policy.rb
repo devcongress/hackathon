@@ -1,8 +1,12 @@
 class ProfilePolicy < ::ResourcePolicy
   # Core actions
 
-  def create?
+  def new?
     hacker? && user.profile.nil?
+  end
+
+  def create?
+    true
   end
 
   def read?
@@ -14,17 +18,17 @@ class ProfilePolicy < ::ResourcePolicy
   end
 
   def destroy?
-    false
+    update?
   end
 
   # Core attributes
 
   def permitted_attributes_for_create
-    [:name, :role, :telephone_number, :team]
+    [:team, :name, :role, :telephone_number]
   end
 
   def permitted_attributes_for_read
-    [:name, :role, :telephone_number, :team]
+    admin? ? %i[name role telephone_number team] : %i[name role telephone_number]
   end
 
   # Associations
