@@ -2,8 +2,7 @@ class ProfilePolicy < ::ResourcePolicy
   # Core actions
 
   def create?
-    # hacker? && user.profile.nil?
-    true
+    hacker? && user.profile.nil?
   end
 
   def read?
