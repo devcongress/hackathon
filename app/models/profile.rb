@@ -25,6 +25,8 @@ class Profile < ::ResourceRecord
   belongs_to :team, class_name: "Hackathon::Team"
   belongs_to :hacker, class_name: "Hacker"
 
+  after_destroy :destroy_hacker
+
   has_many :partners, class_name: "Profile"
 
   validates :role, :name, presence: true
@@ -41,4 +43,10 @@ class Profile < ::ResourceRecord
 
   # association with hacker (parent)
   scope :associated_with_hacker, -> (hacker) { where(team: hacker.team) }
+
+  private
+
+  def destroy_hacker
+    self.hacker.destroy
+  end
 end
