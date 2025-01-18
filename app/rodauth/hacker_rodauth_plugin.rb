@@ -36,7 +36,7 @@ class HackerRodauthPlugin < RodauthPlugin
       ENV["GITHUB_CLIENT_ID"],
       ENV["GITHUB_CLIENT_SECRET"],
       scope: "user:email,user:name",
-      name: :github
+      name: :github,
     )
     # ==> General
 
@@ -181,40 +181,40 @@ class HackerRodauthPlugin < RodauthPlugin
     # ==> Hooks
 
     # Validate custom fields in the create account form.
-    before_create_account do
-      throw_error_status(422, "name", "must be present") if param("name").empty?
-      throw_error_status(422, "role", "must be present") if param("role").empty?
-      throw_error_status(422, "team_name", "must be present") if param("team_name").empty?
-
-      # Ensure that only invited hackers can join a team
-      team_name = cleaned_team_name(param("team_name"))
-      @team = Hackathon::Team.find_by(name: team_name)
-      if @team
-        unless @team.invited_hackers.pluck(:email).include?(param("email"))
-          flash.now[:error] = "You are not invited to this team!"
-          throw_error_status(422, "team_name", "is not valid")
-        end
-      end
-    end
+    # before_create_account do
+    #   throw_error_status(422, "name", "must be present") if param("name").empty?
+    #   throw_error_status(422, "role", "must be present") if param("role").empty?
+    #   throw_error_status(422, "team_name", "must be present") if param("team_name").empty?
+    #
+    #   # Ensure that only invited hackers can join a team
+    #   team_name = clean_team_name(param("team_name"))
+    #   @team = Hackathon::Team.find_by(name: team_name)
+    #   if @team
+    #     unless @team.invited_hackers.pluck(:email).include?(param("email"))
+    #       flash.now[:error] = "You are not invited to this team!"
+    #       throw_error_status(422, "team_name", "is not valid")
+    #     end
+    #   end
+    # end
 
     # Perform additional actions after the account is created.
-    after_create_account do
-      @profile = Profile.new(
-        name: param("name"),
-        role: param("role"),
-        hacker_id: account[:id],
-        telephone_number: param("telephone_number")
-      )
-      team_name = cleaned_team_name(param("team_name"))
-
-      @team = Hackathon::Team.find_by(name: team_name)
-      unless @team
-        @team = Hackathon::Team.create!(name: team_name, hacker_id: account[:id])
-      end
-
-      @profile.team = @team
-      @profile.save!
-    end
+    # after_create_account do
+    #   @profile = Profile.new(
+    #     name: param("name"),
+    #     role: param("role"),
+    #     hacker_id: account[:id],
+    #     telephone_number: param("telephone_number")
+    #   )
+    #   team_name = clean_team_name(param("team_name"))
+    #
+    #   @team = Hackathon::Team.find_by(name: team_name)
+    #   unless @team
+    #     @team = Hackathon::Team.create!(name: team_name, hacker_id: account[:id])
+    #   end
+    #
+    #   @profile.team = @team
+    #   @profile.save!
+    # end
 
     # Do additional cleanup after the account is closed.
     # after_close_account do
@@ -245,19 +245,5 @@ class HackerRodauthPlugin < RodauthPlugin
     # reset_password_deadline_interval Hash[hours: 6]
     # verify_login_change_deadline_interval Hash[days: 2]
     # remember_deadline_interval Hash[days: 30]
-  end
-
-  def cleaned_team_name(team_name)
-    # Team names will be encoded with base64 when sent to invited members
-    if team_name.base64_encoded?
-      begin
-        team_name = Base64.decode64(team_name)
-      rescue Encoding::StatementInvalid
-        # Return the original team name if it is not base64 encoded
-        team_name
-      end
-    end
-
-    team_name
   end
 end
