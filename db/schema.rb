@@ -96,9 +96,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_17_115024) do
     t.integer "hacker_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "partner_id"
     t.index ["hacker_id"], name: "index_profiles_on_hacker_id"
-    t.index ["partner_id"], name: "index_profiles_on_partner_id"
     t.index ["team_id"], name: "index_profiles_on_team_id"
   end
 
@@ -114,5 +112,4 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_17_115024) do
   add_foreign_key "hacker_verification_keys", "hackers", column: "id"
   add_foreign_key "profiles", "hackathon_teams", column: "team_id"
   add_foreign_key "profiles", "hackers"
-  add_foreign_key "profiles", "profiles", column: "partner_id"
 end
