@@ -16,11 +16,15 @@ class HackerPolicy < ::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:email, :status]
+    [ :email, :status ]
   end
 
   def permitted_attributes_for_read
-    [:email, :status, :profile, :team]
+    if admin?
+      [ :email, :profile, :team ]
+    else
+      [ :email, :profile ]
+    end
   end
 
   # Associations
@@ -31,7 +35,7 @@ class HackerPolicy < ::ResourcePolicy
 
   private
 
-  def owner?
-    user == record
-  end
+    def owner?
+      user == record
+    end
 end

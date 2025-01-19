@@ -12,11 +12,11 @@ class AdminPolicy < ::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:email, :status]
+    [ :email, :status ]
   end
 
   def permitted_attributes_for_read
-    [:email, :status]
+    [ :email, :status ]
   end
 
   # Associations

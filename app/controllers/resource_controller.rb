@@ -2,7 +2,8 @@ class ResourceController < PlutoniumController
   include Plutonium::Resource::Controller
 
   private def current_user
-    raise NotImplementedError, "#{self.class}#current_user must return a non nil value"
+    raise NotImplementedError,
+          "#{self.class}#current_user must return a non nil value"
   end
 
   helper_method :current_user
@@ -15,7 +16,7 @@ class ResourceController < PlutoniumController
 
   private
 
-  def current_team
-    @current_team ||= current_user.team
-  end
+    def current_team
+      @current_team ||= current_user.team
+    end
 end

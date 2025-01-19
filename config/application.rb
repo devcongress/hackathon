@@ -2,8 +2,6 @@ require_relative "boot"
 
 require "rails/all"
 
-require_relative "../lib/utils/base64_checker"
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -30,7 +28,7 @@ module Hackathon
 
     # Use Solid Queue for background jobs
     config.active_job.queue_adapter = :solid_queue
-    config.solid_queue.connects_to = {database: {writing: :queue}}
+    config.solid_queue.connects_to = { database: { writing: :queue } }
     # Ensure authorization is enabled for the Solid Queue web UI
     config.mission_control.jobs.base_controller_class = "MissionControl::BaseController"
     config.solid_queue.silence_polling = true
@@ -39,7 +37,7 @@ module Hackathon
     config.cache_store = :solid_cache_store
 
     # Configure Solid Errors
-    config.solid_errors.connects_to = {database: {writing: :errors}}
+    config.solid_errors.connects_to = { database: { writing: :errors } }
     config.solid_errors.send_emails = ENV["SOLID_ERRORS_SEND_EMAILS"]
     config.solid_errors.email_from = ENV["SOLID_ERRORS_EMAIL_FROM"]
     config.solid_errors.email_to = ENV["SOLID_ERRORS_EMAIL_TO"]

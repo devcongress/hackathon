@@ -39,14 +39,14 @@ class Profile < ::ResourceRecord
   )
 
   # self association (completes the partner association)
-  scope :associated_with_profile, -> (profile) { where(team: profile.team) }
+  scope :associated_with_profile, ->(profile) { where(team: profile.team) }
 
   # association with hacker (parent)
-  scope :associated_with_hacker, -> (hacker) { where(team: hacker.team) }
+  scope :associated_with_hacker, ->(hacker) { where(team: hacker.team) }
 
   private
 
-  def destroy_hacker
-    self.hacker.destroy
-  end
+    def destroy_hacker
+      self.hacker.destroy
+    end
 end

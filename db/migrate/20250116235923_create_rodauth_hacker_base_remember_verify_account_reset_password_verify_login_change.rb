@@ -5,14 +5,6 @@ class CreateRodauthHackerBaseRememberVerifyAccountResetPasswordVerifyLoginChange
       t.string(:email, null: false)
       t.index(:email, unique: true, where: "status IN (1, 2)")
       t.string(:password_hash)
-      # t.string(:telephone_number)
-      # t.string(:name, null: false)
-      # t.references(
-      #   :team,
-      #   foreign_key: {to_table: :hackathon_teams, index: true, unique: true}
-      # )
-      # t.string(:role, null: false)
-      #
     end
 
     # Used by the remember me feature
@@ -28,8 +20,12 @@ class CreateRodauthHackerBaseRememberVerifyAccountResetPasswordVerifyLoginChange
       t.bigint(:id, primary_key: true)
       t.foreign_key(:hackers, column: :id)
       t.string(:key, null: false)
-      t.datetime(:requested_at, null: false, default: -> { "CURRENT_TIMESTAMP" })
-      t.datetime(:email_last_sent, null: false, default: -> { "CURRENT_TIMESTAMP" })
+      t.datetime(:requested_at, null: false, default: -> {
+                                  "CURRENT_TIMESTAMP"
+                                })
+      t.datetime(:email_last_sent, null: false, default: -> {
+                                     "CURRENT_TIMESTAMP"
+                                   })
     end
 
     # Used by the password reset feature
@@ -38,7 +34,9 @@ class CreateRodauthHackerBaseRememberVerifyAccountResetPasswordVerifyLoginChange
       t.foreign_key(:hackers, column: :id)
       t.string(:key, null: false)
       t.datetime(:deadline, null: false)
-      t.datetime(:email_last_sent, null: false, default: -> { "CURRENT_TIMESTAMP" })
+      t.datetime(:email_last_sent, null: false, default: -> {
+                                     "CURRENT_TIMESTAMP"
+                                   })
     end
 
     # Used by the verify login change feature
