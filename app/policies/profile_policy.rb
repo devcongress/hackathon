@@ -24,11 +24,19 @@ class ProfilePolicy < ::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:team, :name, :role, :telephone_number]
+    [ :team, :name, :role, :telephone_number ]
+  end
+
+  def permitted_attributes_for_edit
+    [ :name, :role, :telephone_number ]
   end
 
   def permitted_attributes_for_read
-    admin? ? %i[name role telephone_number team] : %i[name role telephone_number]
+    if admin?
+      %i[name role telephone_number team]
+    else
+      %i[name role telephone_number]
+    end
   end
 
   # Associations

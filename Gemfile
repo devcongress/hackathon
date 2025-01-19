@@ -63,13 +63,13 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "plutonium", "~> 0.19.2"
+gem "plutonium", "~> 0.19.2", path: "~/plutonium-core/"
 
-gem "annotated", "~> 0.1.1", :group => :development
+gem "annotated", "~> 0.1.1", group: :development
 
-gem "standard", ">= 1.35.1", :group => :development
+gem "standard", ">= 1.35.1", group: :development
 
-gem "letter_opener", "~> 1.10", :group => :development
+gem "letter_opener", "~> 1.10", group: :development
 # Add a web UI for Solid Queue
 gem "mission_control-jobs", "~> 0.3"
 # Add Solid Errors for error monitoring
@@ -82,7 +82,6 @@ gem "sequel-activerecord_connection", "~> 2.0"
 gem "tilt", "~> 2.6"
 
 gem "rodauth-rails", "~> 2.0"
-
 
 gem "omniauth-google-oauth2", "~> 1.2"
 gem "omniauth-github", "~> 2.0"

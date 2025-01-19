@@ -5,8 +5,8 @@ class CreateHackathonTeams < ActiveRecord::Migration[8.0]
       t.belongs_to(
         :hacker,
         null: false,
-        foreign_key: {to_table: :hackers},
-        index: {unique: true}
+        foreign_key: { to_table: :hackers },
+        index: { unique: true }
       )
 
       t.timestamps

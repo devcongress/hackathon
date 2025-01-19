@@ -4,22 +4,32 @@
   <% end %>
   <% header.with_action do %>
     <%=
-      render Plutonium::UI::NavGridMenu.new(label: "Apps", icon: Phlex::TablerIcons::Apps) do |menu|
-        menu.with_item(name: "Dashboard", icon: Phlex::TablerIcons::Dashboard, href: "#")
-        menu.with_item(name: "Settings", icon: Phlex::TablerIcons::Settings, href: "#")
-        menu.with_item(name: "Profile", icon: Phlex::TablerIcons::User, href: "#")
+      render Plutonium::UI::NavGridMenu.new(label: "Quick Links", icon: Phlex::TablerIcons::Bug) do |menu|
+        menu.with_item(name: "Dashboard", icon: Phlex::TablerIcons::Dashboard, href: "")
+        if current_user.team
+          menu.with_item(name: "Team", icon: Phlex::TablerIcons::BrandSuperhuman,
+                         href: resource_url_for(current_user.team))
+        end
+        if current_user.profile
+          menu.with_item(name: "Profile", icon: Phlex::TablerIcons::User, href: resource_url_for(current_user.profile))
+        end
       end
     %>
   <% end %>
   <% header.with_action do %>
     <%=
       render Plutonium::UI::NavUser.new(
-        name: nil,
-        email: current_user.try(:email) || current_user
+        name: current_user&.profile&.name,
+        email: current_user&.email
       ) do |nav|
         nav.with_section do |section|
           if current_user.profile
             section.with_link(label: "My profile", href: resource_url_for(current_user.profile))
+          end
+        end
+        nav.with_section do |section|
+          if current_user.profile
+            section.with_link(label: "My team", href: resource_url_for(current_user.team))
           end
         end
 

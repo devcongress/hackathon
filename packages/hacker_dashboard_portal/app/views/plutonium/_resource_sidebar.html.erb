@@ -6,7 +6,9 @@
       m.item "Resources", icon: Phlex::TablerIcons::GridDots do |n|
         registered_resources.each do |resource|
           if current_user.class == Hacker && resource.model_name.human == "Team"
-            n.item "Team", url: resource_url_for(current_user.team, parent: nil)
+            if current_user.team
+              n.item "Team", url: resource_url_for(current_user.team, parent: nil)
+            end
           else
             n.item resource.model_name.human.pluralize,
                    url: resource_url_for(resource, parent: nil)

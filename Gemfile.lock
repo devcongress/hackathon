@@ -1,3 +1,28 @@
+PATH
+  remote: ../plutonium-core
+  specs:
+    plutonium (0.19.2)
+      action_policy (~> 0.7.0)
+      dry-initializer (~> 3.1)
+      listen (~> 3.8)
+      pagy (~> 9.0)
+      phlex (~> 1.11)
+      phlex-rails
+      phlex-slotable
+      phlex-tabler_icons
+      phlexi-display
+      phlexi-form
+      phlexi-menu
+      phlexi-table
+      rabl (~> 0.16.1)
+      rails (>= 7.2)
+      redcarpet
+      semantic_range (~> 3.0)
+      simple_form (~> 5.3)
+      tailwind_merge
+      tty-prompt (~> 0.23.1)
+      zeitwerk
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -125,14 +150,7 @@ GEM
       logger
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
-    ffi (1.17.1-aarch64-linux-gnu)
-    ffi (1.17.1-aarch64-linux-musl)
-    ffi (1.17.1-arm-linux-gnu)
-    ffi (1.17.1-arm-linux-musl)
-    ffi (1.17.1-arm64-darwin)
-    ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
-    ffi (1.17.1-x86_64-linux-musl)
     fiber-local (1.1.0)
       fiber-storage
     fiber-storage (1.0.0)
@@ -302,27 +320,6 @@ GEM
       phlex (~> 1.11)
       phlexi-display
       phlexi-field
-      zeitwerk
-    plutonium (0.19.2)
-      action_policy (~> 0.7.0)
-      dry-initializer (~> 3.1)
-      listen (~> 3.8)
-      pagy (~> 9.0)
-      phlex (~> 1.11)
-      phlex-rails
-      phlex-slotable
-      phlex-tabler_icons
-      phlexi-display
-      phlexi-form
-      phlexi-menu
-      phlexi-table
-      rabl (~> 0.16.1)
-      rails (>= 7.2)
-      redcarpet
-      semantic_range (~> 3.0)
-      simple_form (~> 5.3)
-      tailwind_merge
-      tty-prompt (~> 0.23.1)
       zeitwerk
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
@@ -570,7 +567,7 @@ DEPENDENCIES
   mission_control-jobs (~> 0.3)
   omniauth-github (~> 2.0)
   omniauth-google-oauth2 (~> 1.2)
-  plutonium (~> 0.19.2)
+  plutonium (~> 0.19.2)!
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)

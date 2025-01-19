@@ -30,7 +30,8 @@ class HackerRodauthPlugin < RodauthPlugin
       :internal_request
     )
 
-    omniauth_provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], name: :google
+    omniauth_provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"],
+ENV["GOOGLE_CLIENT_SECRET"], name: :google
     omniauth_provider(
       :github,
       ENV["GITHUB_CLIENT_ID"],
@@ -95,11 +96,13 @@ class HackerRodauthPlugin < RodauthPlugin
     # Use a custom mailer for delivering authentication emails.
 
     create_reset_password_email do
-      Rodauth::HackerMailer.reset_password(self.class.configuration_name, account_id, reset_password_key_value)
+      Rodauth::HackerMailer.reset_password(self.class.configuration_name,
+account_id, reset_password_key_value)
     end
 
     create_verify_account_email do
-      Rodauth::HackerMailer.verify_account(self.class.configuration_name, account_id, verify_account_key_value)
+      Rodauth::HackerMailer.verify_account(self.class.configuration_name,
+account_id, verify_account_key_value)
     end
 
     create_verify_login_change_email do |_login|
@@ -111,11 +114,13 @@ class HackerRodauthPlugin < RodauthPlugin
     end
 
     create_password_changed_email do
-      Rodauth::HackerMailer.change_password_notify(self.class.configuration_name, account_id)
+      Rodauth::HackerMailer.change_password_notify(
+self.class.configuration_name, account_id)
     end
 
     create_reset_password_notify_email do
-      Rodauth::HackerMailer.reset_password_notify(self.class.configuration_name, account_id)
+      Rodauth::HackerMailer.reset_password_notify(
+self.class.configuration_name, account_id)
     end
 
     send_email do |email|
