@@ -7,7 +7,7 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   end
 
   def create?
-    hacker? && user.owned_team.present?
+    hacker? && user.owns_team?(record.team)
   end
 
   def read?
