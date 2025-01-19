@@ -1,6 +1,6 @@
 <main class="prose ml-4">
   <h1 class="text-bold text-xl">Hello Hacker</h1>
   <p>Welcome to the Hackathon!</p>
-  <p><%= link_to "Log in as Admin", "/admin/login" %></p>
-  <p><%= link_to "Log in as a Hacker", "/hacker/login" %></p>
+  <p><%= link_to "Log in as Admin", rodauth(:admin).login_path %></p>
+  <p><%= link_to "Log in as a Hacker", rodauth(:hacker).login_path %></p>
 </main>
