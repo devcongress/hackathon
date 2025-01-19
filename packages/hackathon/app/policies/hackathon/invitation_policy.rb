@@ -1,6 +1,11 @@
 class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   # Core actions
 
+  # Set the constraint to allow only up to 5 invitation per team
+  def new?
+    hacker? && user.team.invited_hackers.count < 4
+  end
+
   def create?
     hacker? && user.owned_team.present?
   end
@@ -20,7 +25,7 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   end
 
   def permitted_attributes_for_read
-    [ :email ]
+    [ :email, :accepted ]
   end
 
   # Associations
