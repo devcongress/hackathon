@@ -41,7 +41,7 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   # Associations
 
   def permitted_associations
-    %i[]
+    %i[profile]
   end
 
   private

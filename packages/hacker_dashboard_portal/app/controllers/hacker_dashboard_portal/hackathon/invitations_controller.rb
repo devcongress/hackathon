@@ -17,7 +17,7 @@ class HackerDashboardPortal::Hackathon::InvitationsController < ::Hackathon::Inv
                   notice: "Invitation sent to hacker <#{@invited_hacker.email}>"
     else
       redirect_to hackathon_invitations_path,
-                  alert: "The hacker with email <#{invitation_arams[:email]}> has been invited already."
+        alert: "The hacker with email <#{invitation_params[:email]}> has been invited already.#{@invited_hacker.errors.full_messages.join("\n")}"
     end
   end
 

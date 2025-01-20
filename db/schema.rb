@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_18_153357) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_20_125201) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -57,7 +57,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_18_153357) do
     t.integer "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "profile_id"
     t.index ["email", "team_id"], name: "index_hackathon_invitations_on_email_and_team_id", unique: true
+    t.index ["profile_id"], name: "index_hackathon_invitations_on_profile_id"
     t.index ["team_id"], name: "index_hackathon_invitations_on_team_id"
   end
 
@@ -118,6 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_18_153357) do
   add_foreign_key "admin_remember_keys", "admins", column: "id"
   add_foreign_key "admin_verification_keys", "admins", column: "id"
   add_foreign_key "hackathon_invitations", "hackathon_teams", column: "team_id"
+  add_foreign_key "hackathon_invitations", "profiles"
   add_foreign_key "hackathon_teams", "hackers"
   add_foreign_key "hacker_login_change_keys", "hackers", column: "id"
   add_foreign_key "hacker_password_reset_keys", "hackers", column: "id"

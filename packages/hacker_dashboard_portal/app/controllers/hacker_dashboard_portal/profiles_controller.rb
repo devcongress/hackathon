@@ -54,7 +54,7 @@ class HackerDashboardPortal::ProfilesController < ::ProfilesController
 
     def handle_successful_save(invite_token)
       if invited_hacker?
-        @invited_hacker.update!(accepted: true)
+        @invited_hacker.update!(accepted: true, profile: @profile)
         Rails.cache.delete(@invited_hacker.token)
       end
 
