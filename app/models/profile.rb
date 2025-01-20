@@ -35,7 +35,7 @@ class Profile < ::ResourceRecord
     :role,
     developer: "Developer",
     designer: "Designer",
-    product_manager: "Product Manager"
+    product_manager: "Product Manager",
   )
 
   # self association (completes the partner association)

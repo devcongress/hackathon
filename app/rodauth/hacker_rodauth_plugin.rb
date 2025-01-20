@@ -30,15 +30,15 @@ class HackerRodauthPlugin < RodauthPlugin
       :internal_request
     )
 
-    omniauth_provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"],
-ENV["GOOGLE_CLIENT_SECRET"], name: :google
-    omniauth_provider(
-      :github,
+    omniauth_provider :google_oauth2,
+                      ENV["GOOGLE_CLIENT_ID"],
+                      ENV["GOOGLE_CLIENT_SECRET"], name: :google
+    omniauth_provider :github,
       ENV["GITHUB_CLIENT_ID"],
       ENV["GITHUB_CLIENT_SECRET"],
-      scope: "user:email,user:name",
-      name: :github,
-    )
+      scope: "user:email",
+      name: :github
+
     # ==> General
 
     # Prevent rodauth from introspecting the database if we are not using UUIDs
@@ -97,12 +97,12 @@ ENV["GOOGLE_CLIENT_SECRET"], name: :google
 
     create_reset_password_email do
       Rodauth::HackerMailer.reset_password(self.class.configuration_name,
-account_id, reset_password_key_value)
+                                           account_id, reset_password_key_value)
     end
 
     create_verify_account_email do
       Rodauth::HackerMailer.verify_account(self.class.configuration_name,
-account_id, verify_account_key_value)
+                                           account_id, verify_account_key_value)
     end
 
     create_verify_login_change_email do |_login|
@@ -115,12 +115,14 @@ account_id, verify_account_key_value)
 
     create_password_changed_email do
       Rodauth::HackerMailer.change_password_notify(
-self.class.configuration_name, account_id)
+        self.class.configuration_name, account_id
+      )
     end
 
     create_reset_password_notify_email do
       Rodauth::HackerMailer.reset_password_notify(
-self.class.configuration_name, account_id)
+        self.class.configuration_name, account_id
+      )
     end
 
     send_email do |email|
@@ -186,40 +188,23 @@ self.class.configuration_name, account_id)
     # ==> Hooks
 
     # Validate custom fields in the create account form.
-    # before_create_account do
-    #   throw_error_status(422, "name", "must be present") if param("name").empty?
-    #   throw_error_status(422, "role", "must be present") if param("role").empty?
-    #   throw_error_status(422, "team_name", "must be present") if param("team_name").empty?
-    #
-    #   # Ensure that only invited hackers can join a team
-    #   team_name = clean_team_name(param("team_name"))
-    #   @team = Hackathon::Team.find_by(name: team_name)
-    #   if @team
-    #     unless @team.invited_hackers.pluck(:email).include?(param("email"))
-    #       flash.now[:error] = "You are not invited to this team!"
-    #       throw_error_status(422, "team_name", "is not valid")
-    #     end
-    #   end
-    # end
+    before_create_account do
+      if param("token")
+        # ensure the token provided does has not been used yet
+        @invited_hacker = Hackathon::Invitation.find_by(token: param("token"))
+        if @invited_hacker && @invited_hacker.accepted?
+          throw_error_status(403, "token", "invalid or exired token")
+        end
+      end
+    end
 
     # Perform additional actions after the account is created.
-    # after_create_account do
-    #   @profile = Profile.new(
-    #     name: param("name"),
-    #     role: param("role"),
-    #     hacker_id: account[:id],
-    #     telephone_number: param("telephone_number")
-    #   )
-    #   team_name = clean_team_name(param("team_name"))
-    #
-    #   @team = Hackathon::Team.find_by(name: team_name)
-    #   unless @team
-    #     @team = Hackathon::Team.create!(name: team_name, hacker_id: account[:id])
-    #   end
-    #
-    #   @profile.team = @team
-    #   @profile.save!
-    # end
+    after_create_account do
+      # Cache the invite token: format -> <email>_<token>
+      if param("token")
+        Rails.cache.write("#{param("email")}_invite_token", param("token"))
+      end
+    end
 
     # Do additional cleanup after the account is closed.
     # after_close_account do
