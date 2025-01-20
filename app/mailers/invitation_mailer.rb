@@ -9,7 +9,7 @@ class InvitationMailer < ApplicationMailer
   end
 
   def confirm_invite
-    mail to: email_address_with_name(@owner.email, @owner.name),
+    mail to: email_address_with_name(@owner.email, @invited_hacker.name),
          subject: "Registration Complete!"
   end
 
