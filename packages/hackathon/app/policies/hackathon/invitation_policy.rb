@@ -3,7 +3,9 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
 
   # Set the constraint to allow only up to 4 invitation per team
   def new?
-    hacker? && user.team.invited_hackers.count < 4
+    return if admin?
+
+    team_hackers_less_than_5?
   end
 
   def create?
@@ -15,11 +17,14 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   end
 
   def index?
-    admin? || hacker? && user.owned_team.present?
+    admin? || (hacker? && user.owned_team.present?)
   end
 
   # Allow hackers to re-send invitations to invited hackers
   def invite?
+    # Avoid sending invitations to already joined hackers
+    return false if record.accepted?
+
     hacker? && user.owns_team?(record.team)
   end
 
@@ -38,4 +43,10 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   def permitted_associations
     %i[]
   end
+
+  private
+
+    def team_hackers_less_than_5?
+      user.team.hackers.count < 5
+    end
 end
