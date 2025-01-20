@@ -13,10 +13,4 @@ class ResourceController < PlutoniumController
   end
 
   helper_method :logout_url
-
-  private
-
-    def current_team
-      @current_team ||= current_user.team
-    end
 end
