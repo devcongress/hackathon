@@ -50,13 +50,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_18_153357) do
     t.index ["email"], name: "index_admins_on_email", unique: true, where: "status IN (1, 2)"
   end
 
-  create_table "hackathon_invited_hackers", force: :cascade do |t|
+  create_table "hackathon_invitations", force: :cascade do |t|
     t.string "email", null: false
+    t.string "token", null: false
+    t.boolean "accepted", default: false, null: false
     t.integer "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_hackathon_invited_hackers_on_email", unique: true
-    t.index ["team_id"], name: "index_hackathon_invited_hackers_on_team_id"
+    t.index ["email", "team_id"], name: "index_hackathon_invitations_on_email_and_team_id", unique: true
+    t.index ["team_id"], name: "index_hackathon_invitations_on_team_id"
   end
 
   create_table "hackathon_teams", force: :cascade do |t|
@@ -115,7 +117,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_18_153357) do
   add_foreign_key "admin_password_reset_keys", "admins", column: "id"
   add_foreign_key "admin_remember_keys", "admins", column: "id"
   add_foreign_key "admin_verification_keys", "admins", column: "id"
-  add_foreign_key "hackathon_invited_hackers", "hackathon_teams", column: "team_id"
+  add_foreign_key "hackathon_invitations", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_teams", "hackers"
   add_foreign_key "hacker_login_change_keys", "hackers", column: "id"
   add_foreign_key "hacker_password_reset_keys", "hackers", column: "id"
