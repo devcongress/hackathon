@@ -25,6 +25,23 @@ return unless Rails.env.local?
       { email: "kane@email.com", role: :designer, name: "Kane Rogers" },
       { email: "lisa@email.com", role: :developer, name: "Lisa Brooks" }
     ]
+  },
+  hackers: {
+    members: [
+      {
+        email: "bumble.bee@email.com", role: :developer, owner: true,
+        name: "Bumble Bee"
+      },
+      { email: "grumble@email.com", role: :designer, name: "Grumble" }
+    ]
+  },
+  coders: {
+    members: [
+      {
+        email: "game@email.com", role: :designer, owner: true,
+        name: "Ruddolf Game"
+      }
+    ]
   }
 }
 
