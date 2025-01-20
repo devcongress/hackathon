@@ -188,23 +188,23 @@ class HackerRodauthPlugin < RodauthPlugin
     # ==> Hooks
 
     # Validate custom fields in the create account form.
-    before_create_account do
-      if param("token")
-        # ensure the token provided does has not been used yet
-        @invited_hacker = Hackathon::Invitation.find_by(token: param("token"))
-        if @invited_hacker && @invited_hacker.accepted?
-          throw_error_status(403, "token", "invalid or exired token")
-        end
-      end
-    end
+    # before_create_account do
+    #   if param("token")
+    #     # ensure the token provided does has not been used yet
+    #     @invited_hacker = Hackathon::Invitation.find_by(token: param("token"))
+    #     if @invited_hacker && @invited_hacker.accepted?
+    #       throw_error_status(403, "token", "invalid or exired token")
+    #     end
+    #   end
+    # end
 
     # Perform additional actions after the account is created.
-    after_create_account do
-      # Cache the invite token: format -> <email>_<token>
-      if param("token").present?
-        Rails.cache.write("#{param("email")}_invite_token", param("token"))
-      end
-    end
+    # after_create_account do
+    #   # Cache the invite token: format -> <email>_<token>
+    #   if param("token").present?
+    #     Rails.cache.write("#{param("email")}_invite_token", param("token"))
+    #   end
+    # end
 
     # Do additional cleanup after the account is closed.
     # after_close_account do
