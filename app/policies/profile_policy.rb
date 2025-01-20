@@ -24,7 +24,13 @@ class ProfilePolicy < ::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [ :team, :name, :role, :telephone_number ]
+    if Rails.cache.fetch("#{user.email}_invite_token").blank?
+      [ :team, :name, :role, :telephone_number ]
+    else
+      # Do not show the team field for hackers joining from an invite
+      # They will be joined automatically to the team they were invited to
+      [ :name, :role, :telephone_number ]
+    end
   end
 
   def permitted_attributes_for_edit
