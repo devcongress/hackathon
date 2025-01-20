@@ -10,7 +10,7 @@ class ProfileDefinition < ::ResourceDefinition
     end
   end
 
-  new_page_title "Complete Your Create Profile"
+  new_page_title "Complete Your Profile"
   show_page_title "Profile"
 
   edit_page_title "Edit Your Profile"
