@@ -14,12 +14,13 @@ class HackerDashboardPortal::ProfilesController < ::ProfilesController
       return redirect_to_new_profile_with_alert("The token could not be found!")
     end
 
-    ProfilePolicy.new(@profile, user: current_user,
-                                entity_scope: ::Hackathon::Team)
-                 .permitted_attributes_for_create(invite_token_present: true)
+    ProfilePolicy.new(
+      @profile, user: current_user,
+                entity_scope: ::Hackathon::Team,
+    ).permitted_attributes_for_create(invite_token_present: true)
 
-    team = find_team(invite_token)
-    @profile.team = team
+    @team = find_team(invite_token)
+    @profile.team = @team
 
     if @profile.save
       handle_successful_save(invite_token)
@@ -58,6 +59,12 @@ class HackerDashboardPortal::ProfilesController < ::ProfilesController
       if invited_hacker?
         @invited_hacker.update!(accepted: true, profile: @profile)
         cookies.delete(:invite_token)
+
+        InvitationMailer.with(hacker: @profile).confirm_invite.deliver_later
+
+        if @team.members.count >= 3
+          TeamMailer.with(team: @team).validated.deliver_later
+        end
       end
 
       redirect_to(@profile, notice: "Profile was successfully created.")
