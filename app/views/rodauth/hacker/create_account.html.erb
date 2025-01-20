@@ -9,7 +9,13 @@
   <br>
   Create an account
 </h1>
-<%= form_with url: rodauth(:hacker).create_account_path, method: :post, data: { turbo: false }, class: "space-y-4" do |form| %>
+<%= form_with url: rodauth(:hacker).create_account_path,
+    method: :post, data: { turbo: false }, class: "space-y-4" do |form| %>
+  <div>
+    <% if params[:token] %>
+      <input type="hidden" name="token" value="<%= params[:token] %>">
+    <% end %>
+  </div>
   <div>
     <%= form.label "login",
                rodauth(:hacker).login_label,
