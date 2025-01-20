@@ -201,7 +201,7 @@ class HackerRodauthPlugin < RodauthPlugin
     # Perform additional actions after the account is created.
     after_create_account do
       # Cache the invite token: format -> <email>_<token>
-      if param("token")
+      if param("token").present?
         Rails.cache.write("#{param("email")}_invite_token", param("token"))
       end
     end

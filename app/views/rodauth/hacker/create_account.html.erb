@@ -11,11 +11,11 @@
 </h1>
 <%= form_with url: rodauth(:hacker).create_account_path,
     method: :post, data: { turbo: false }, class: "space-y-4" do |form| %>
-  <div>
-    <% if params[:token] %>
+  <% if params[:token].present? %>
+    <div id="invite_token">
       <input type="hidden" name="token" value="<%= params[:token] %>">
-    <% end %>
-  </div>
+    </div>
+  <% end %>
   <div>
     <%= form.label "login",
                rodauth(:hacker).login_label,
