@@ -62,7 +62,7 @@ class HackerDashboardPortal::ProfilesController < ::ProfilesController
 
         InvitationMailer.with(hacker: @profile).confirm_invite.deliver_later
 
-        if @team.members.count >= 3
+        if @team.hackers.count >= 3
           TeamMailer.with(team: @team).validated.deliver_later
         end
       end
