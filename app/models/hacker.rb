@@ -33,6 +33,6 @@ class Hacker < ResourceRecord
 
   scope :associated_with_hacker,
     ->(hacker) {
-      joins(:profile).where(profile: { team: hacker.team })
+      includes(:profile).where(profile: { team: hacker.team })
     }
 end
