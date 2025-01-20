@@ -1,6 +1,5 @@
 class ProfilePolicy < ::ResourcePolicy
   # Core actions
-
   def new?
     hacker? && user.profile.nil?
   end
@@ -23,8 +22,8 @@ class ProfilePolicy < ::ResourcePolicy
 
   # Core attributes
 
-  def permitted_attributes_for_create
-    if Rails.cache.fetch("#{user.email}_invite_token").blank?
+  def permitted_attributes_for_create(invite_token_present: false)
+    if invite_token_present
       [ :team, :name, :role, :telephone_number ]
     else
       # Do not show the team field for hackers joining from an invite
