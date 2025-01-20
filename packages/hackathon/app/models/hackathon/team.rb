@@ -26,5 +26,9 @@ class Hackathon::Team < Hackathon::ResourceRecord
   belongs_to :owner, class_name: "Hacker", foreign_key: "hacker_id"
   validates :name, presence: true, uniqueness: true
 
-  scope :associated_with_hacker, ->(hacker) { }
+  scope :associated_with_hacker,
+        ->(hacker) {
+          includes(:hackers)
+            .where(hackers: { team_id: hacker.team&.id })
+        }
 end
