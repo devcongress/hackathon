@@ -35,7 +35,11 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   end
 
   def permitted_attributes_for_read
-    [ :email, :accepted ]
+    if admin?
+      [ :email, :accepted, :team ]
+    else
+      [ :email, :accepted ]
+    end
   end
 
   # Associations
