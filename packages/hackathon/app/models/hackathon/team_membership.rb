@@ -24,10 +24,16 @@ require_relative "../hackathon"
 class Hackathon::TeamMembership < Hackathon::ResourceRecord
   # add concerns above.
 
+  enum :role,
+    developer: 0,
+    designer: 1,
+    product_manager: 2
+
   # add model configurations above.
 
   belongs_to :hacker
   belongs_to :team, class_name: "Hackathon::Team"
+
   # add belongs_to associations above.
 
   # add has_one associations above.

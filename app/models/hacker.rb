@@ -31,7 +31,11 @@ class Hacker < ResourceRecord
 
   enum :status, unverified: 1, verified: 2, closed: 3
 
+  def to_label
+    profile.name
+  end
+
   def owns_team?(team)
-    team.owner == self
+    team.hacker == self
   end
 end

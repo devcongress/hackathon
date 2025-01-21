@@ -10,32 +10,28 @@ class HackerPolicy < ::ResourcePolicy
   end
 
   def destroy?
-    owner?
+    false
   end
 
   # Core attributes
 
   def permitted_attributes_for_create
-    [ :email, :status ]
+    [:email, :status]
   end
 
   def permitted_attributes_for_read
-    if admin?
-      [ :email, :profile, :team ]
-    else
-      [ :email, :profile ]
-    end
+    [:email, :status]
   end
 
   # Associations
 
   def permitted_associations
-    %i[]
+    %i[profile team]
   end
 
   private
 
-    def owner?
-      user == record
-    end
+  def owner?
+    user == record
+  end
 end

@@ -8,15 +8,22 @@ module HackerDashboardPortal
 
       included do
         before_action :ensure_profile_complete
+        before_action :ensure_joined_team
       end
 
       private
 
-        def ensure_profile_complete
-          if current_user.class == Hacker && !current_user.profile
-            redirect_to(resource_url_for(Profile, action: :new))
-          end
+      def ensure_profile_complete
+        if !current_user.profile
+          redirect_to(resource_url_for(Profile, action: :new))
         end
+      end
+
+      def ensure_joined_team
+        if !current_user.team
+          redirect_to(resource_url_for(::Hackathon::Team, action: :new))
+        end
+      end
     end
   end
 end

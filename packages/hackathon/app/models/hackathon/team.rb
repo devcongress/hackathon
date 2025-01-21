@@ -22,10 +22,18 @@ require_relative "../hackathon"
 class Hackathon::Team < Hackathon::ResourceRecord
   belongs_to :hacker
 
-  has_many :hackers, class_name: "Profile", dependent: :destroy
-  has_many :invited_hackers, class_name: "Hackathon::Invitation", dependent: :destroy
+  has_many :team_memberships, dependent: :destroy
+  has_many :hackers, through: :team_memberships
+  has_many :invitations, class_name: "Hackathon::Invitation", dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+
+  attribute :role
+  validates :role, presence: true, inclusion: {in: Hackathon::TeamMembership.roles.keys}, on: :create
+
+  after_create do
+    team_memberships.create!(hacker: hacker, role:)
+  end
 
   # scope :associated_with_hacker,
   #       ->(hacker) {

@@ -303,7 +303,7 @@ GEM
       phlexi-display
       phlexi-field
       zeitwerk
-    plutonium (0.19.3)
+    plutonium (0.19.4)
       action_policy (~> 0.7.0)
       dry-initializer (~> 3.1)
       listen (~> 3.8)
@@ -570,7 +570,7 @@ DEPENDENCIES
   mission_control-jobs (~> 1.0)
   omniauth-github (~> 2.0)
   omniauth-google-oauth2 (~> 1.2)
-  plutonium (~> 0.19.3)
+  plutonium
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
