@@ -20,15 +20,16 @@
 require_relative "../hackathon"
 
 class Hackathon::Team < Hackathon::ResourceRecord
+  belongs_to :hacker
+
   has_many :hackers, class_name: "Profile", dependent: :destroy
-  has_many :invited_hackers, class_name: "Hackathon::Invitation",
-                             dependent: :destroy
-  belongs_to :owner, class_name: "Hacker", foreign_key: "hacker_id"
+  has_many :invited_hackers, class_name: "Hackathon::Invitation", dependent: :destroy
+
   validates :name, presence: true, uniqueness: true
 
-  scope :associated_with_hacker,
-        ->(hacker) {
-          includes(:hackers)
-            .where(hackers: { team_id: hacker.team&.id })
-        }
+  # scope :associated_with_hacker,
+  #       ->(hacker) {
+  #         includes(:hackers)
+  #           .where(hackers: { team_id: hacker.team&.id })
+  #       }
 end

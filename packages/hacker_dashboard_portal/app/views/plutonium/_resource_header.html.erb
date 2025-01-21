@@ -22,14 +22,15 @@
         name: current_user&.profile&.name,
         email: current_user&.email
       ) do |nav|
-        nav.with_section do |section|
-          if current_user.profile
+        if current_user.profile
+          nav.with_section do |section|
             section.with_link(label: "My profile", href: resource_url_for(current_user.profile))
           end
         end
-        nav.with_section do |section|
-          if current_user.profile
-            section.with_link(label: "My team", href: resource_url_for(current_user.team))
+        
+        if current_user.team
+          nav.with_section do |section|
+              section.with_link(label: "My team", href: resource_url_for(current_user.team))
           end
         end
 

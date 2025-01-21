@@ -16,6 +16,6 @@ class ProfileDefinition < ::ResourceDefinition
   edit_page_title "Edit Your Profile"
   index_page_title "Team Members"
 
-  sort :role
-  sort :team
+  # sort :role
+  # sort :team
 end

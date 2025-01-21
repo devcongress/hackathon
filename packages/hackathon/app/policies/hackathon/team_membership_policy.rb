@@ -1,4 +1,6 @@
-class ProfilePolicy < ::ResourcePolicy
+class Hackathon::TeamMembershipPolicy < Hackathon::ResourcePolicy
+  # Core actions
+
   def create?
     true
   end
@@ -10,11 +12,11 @@ class ProfilePolicy < ::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:hacker, :name, :telephone_number]
+    [:hacker, :team, :role]
   end
 
   def permitted_attributes_for_read
-    %i[hacker name telephone_number]
+    [:hacker, :team, :role]
   end
 
   # Associations

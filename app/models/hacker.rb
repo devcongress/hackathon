@@ -15,24 +15,23 @@ class Hacker < ResourceRecord
   include Rodauth::Rails.model(:hacker)
 
   has_one :owned_team, class_name: "Hackathon::Team", dependent: :destroy
+
   validates :email, presence: true
   has_one :profile, dependent: :destroy
-  has_one :team, through: :profile, dependent: :destroy
+  has_one :team_membership, dependent: :destroy, class_name: "Hackathon::TeamMembership"
+  has_one :team, through: :team_membership
 
-  scope :associated_with_team,
-    ->(team) {
-      includes(:profile)
-        .where(profile: { team_id: team.id })
-    }
+  # scope :associated_with_team,
+  #   ->(team) {
+  #     includes(:profile)
+  #       .where(profile: {team_id: team.id})
+  #   }
+
+  scope :associated_with_hacker, ->(hacker) { where(id: hacker.id) }
 
   enum :status, unverified: 1, verified: 2, closed: 3
 
   def owns_team?(team)
     team.owner == self
   end
-
-  scope :associated_with_hacker,
-    ->(hacker) {
-      includes(:profile).where(profile: { team: hacker.team })
-    }
 end
