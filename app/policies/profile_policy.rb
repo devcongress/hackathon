@@ -10,7 +10,7 @@ class ProfilePolicy < ::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:hacker, :name, :telephone_number]
+    [ :hacker, :name, :telephone_number ]
   end
 
   def permitted_attributes_for_read
@@ -20,6 +20,6 @@ class ProfilePolicy < ::ResourcePolicy
   # Associations
 
   def permitted_associations
-    %i[]
+    %i[team]
   end
 end

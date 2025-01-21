@@ -18,12 +18,6 @@
 #  hacker_id  (hacker_id => hackers.id)
 #
 class Profile < ::ResourceRecord
-  belongs_to :hacker, class_name: "Hacker"
-  # has_many :partners, class_name: "Profile"
-
-  # # self association (completes the partner association)
-  # scope :associated_with_profile, ->(profile) { where(team: profile.team) }
-
-  # # association with hacker (parent)
-  # scope :associated_with_hacker, ->(hacker) { where(team: hacker.team) }
+  belongs_to :hacker
+  has_one :team, through: :hacker
 end
