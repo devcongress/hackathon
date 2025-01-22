@@ -22,10 +22,4 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   def permitted_attributes_for_read
     [ :name, :hacker ]
   end
-
-  # Associations
-
-  def permitted_associations
-    %i[]
-  end
 end
