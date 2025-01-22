@@ -1,6 +1,11 @@
 class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefinition
   include HackerDashboardPortal::ResourceDefinition
 
+  class ShowPage < ShowPage
+    def render_breadcrumbs
+    end
+  end
+
   new_page_title "Create your team"
   edit_page_title "Update team"
 
