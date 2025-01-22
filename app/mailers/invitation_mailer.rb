@@ -18,6 +18,6 @@ class InvitationMailer < ApplicationMailer
     def set_details
       @invited_hacker = params[:hacker]
       @team = @invited_hacker.team
-      @owner = @team.owner
+      @owner = @team.hacker
     end
 end
