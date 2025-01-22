@@ -5,6 +5,7 @@ AdminDashboardPortal::Engine.routes.draw do
   register_resource(::Hacker)
   register_resource(::Profile)
   register_resource ::Hackathon::Invitation
+  register_resource ::Hackathon::TeamMembership
   # register resources above.
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
