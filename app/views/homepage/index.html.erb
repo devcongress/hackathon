@@ -1,6 +1,9 @@
 <div class="bg-white">
   <header class="absolute inset-x-0 top-0 z-50">
-    <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <nav
+      class="flex items-center justify-between p-6 lg:px-8"
+      aria-label="Global"
+    >
       <div class="flex lg:flex-1">
         <a href="<%= root_path %>" class="-m-1.5 p-1.5">
           <span class="sr-only">Hackathon Event</span>
@@ -38,14 +41,15 @@
         <a
           href="<%= rodauth(:hacker).create_account_path %>"
           class="text-sm/6 font-semibold text-gray-900"
-        >Resgiter</a>
+          >Register</a
+        >
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a
           href="<%= rodauth(:hacker).login_path %>"
           class="text-sm/6 font-semibold text-gray-900"
-        >Log in
-          <span aria-hidden="true">&rarr;</span></a>
+          >Log in <span aria-hidden="true">&rarr;</span></a
+        >
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
@@ -74,7 +78,11 @@
               aria-hidden="true"
               data-slot="icon"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -87,21 +95,24 @@
                   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900
                   hover:bg-gray-50
                 "
-              >Blogs</a>
+                >Blogs</a
+              >
               <a
                 href="#"
                 class="
                   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900
                   hover:bg-gray-50
                 "
-              >About</a>
+                >About</a
+              >
               <a
                 href="#"
                 class="
                   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900
                   hover:bg-gray-50
                 "
-              >Resgiter</a>
+                >Register</a
+              >
             </div>
             <div class="py-6">
               <a
@@ -110,7 +121,8 @@
                   -mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900
                   hover:bg-gray-50
                 "
-              >Log in</a>
+                >Log in</a
+              >
             </div>
           </div>
         </div>
@@ -143,8 +155,10 @@
           "
         >
           Announcing our next hackathon event.
-          <a href="#" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more
-            <span aria-hidden="true">&rarr;</span></a>
+          <a href="#" class="font-semibold text-indigo-600"
+            ><span class="absolute inset-0" aria-hidden="true"></span>Read more
+            <span aria-hidden="true">&rarr;</span></a
+          >
         </div>
       </div>
       <div class="text-center">
@@ -152,10 +166,16 @@
           class="
             text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl
           "
-        >Join Our Hackathon!</h1>
-        <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">Collaborate, innovate, and create solutions to real-world problems.
+        >
+          Join Our Hackathon!
+        </h1>
+        <p
+          class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8"
+        >
+          Collaborate, innovate, and create solutions to real-world problems.
           Whether you're a seasoned developer or a newbie, there's a place for
-          you here.</p>
+          you here.
+        </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a
             href="<%= rodauth(:hacker).create_account_path %>"
@@ -164,9 +184,11 @@
               shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
               focus-visible:outline-offset-2 focus-visible:outline-indigo-600
             "
-          >Register Your Team</a>
-          <a href="#" class="text-sm/6 font-semibold text-gray-900">Learn more
-            <span aria-hidden="true">→</span></a>
+            >Register Your Team</a
+          >
+          <a href="#" class="text-sm/6 font-semibold text-gray-900"
+            >Learn more <span aria-hidden="true">→</span></a
+          >
         </div>
       </div>
     </div>
