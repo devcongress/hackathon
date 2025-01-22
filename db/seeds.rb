@@ -1,12 +1,12 @@
 return unless Rails.env.local?
 
-@password = BCrypt::Password.create("password")
+password = BCrypt::Password.create("password")
 
-@admin = Admin.create(email: "admin@email.com", password_hash: @password,
-                      status: :verified)
+Admin.create(email: "admin@email.com", password_hash: password,
+             status: :verified)
 
 @data = {
-  thrusters: {
+  acme_incorporated: {
     members: [
       {
         email: "joe@email.com", role: :product_manager, owner: true,
@@ -16,7 +16,7 @@ return unless Rails.env.local?
       { email: "bob@email.com", role: :developer, name: "Bob Sickle" }
     ]
   },
-  curators: {
+  lex_corp: {
     members: [
       {
         email: "sally@email.com", role: :developer, owner: true,
@@ -46,18 +46,20 @@ return unless Rails.env.local?
 }
 
 @data.each do |team, data|
-  @team_name = team.to_s.capitalize
+  team_name = team.to_s.capitalize.gsub("_", " ")
 
   data[:members].each do |member|
-    @hacker = Hacker.create!(email: member[:email], password_hash: @password,
-                             status: :verified)
-    if member[:owner]
-      @team = Hackathon::Team.create!(name: @team_name, hacker_id: @hacker.id)
-    end
+    hacker = Hacker.create!(email: member[:email], password_hash: password,
+                            status: :verified)
 
-    @profile = Profile.create!(
-      name: member[:name], team: @team,
-      hacker: @hacker, role: member[:role],
-    )
+    Profile.create!(name: member[:name], hacker: hacker)
+
+    if member[:owner]
+      team = Hackathon::Team.create!(name: team_name, hacker: hacker,
+                                     role: member[:role].to_s)
+    else
+      Hackathon::TeamMembership.create!(team: team, hacker: hacker,
+                                        role: member[:role].to_s)
+    end
   end
 end
