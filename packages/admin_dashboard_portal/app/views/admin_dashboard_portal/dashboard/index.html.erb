@@ -8,6 +8,7 @@
     </h5>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% icon_style = "dark:stroke-white w-12 h-12" %>
     <% registered_resources.each do |resource| %>
       <%
         next unless allowed_to?(:index?, resource) &&
@@ -17,14 +18,13 @@
         class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden"
       >
         <div class="p-4">
-          <% icon_style = "dark:stroke-white w-24 h-24" %>
           <div class="flex items-center space-x-2 mb-2 hover:animate-pulse">
             <% if resource.model_name.human == 'Team' %>
               <%= render Phlex::TablerIcons::UsersGroup.new(class: icon_style) %>
             <% elsif resource.model_name.human == 'Invitation' %>
               <%= render Phlex::TablerIcons::Mail.new(class: icon_style) %>
             <% elsif resource.model_name.human == "Hacker" %>
-              <%= render Phlex::TablerIcons::UserCog.new(class: icon_style) %>
+              <%= render Phlex::TablerIcons::Code.new(class: icon_style) %>
             <% end %>
             <a
               href="<%= resource_url_for(resource, parent: nil) %>"
@@ -34,10 +34,26 @@
             </a>
           </div>
           <div class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
-            <%= authorized_resource_scope(resource)&.count %>
+            <%= authorized_resource_scope(resource).count %>
           </div>
         </div>
       </div>
     <% end %>
+    <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+      <div class="p-4">
+        <div class="flex items-center space-x-2 mb-2 hover:animate-pulse">
+          <%= render Phlex::TablerIcons::Bulb.new(class: icon_style) %>
+          <a
+            href="<%= hackathon_teams_path(q: { scope: 'validated' }) %>"
+            class="text-2xl font-medium text-gray-900 dark:text-white truncate hover:underline"
+          >
+            Validated Teams
+          </a>
+        </div>
+        <div class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
+          <%= Hackathon::Team.with_minimum_memberships.count.size %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

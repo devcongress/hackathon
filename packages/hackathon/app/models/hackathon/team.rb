@@ -35,7 +35,19 @@ class Hackathon::Team < Hackathon::ResourceRecord
                    inclusion: { in: Hackathon::TeamMembership.roles.keys },
                    on: :create
 
+  attribute :validated
+
   after_create do
     team_memberships.create!(hacker: hacker, role:)
+  end
+
+  def validated
+    self.team_memberships.count >= 3
+  end
+
+  def self.with_minimum_memberships
+    joins(:team_memberships)
+      .group("hackathon_team_memberships.team_id")
+      .having("COUNT(hackathon_team_memberships.id) >= ?", 3)
   end
 end
