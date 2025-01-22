@@ -20,6 +20,6 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   end
 
   def permitted_attributes_for_read
-    [ :name, :hacker ]
+    super
   end
 end
