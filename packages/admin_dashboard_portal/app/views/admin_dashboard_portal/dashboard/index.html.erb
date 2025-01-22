@@ -17,33 +17,23 @@
         class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden"
       >
         <div class="p-4">
-          <div class="flex items-center space-x-2 mb-2">
+          <% icon_style = "dark:stroke-white w-24 h-24" %>
+          <div class="flex items-center space-x-2 mb-2 hover:animate-pulse">
             <% if resource.model_name.human == 'Team' %>
-              <%=
-                render Phlex::TablerIcons::UsersGroup,
-                class: "w-6 h-6 text-gray-500 dark:text-gray-300"
-              %>
+              <%= render Phlex::TablerIcons::UsersGroup.new(class: icon_style) %>
             <% elsif resource.model_name.human == 'Invitation' %>
-              <%=
-                render Phlex::TablerIcons::Mail,
-                class: "w-6 h-6 text-gray-500 dark:text-gray-300"
-              %>
+              <%= render Phlex::TablerIcons::Mail.new(class: icon_style) %>
             <% elsif resource.model_name.human == "Hacker" %>
-              <%=
-                render Phlex::TablerIcons::UserCog,
-                class: "w-6 h-6 text-gray-500 dark:text-gray-300"
-              %>
+              <%= render Phlex::TablerIcons::UserCog.new(class: icon_style) %>
             <% end %>
             <a
               href="<%= resource_url_for(resource, parent: nil) %>"
-              class="text-lg font-medium text-gray-900 dark:text-white truncate"
+              class="text-2xl font-medium text-gray-900 dark:text-white truncate hover:underline"
             >
               <%= resource.model_name.human.pluralize %>
             </a>
           </div>
-          <div
-            class="mt-2 text-base font-semibold text-gray-900 dark:text-white"
-          >
+          <div class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
             <%= authorized_resource_scope(resource)&.count %>
           </div>
         </div>
