@@ -12,20 +12,20 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    super + [:role]
+    super + [ :role ] - [ :hacker ]
   end
 
   def permitted_attributes_for_update
-    super - [:role]
+    super - [ :role ]
   end
 
   def permitted_attributes_for_read
-    [:name, :hacker]
+    [ :name, :hacker ]
   end
 
   # Associations
 
   def permitted_associations
-    %i[team_memberships invitations]
+    %i[]
   end
 end
