@@ -46,7 +46,7 @@ Admin.create(email: "admin@email.com", password_hash: password,
 }
 
 @data.each do |team, data|
-  team_name = team.to_s.capitalize.gsub("_", " ")
+  team_name = team.to_s.gsub("_", " ").titleize
 
   data[:members].each do |member|
     hacker = Hacker.create!(email: member[:email], password_hash: password,
