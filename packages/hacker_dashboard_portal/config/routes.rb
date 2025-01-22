@@ -1,5 +1,5 @@
 HackerDashboardPortal::Engine.routes.draw do
-  root(to: "dashboard#index")
+  root to: redirect("/hacker_dashboard/hackathon_team")
 
   register_resource(::Hacker)
   register_resource(::Hackathon::Team, singular: true)
