@@ -78,8 +78,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_21_194530) do
     t.integer "hacker_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "LOWER(name)", name: "index_hackathon_teams_on_LOWER_name", unique: true
     t.index ["hacker_id"], name: "index_hackathon_teams_on_hacker_id", unique: true
-    t.index ["name"], name: "index_hackathon_teams_on_name", unique: true
   end
 
   create_table "hacker_login_change_keys", force: :cascade do |t|

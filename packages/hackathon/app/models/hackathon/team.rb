@@ -10,8 +10,8 @@
 #
 # Indexes
 #
-#  index_hackathon_teams_on_hacker_id  (hacker_id) UNIQUE
-#  index_hackathon_teams_on_name       (name) UNIQUE
+#  index_hackathon_teams_on_LOWER_name  (LOWER(name)) UNIQUE
+#  index_hackathon_teams_on_hacker_id   (hacker_id) UNIQUE
 #
 # Foreign Keys
 #
@@ -27,12 +27,13 @@ class Hackathon::Team < Hackathon::ResourceRecord
   has_many :invitations, class_name: "Hackathon::Invitation",
                          dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
+  validates :name, uniqueness: { case_sensitive: false }
 
   attribute :role
   validates :role, presence: true,
-           inclusion: { in: Hackathon::TeamMembership.roles.keys },
-           on: :create
+                   inclusion: { in: Hackathon::TeamMembership.roles.keys },
+                   on: :create
 
   after_create do
     team_memberships.create!(hacker: hacker, role:)
