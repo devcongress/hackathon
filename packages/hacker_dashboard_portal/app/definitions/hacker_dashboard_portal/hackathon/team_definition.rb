@@ -2,8 +2,11 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
   include HackerDashboardPortal::ResourceDefinition
 
   new_page_title "Create your team"
+  edit_page_title "Update team"
 
   field :role,
-    choices: Hackathon::TeamMembership.roles.keys.to_h { |role| [role.to_sym, role.titleize] },
+    choices: Hackathon::TeamMembership.roles.keys.to_h { |role|
+      [ role.to_sym, role.titleize ]
+    },
     hint: "Your role on the team"
 end
