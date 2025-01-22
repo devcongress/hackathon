@@ -1,38 +1,53 @@
-<div
-  class="
-    w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8
-    dark:bg-gray-800 dark:border-gray-700
-  "
->
-  <div class="flex items-center justify-between mb-4">
-    <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Resources</h5>
+<div class="container mx-auto p-4">
+  <div class="flex items-center justify-between mb-6">
+    <h5
+      class="mb-2 text-3xl font-extrabold leading-none tracking-tight
+        text-gray-900 md:text-4xl dark:text-white"
+    >
+      Hackathon Dashboard
+    </h5>
   </div>
-  <div class="flow-root">
-    <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-      <% registered_resources.each do |resource| %>
-        <% next unless allowed_to? :index?, resource %>
-        <li class="py-3 sm:py-4">
-          <div class="flex items-center">
-            <div class="flex-1 min-w-0 ms-4">
-              <a
-                href="<%= resource_url_for(resource, parent: nil) %>"
-                class="
-                  text-md font-medium text-gray-900 truncate dark:text-white
-                "
-              >
-                <%= resource.model_name.human.pluralize %>
-              </a>
-            </div>
-            <div
-              class="
-                inline-flex items-center text-base font-semibold text-gray-900 dark:text-white
-              "
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% registered_resources.each do |resource| %>
+      <%
+        next unless allowed_to?(:index?, resource) &&
+        ['Team', 'Invitation', 'Hacker'].include?(resource.model_name.human)
+      %>
+      <div
+        class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden"
+      >
+        <div class="p-4">
+          <div class="flex items-center space-x-2 mb-2">
+            <% if resource.model_name.human == 'Team' %>
+              <%=
+                render Phlex::TablerIcons::UsersGroup,
+                class: "w-6 h-6 text-gray-500 dark:text-gray-300"
+              %>
+            <% elsif resource.model_name.human == 'Invitation' %>
+              <%=
+                render Phlex::TablerIcons::Mail,
+                class: "w-6 h-6 text-gray-500 dark:text-gray-300"
+              %>
+            <% elsif resource.model_name.human == "Hacker" %>
+              <%=
+                render Phlex::TablerIcons::UserCog,
+                class: "w-6 h-6 text-gray-500 dark:text-gray-300"
+              %>
+            <% end %>
+            <a
+              href="<%= resource_url_for(resource, parent: nil) %>"
+              class="text-lg font-medium text-gray-900 dark:text-white truncate"
             >
-              <%= authorized_resource_scope(resource)&.count %>
-            </div>
+              <%= resource.model_name.human.pluralize %>
+            </a>
           </div>
-        </li>
-      <% end %>
-    </ul>
+          <div
+            class="mt-2 text-base font-semibold text-gray-900 dark:text-white"
+          >
+            <%= authorized_resource_scope(resource)&.count %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
