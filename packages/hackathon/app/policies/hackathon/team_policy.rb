@@ -2,7 +2,7 @@ class Hackathon::TeamPolicy < Hackathon::ResourcePolicy
   # Core actions
 
   def create?
-    true
+    false
   end
 
   def read?
@@ -12,16 +12,16 @@ class Hackathon::TeamPolicy < Hackathon::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:hacker, :name]
+    [ :hacker, :name ]
   end
 
   def permitted_attributes_for_read
-    [:hacker, :name]
+    [ :hacker, :name ]
   end
 
   # Associations
 
   def permitted_associations
-    []
+    %i[team_memberships invitations]
   end
 end
