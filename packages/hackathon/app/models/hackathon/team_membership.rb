@@ -53,5 +53,9 @@ class Hackathon::TeamMembership < Hackathon::ResourceRecord
 
   # add misc attribute macros above.
 
+  def to_label
+    team.name
+  end
+
   # add methods above.
 end

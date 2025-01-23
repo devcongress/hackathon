@@ -1,8 +1,7 @@
 class InvitationsController < ApplicationController
-  def confirm
-    @invited_hacker = ::Hackathon::Invitation.includes(:team)
-                                             .find_by(token: params[:token])
+  before_action :set_hacker
 
+  def confirm
     if @invited_hacker
       if @invited_hacker.accepted?
         redirect_to rodauth(:hacker).login_path,
@@ -19,4 +18,11 @@ class InvitationsController < ApplicationController
                   alert: "Invalid invitation link."
     end
   end
+
+  private
+
+    def set_hacker
+      @invited_hacker = ::Hackathon::Invitation.includes(:team)
+                                               .find_by(token: params[:token])
+    end
 end

@@ -18,16 +18,11 @@ class Hacker < ResourceRecord
 
   validates :email, presence: true
   has_one :profile, dependent: :destroy
-  has_one :team_membership, dependent: :destroy, class_name: "Hackathon::TeamMembership"
+  has_one :team_membership, dependent: :destroy,
+                            class_name: "Hackathon::TeamMembership"
   has_one :team, through: :team_membership
 
-  # scope :associated_with_team,
-  #   ->(team) {
-  #     includes(:profile)
-  #       .where(profile: {team_id: team.id})
-  #   }
-
-  scope :associated_with_hacker, ->(hacker) { where(id: hacker.id) }
+  scope :associated_with_hacker, ->(hacker) { }
 
   enum :status, unverified: 1, verified: 2, closed: 3
 

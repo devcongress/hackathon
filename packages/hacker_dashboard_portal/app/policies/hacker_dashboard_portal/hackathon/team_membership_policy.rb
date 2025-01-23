@@ -1,8 +1,12 @@
 class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::TeamMembershipPolicy
   # Core attributes
 
+  def new?
+    user.team.nil?
+  end
+
   def create?
-    false
+    true
   end
 
   def update?
@@ -14,7 +18,7 @@ class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::Team
   end
 
   def permitted_attributes_for_create
-    [ :role ]
+    [ :team, :role ]
   end
 
   def permitted_attributes_for_read
@@ -23,6 +27,7 @@ class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::Team
 
   relation_scope do |relation|
     next relation unless entity_scope
+
     relation.where(team: user.team)
   end
 end

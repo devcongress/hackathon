@@ -20,6 +20,6 @@ class ProfilePolicy < ::ResourcePolicy
   # Associations
 
   def permitted_associations
-    %i[team]
+    %i[]
   end
 end
