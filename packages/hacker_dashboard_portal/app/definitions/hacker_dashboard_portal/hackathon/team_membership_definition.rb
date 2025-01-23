@@ -5,11 +5,11 @@ class HackerDashboardPortal::Hackathon::TeamMembershipDefinition < ::Hackathon::
   new_page_title "Join Team"
 
   field :team, as: :string, value: "Some Default Read-only Value ",
-               readonly: true
+    readonly: true
 
   field :role,
     choices: Hackathon::TeamMembership.roles.keys.to_h { |role|
-      [ role.to_sym, role.titleize ]
+      [role.to_sym, role.titleize]
     },
     hint: "Your role on the team"
 

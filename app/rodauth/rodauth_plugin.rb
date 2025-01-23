@@ -18,7 +18,7 @@ class RodauthPlugin < Rodauth::Rails::Auth
 
     # Initialize Sequel and have it reuse Active Record's database connection.
     db Sequel.sqlite(extensions: :activerecord_connection,
-keep_reference: false)
+      keep_reference: false)
 
     # Change prefix of table and foreign key column names from default "account"
     # accounts_table :users
@@ -253,7 +253,7 @@ keep_reference: false)
 
   private
 
-    def rails_url_options
-      url_options || super
-    end
+  def rails_url_options
+    url_options || super
+  end
 end

@@ -25,15 +25,15 @@ class Hackathon::Team < Hackathon::ResourceRecord
   has_many :team_memberships, dependent: :destroy
   has_many :hackers, through: :team_memberships
   has_many :invitations, class_name: "Hackathon::Invitation",
-                         dependent: :destroy
+    dependent: :destroy
 
   validates :name, presence: true
-  validates :name, uniqueness: { case_sensitive: false }
+  validates :name, uniqueness: {case_sensitive: false}
 
   attribute :role
   validates :role, presence: true,
-                   inclusion: { in: Hackathon::TeamMembership.roles.keys },
-                   on: :create
+    inclusion: {in: Hackathon::TeamMembership.roles.keys},
+    on: :create
 
   attribute :validated
 
@@ -42,7 +42,7 @@ class Hackathon::Team < Hackathon::ResourceRecord
   end
 
   def validated
-    self.team_memberships.count >= 3
+    team_memberships.count >= 3
   end
 
   def self.with_minimum_memberships

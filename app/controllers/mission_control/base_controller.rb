@@ -11,7 +11,7 @@ module MissionControl
 
     def password
       @password ||= @@password || ENV.fetch("MISSION_CONTROL_PASSWORD",
-                                            SecureRandom.hex(16))
+        SecureRandom.hex(16))
     end
   end
 
@@ -19,6 +19,6 @@ module MissionControl
     protect_from_forgery with: :exception
 
     http_basic_authenticate_with name: MissionControl.username,
-                                 password: MissionControl.password
+      password: MissionControl.password
   end
 end

@@ -3,7 +3,7 @@ return unless Rails.env.local?
 password = BCrypt::Password.create("password")
 
 Admin.create(email: "admin@email.com", password_hash: password,
-             status: :verified)
+  status: :verified)
 
 @data = {
   acme_incorporated: {
@@ -12,8 +12,8 @@ Admin.create(email: "admin@email.com", password_hash: password,
         email: "joe@email.com", role: :product_manager, owner: true,
         name: "John Doe"
       },
-      { email: "esi@email.com", role: :designer, name: "Esi Puma" },
-      { email: "bob@email.com", role: :developer, name: "Bob Sickle" }
+      {email: "esi@email.com", role: :designer, name: "Esi Puma"},
+      {email: "bob@email.com", role: :developer, name: "Bob Sickle"}
     ]
   },
   lex_corp: {
@@ -22,8 +22,8 @@ Admin.create(email: "admin@email.com", password_hash: password,
         email: "sally@email.com", role: :developer, owner: true,
         name: "Sally Banks"
       },
-      { email: "kane@email.com", role: :designer, name: "Kane Rogers" },
-      { email: "lisa@email.com", role: :developer, name: "Lisa Brooks" }
+      {email: "kane@email.com", role: :designer, name: "Kane Rogers"},
+      {email: "lisa@email.com", role: :developer, name: "Lisa Brooks"}
     ]
   },
   hackers: {
@@ -32,7 +32,7 @@ Admin.create(email: "admin@email.com", password_hash: password,
         email: "bumble.bee@email.com", role: :developer, owner: true,
         name: "Bumble Bee"
       },
-      { email: "grumble@email.com", role: :designer, name: "Grumble" }
+      {email: "grumble@email.com", role: :designer, name: "Grumble"}
     ]
   },
   coders: {
@@ -46,20 +46,20 @@ Admin.create(email: "admin@email.com", password_hash: password,
 }
 
 @data.each do |team, data|
-  team_name = team.to_s.gsub("_", " ").titleize
+  team_name = team.to_s.tr("_", " ").titleize
 
   data[:members].each do |member|
     hacker = Hacker.create!(email: member[:email], password_hash: password,
-                            status: :verified)
+      status: :verified)
 
     Profile.create!(name: member[:name], hacker: hacker)
 
     if member[:owner]
       team = Hackathon::Team.create!(name: team_name, hacker: hacker,
-                                     role: member[:role].to_s)
+        role: member[:role].to_s)
     else
       Hackathon::TeamMembership.create!(team: team, hacker: hacker,
-                                        role: member[:role].to_s)
+        role: member[:role].to_s)
     end
   end
 end

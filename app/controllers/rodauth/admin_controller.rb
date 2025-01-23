@@ -5,12 +5,12 @@ module Rodauth
 
     private
 
-      def current_account
-        rodauth.rails_account
-      end
+    def current_account
+      rodauth.rails_account
+    end
 
-      def rodauth(name = :admin)
-        super
-      end
+    def rodauth(name = :admin)
+      super
+    end
   end
 end

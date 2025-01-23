@@ -3,7 +3,7 @@ class ResourceController < PlutoniumController
 
   private def current_user
     raise NotImplementedError,
-          "#{self.class}#current_user must return a non nil value"
+      "#{self.class}#current_user must return a non nil value"
   end
 
   helper_method :current_user

@@ -1,9 +1,9 @@
 class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon::TeamMembershipsController
   include HackerDashboardPortal::Concerns::Controller
 
-  skip_before_action :ensure_joined_team, only: [ :new, :create ]
+  skip_before_action :ensure_joined_team, only: [:new, :create]
 
-  before_action :set_invited_hacker, only: [ :new, :create ]
+  before_action :set_invited_hacker, only: [:new, :create]
 
   def present_scoped_entity? = true
 
@@ -23,11 +23,11 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
       current_user.update(team: invited_hacker_team)
 
       InvitationMailer.with(hacker: current_user.profile)
-                      .confirm_invite.deliver_later
+        .confirm_invite.deliver_later
 
       if current_user.team.validated?
         TeamMailer.with(team: current_user.team)
-                  .validated.deliver_later
+          .validated.deliver_later
       end
 
       cookies.delete(:invite_token)
@@ -40,23 +40,23 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
 
   private
 
-    def set_invited_hacker
-      @invited_hacker ||= ::Hackathon::Invitation.find_by(
-        token: cookies.encrypted[:invite_token],
-      )
-    end
+  def set_invited_hacker
+    @invited_hacker ||= ::Hackathon::Invitation.find_by(
+      token: cookies.encrypted[:invite_token]
+    )
+  end
 
-    def set_invitation_team
-      @invited_hacker_team ||= @invited_hacker&.team
-    end
+  def set_invitation_team
+    @invited_hacker_team ||= @invited_hacker&.team
+  end
 
-    def membership_params
-      params.expect(hackathon_team_membership: [ :role ]).merge({
-        team: invited_hacker_team, hacker: current_user
-      })
-    end
+  def membership_params
+    params.expect(hackathon_team_membership: [:role]).merge({
+      team: invited_hacker_team, hacker: current_user
+    })
+  end
 
-    def invited_hacker_team
-      Hackathon::Invitation.find_by(token: cookies.encrypted[:invite_token])
-    end
+  def invited_hacker_team
+    Hackathon::Invitation.find_by(token: cookies.encrypted[:invite_token])
+  end
 end

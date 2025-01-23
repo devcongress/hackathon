@@ -16,7 +16,7 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
 
   field :role,
     choices: Hackathon::TeamMembership.roles.keys.to_h { |role|
-      [ role.to_sym, role.titleize ]
+      [role.to_sym, role.titleize]
     },
     hint: "Your role on the team"
 end

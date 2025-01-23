@@ -23,7 +23,7 @@ class RodauthMailer < ApplicationMailer
     @new_email = @account.login_change_key.login
 
     mail to: @new_email,
-         subject: @rodauth.email_subject_prefix + @rodauth.verify_login_change_email_subject
+      subject: @rodauth.email_subject_prefix + @rodauth.verify_login_change_email_subject
   end
 
   def change_password_notify(name, account_id)
@@ -105,11 +105,11 @@ class RodauthMailer < ApplicationMailer
 
   private
 
-    def rodauth(name, account_id, &block)
-      instance = RodauthApp.rodauth(name).allocate
-      instance.url_options = default_url_options
-      instance.account_from_id(account_id)
-      instance.instance_eval(&block) if block
-      instance
-    end
+  def rodauth(name, account_id, &block)
+    instance = RodauthApp.rodauth(name).allocate
+    instance.url_options = default_url_options
+    instance.account_from_id(account_id)
+    instance.instance_eval(&block) if block
+    instance
+  end
 end

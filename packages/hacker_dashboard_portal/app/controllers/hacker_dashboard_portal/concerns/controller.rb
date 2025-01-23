@@ -13,17 +13,17 @@ module HackerDashboardPortal
 
       private
 
-        def ensure_profile_complete
-          if current_user.profile.nil?
-            redirect_to(resource_url_for(Profile, action: :new))
-          end
+      def ensure_profile_complete
+        if current_user.profile.nil?
+          redirect_to(resource_url_for(Profile, action: :new))
         end
+      end
 
-        def ensure_joined_team
-          if current_user.team.nil?
-            redirect_to(resource_url_for(::Hackathon::Team, action: :new))
-          end
+      def ensure_joined_team
+        if current_user.team.nil?
+          redirect_to(resource_url_for(::Hackathon::Team, action: :new))
         end
+      end
     end
   end
 end

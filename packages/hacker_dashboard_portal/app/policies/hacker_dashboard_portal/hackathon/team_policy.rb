@@ -12,11 +12,11 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    super + [ :role ] - [ :hacker ]
+    super + [:role] - [:hacker]
   end
 
   def permitted_attributes_for_update
-    super - [ :role ]
+    super - [:role]
   end
 
   def permitted_attributes_for_read
@@ -28,7 +28,7 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
       super
     else
       # only team owners should see invitations
-      super - [ :invitations ]
+      super - [:invitations]
     end
   end
 

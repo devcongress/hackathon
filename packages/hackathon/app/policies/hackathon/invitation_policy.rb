@@ -31,14 +31,14 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [ :email ]
+    [:email]
   end
 
   def permitted_attributes_for_read
     if admin?
-      [ :email, :accepted, :team ]
+      [:email, :accepted, :team]
     else
-      [ :email, :accepted ]
+      [:email, :accepted]
     end
   end
 
@@ -50,7 +50,7 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
 
   private
 
-    def team_hackers_less_than_5?
-      user.team.hackers.count < 5
-    end
+  def team_hackers_less_than_5?
+    user.team.hackers.count < 5
+  end
 end

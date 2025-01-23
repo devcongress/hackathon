@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :homepage, only: [ :index ]
+  resources :homepage, only: [:index]
   root "homepage#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #     as: :confirm_invitation
 
   get "/invitations/confirm/:token", to: "invitations#confirm",
-                                     as: :confirm_invitation
+    as: :confirm_invitation
   mount SolidErrors::Engine, at: "/manage/errors"
 
   mount MissionControl::Jobs::Engine, at: "/manage/jobs"

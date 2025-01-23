@@ -6,6 +6,6 @@ class AdminDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::TeamM
   end
 
   def permitted_attributes_for_read
-    [ :hacker, :role ]
+    [:hacker, :role]
   end
 end

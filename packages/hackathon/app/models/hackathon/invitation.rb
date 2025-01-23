@@ -28,18 +28,18 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
   belongs_to :team, class_name: "Hackathon::Team"
   validates :email, presence: true
   validates :email,
-            uniqueness: { scope: :team_id, message: "has already been invited" }
+    uniqueness: {scope: :team_id, message: "has already been invited"}
   validates :token, presence: true
-  validates :accepted, inclusion: { in: [ true, false ] }
+  validates :accepted, inclusion: {in: [true, false]}
   belongs_to :profile, class_name: "Profile", optional: true
 
   scope :associated_with_hacker,
     ->(hacker) {
-      includes(:team).where(hackathon_teams: { hacker_id: hacker.id })
+      includes(:team).where(hackathon_teams: {hacker_id: hacker.id})
     }
 
   # An invite is accepted when a profile is associated with it
   def accepted
-    self.profile.present?
+    profile.present?
   end
 end

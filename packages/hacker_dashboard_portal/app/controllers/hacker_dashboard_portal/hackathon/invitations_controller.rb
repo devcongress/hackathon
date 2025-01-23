@@ -14,7 +14,7 @@ class HackerDashboardPortal::Hackathon::InvitationsController < ::Hackathon::Inv
         .deliver_later!
 
       redirect_to @invited_hacker,
-                  notice: "Invitation sent to hacker <#{@invited_hacker.email}>"
+        notice: "Invitation sent to hacker <#{@invited_hacker.email}>"
     else
       redirect_to hackathon_invitations_path,
         alert: "The hacker with email <#{invitation_params[:email]}> " \
@@ -24,9 +24,9 @@ class HackerDashboardPortal::Hackathon::InvitationsController < ::Hackathon::Inv
 
   private
 
-    def invitation_params
-      params
-        .expect(hackathon_invitation: [ :email ])
-        .merge({ team_id: current_user.team.id })
-    end
+  def invitation_params
+    params
+      .expect(hackathon_invitation: [:email])
+      .merge({team_id: current_user.team.id})
+  end
 end

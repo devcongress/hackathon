@@ -8,10 +8,10 @@ class ResourcePolicy < Plutonium::Resource::Policy
   end
 
   def hacker?
-    user.class == Hacker
+    user.instance_of? Hacker
   end
 
   def admin?
-    user.class == Admin
+    user.instance_of? Admin
   end
 end

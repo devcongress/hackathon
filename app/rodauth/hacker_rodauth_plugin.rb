@@ -31,8 +31,8 @@ class HackerRodauthPlugin < RodauthPlugin
     )
 
     omniauth_provider :google_oauth2,
-                      ENV["GOOGLE_CLIENT_ID"],
-                      ENV["GOOGLE_CLIENT_SECRET"], name: :google
+      ENV["GOOGLE_CLIENT_ID"],
+      ENV["GOOGLE_CLIENT_SECRET"], name: :google
     omniauth_provider :github,
       ENV["GITHUB_CLIENT_ID"],
       ENV["GITHUB_CLIENT_SECRET"],
@@ -97,12 +97,12 @@ class HackerRodauthPlugin < RodauthPlugin
 
     create_reset_password_email do
       Rodauth::HackerMailer.reset_password(self.class.configuration_name,
-                                           account_id, reset_password_key_value)
+        account_id, reset_password_key_value)
     end
 
     create_verify_account_email do
       Rodauth::HackerMailer.verify_account(self.class.configuration_name,
-                                           account_id, verify_account_key_value)
+        account_id, verify_account_key_value)
     end
 
     create_verify_login_change_email do |_login|

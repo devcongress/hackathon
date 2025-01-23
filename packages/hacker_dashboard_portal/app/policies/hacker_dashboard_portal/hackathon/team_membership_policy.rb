@@ -18,11 +18,11 @@ class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::Team
   end
 
   def permitted_attributes_for_create
-    [ :team, :role ]
+    [:team, :role]
   end
 
   def permitted_attributes_for_read
-    [ :hacker, :role ]
+    [:hacker, :role]
   end
 
   relation_scope do |relation|

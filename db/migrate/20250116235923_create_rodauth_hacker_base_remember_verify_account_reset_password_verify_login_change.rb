@@ -21,11 +21,11 @@ class CreateRodauthHackerBaseRememberVerifyAccountResetPasswordVerifyLoginChange
       t.foreign_key(:hackers, column: :id)
       t.string(:key, null: false)
       t.datetime(:requested_at, null: false, default: -> {
-                                  "CURRENT_TIMESTAMP"
-                                })
+        "CURRENT_TIMESTAMP"
+      })
       t.datetime(:email_last_sent, null: false, default: -> {
-                                     "CURRENT_TIMESTAMP"
-                                   })
+        "CURRENT_TIMESTAMP"
+      })
     end
 
     # Used by the password reset feature
@@ -35,8 +35,8 @@ class CreateRodauthHackerBaseRememberVerifyAccountResetPasswordVerifyLoginChange
       t.string(:key, null: false)
       t.datetime(:deadline, null: false)
       t.datetime(:email_last_sent, null: false, default: -> {
-                                     "CURRENT_TIMESTAMP"
-                                   })
+        "CURRENT_TIMESTAMP"
+      })
     end
 
     # Used by the verify login change feature
