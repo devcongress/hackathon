@@ -2,6 +2,12 @@ class HackerDashboardPortal::Hackathon::TeamMembershipDefinition < ::Hackathon::
   include HackerDashboardPortal::ResourceDefinition
 
   edit_page_title "Update Membership Role"
+  new_page_title "Join Team"
+
+  class NewPage < NewPage
+    def render_breadcrumbs
+    end
+  end
 
   field :role,
     choices: Hackathon::TeamMembership.roles.keys.to_h { |role|
