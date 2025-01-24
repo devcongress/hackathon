@@ -3,7 +3,7 @@
 # Table name: hackathon_invitations
 #
 #  id         :integer          not null, primary key
-#  accepted   :boolean          default(FALSE), not null
+#  status     :interger         default("pending"), not null
 #  email      :string           not null
 #  token      :string           not null
 #  created_at :datetime         not null
@@ -25,19 +25,25 @@
 require_relative "../hackathon"
 
 class Hackathon::Invitation < Hackathon::ResourceRecord
+  enum :status, pending: 0, sent: 1, accepted: 2, failed: 3
+
+  before_validation :generate_token, :set_default_status
+
   belongs_to :team, class_name: "Hackathon::Team"
-  validates :email, presence: true, uniqueness: {scope: :team_id, message: "has already been invited"}
-  validates :token, presence: true
-  validates :accepted, inclusion: {in: [true, false]}
   belongs_to :profile, class_name: "Profile", optional: true
 
-  scope :associated_with_hacker,
-    ->(hacker) {
-      includes(:team).where(hackathon_teams: {hacker_id: hacker.id})
-    }
+  validates :email, presence: true,
+                    uniqueness: { scope: :team_id, message: "has already been invited" }
+  validates :token, presence: true
+  validates :status, presence: true, inclusion: { in: statuses.keys }
 
-  # An invite is accepted when a profile is associated with it
-  def accepted
-    profile.present?
-  end
+  private
+
+    def generate_token
+      self.token ||= SecureRandom.urlsafe_base64(64)
+    end
+
+    def set_default_status
+      self.status ||= :pending
+    end
 end

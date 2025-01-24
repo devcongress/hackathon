@@ -53,7 +53,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_21_194530) do
   create_table "hackathon_invitations", force: :cascade do |t|
     t.string "email", null: false
     t.string "token", null: false
-    t.boolean "accepted", default: false, null: false
+    t.integer "status", default: 0, null: false
     t.integer "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
