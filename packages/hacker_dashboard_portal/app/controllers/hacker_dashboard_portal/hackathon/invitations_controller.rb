@@ -1,32 +1,33 @@
 class HackerDashboardPortal::Hackathon::InvitationsController < ::Hackathon::InvitationsController
   include HackerDashboardPortal::Concerns::Controller
 
+  authorize :team, through: :current_team
+
   def create
-    @invited_hacker = ::Hackathon::Invitation.new(invitation_params)
-    @invited_hacker.token = SecureRandom.urlsafe_base64(64)
+    @invitation = Hackathon::Invitation.new(invitation_params)
+    authorize_current! @invitation
 
-    authorize_current! @invited_hacker
-
-    if @invited_hacker.save
+    if @invitation.save
       InvitationMailer
-        .with(hacker: @invited_hacker)
+        .with(hacker: @invitation)
         .send_invite
-        .deliver_later!
+        .deliver_later
 
-      redirect_to @invited_hacker,
-        notice: "Invitation sent to hacker <#{@invited_hacker.email}>"
+      redirect_to @invitation.team,
+                  notice: "Invitation sent to hacker <#{@invitation.email}>"
     else
       redirect_to hackathon_invitations_path,
-        alert: "The hacker with email <#{invitation_params[:email]}> " \
-               "has been invited already."
+                  alert: "The hacker with email <#{invitation_params[:email]}> has been invited already."
     end
   end
 
   private
 
-  def invitation_params
-    params
-      .expect(hackathon_invitation: [:email])
-      .merge({team_id: current_user.team.id})
-  end
+    def invitation_params
+      params.expect(hackathon_invitation: [ :email ]).merge(team: current_team)
+    end
+
+    def current_team
+      @current_team ||= current_user.team
+    end
 end
