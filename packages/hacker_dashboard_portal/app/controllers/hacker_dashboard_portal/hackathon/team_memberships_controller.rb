@@ -3,11 +3,14 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
 
   authorize :invitation, through: :current_invitation
 
+  skip_before_action :ensure_joined_team, only: [ :new, :create ]
 
   def current_invitation
     return unless cookies.encrypted[:invite_token]
 
-    @invitation ||= ::Hackathon::Invitation.find_by!(token: cookies.encrypted[:invite_token])
+    @invitation ||= ::Hackathon::Invitation.find_by(
+      token: cookies.encrypted[:invite_token],
+    )
   end
 
   def set_page_title(title)
