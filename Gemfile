@@ -87,3 +87,5 @@ gem "omniauth-google-oauth2", "~> 1.2"
 gem "omniauth-github", "~> 2.0"
 
 gem "rodauth-omniauth", "~> 0.6.0"
+
+gem "faker", "~> 3.5", group: :development
