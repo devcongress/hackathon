@@ -1,6 +1,6 @@
 class Hackathon::InvitationDefinition < Hackathon::ResourceDefinition
-  action :invite,
-    interaction: Hackathon::Invitations::Invite
+  action :resend_invite,
+    interaction: Hackathon::Invitations::ResendInvite
 
   # index_page_title "Invited Hackers"
   new_page_title "Invite Hacker"

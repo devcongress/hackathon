@@ -1,7 +1,7 @@
 module Hackathon
   module Invitations
-    class Invite < ResourceInteraction
-      presents label: "Invite", icon: Phlex::TablerIcons::Message
+    class ResendInvite < ResourceInteraction
+      presents label: "Resend Invite", icon: Phlex::TablerIcons::Message
       attribute :resource
 
       def execute
