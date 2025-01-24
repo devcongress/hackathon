@@ -12,6 +12,7 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
   end
 
   new_page_title "Create your team"
+  new_page_description "If you would like to join a team instead, ask your team owner to send you an invite."
   edit_page_title "Update team"
 
   field :role,

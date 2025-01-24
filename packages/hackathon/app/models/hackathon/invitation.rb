@@ -26,9 +26,7 @@ require_relative "../hackathon"
 
 class Hackathon::Invitation < Hackathon::ResourceRecord
   belongs_to :team, class_name: "Hackathon::Team"
-  validates :email, presence: true
-  validates :email,
-    uniqueness: {scope: :team_id, message: "has already been invited"}
+  validates :email, presence: true, uniqueness: {scope: :team_id, message: "has already been invited"}
   validates :token, presence: true
   validates :accepted, inclusion: {in: [true, false]}
   belongs_to :profile, class_name: "Profile", optional: true

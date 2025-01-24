@@ -1,4 +1,5 @@
 class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
+  authorize :invitation, allow_nil: true
   # Core actions
 
   def create?
@@ -34,8 +35,11 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
 
   # show team to only hackers who belong to it
   relation_scope do |relation|
-    return unless entity_scope
-
-    relation.where(id: user.team.id)
+    relation = super(relation)
+    if invitation
+      relation.or(Hackathon::Team.where(id: invitation.team.id))
+    else
+      relation
+    end
   end
 end

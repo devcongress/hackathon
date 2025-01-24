@@ -20,4 +20,7 @@
 class Profile < ::ResourceRecord
   belongs_to :hacker
   has_one :team, through: :hacker
+
+  validates :name, presence: true
+  validates :telephone_number, presence: true
 end

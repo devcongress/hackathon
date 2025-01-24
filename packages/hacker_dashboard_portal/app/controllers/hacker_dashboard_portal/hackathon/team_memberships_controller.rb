@@ -1,6 +1,8 @@
 class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon::TeamMembershipsController
   include HackerDashboardPortal::Concerns::Controller
 
+  authorize :invitation, through: :current_invitation
+
   skip_before_action :ensure_joined_team, only: [:new, :create]
 
   before_action :set_invited_hacker, only: [:new, :create]
@@ -56,7 +58,10 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
     })
   end
 
-  def invited_hacker_team
-    Hackathon::Invitation.find_by(token: cookies.encrypted[:invite_token])
+
+  def current_invitation
+    return unless cookies.encrypted[:invite_token]
+
+    @invitation ||= ::Hackathon::Invitation.find_by!(token: cookies.encrypted[:invite_token])
   end
 end
