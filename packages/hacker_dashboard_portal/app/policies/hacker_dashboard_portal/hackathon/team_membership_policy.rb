@@ -22,11 +22,6 @@ class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::Team
     [:hacker, :role]
   end
 
-  # relation_scope do |relation|
-  #   next relation unless entity_scope
-
-  #   relation.where(team: user.team)
-  # end
   relation_scope do |relation|
     relation = super(relation)
     if invitation
