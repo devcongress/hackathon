@@ -1,11 +1,10 @@
 class HackerDashboardPortal::Hackathon::TeamMembershipDefinition < ::Hackathon::TeamMembershipDefinition
   include HackerDashboardPortal::ResourceDefinition
 
+  new_page_title -> {
+    render_title "Join #{current_parent.name}"
+  }
   edit_page_title "Update Membership Role"
-  new_page_title "Join Team"
-
-  field :team, as: :string, value: "Some Default Read-only Value ",
-    readonly: true
 
   field :role,
     choices: Hackathon::TeamMembership.roles.keys.to_h { |role|

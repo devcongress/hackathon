@@ -1,12 +1,9 @@
 class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::TeamMembershipPolicy
+  authorize :invitation, allow_nil: true
   # Core attributes
 
-  def new?
-    user.team.nil?
-  end
-
   def create?
-    true
+    user.team.nil?
   end
 
   def update?
@@ -25,9 +22,17 @@ class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::Team
     [:hacker, :role]
   end
 
-  relation_scope do |relation|
-    next relation unless entity_scope
+  # relation_scope do |relation|
+  #   next relation unless entity_scope
 
-    relation.where(team: user.team)
+  #   relation.where(team: user.team)
+  # end
+  relation_scope do |relation|
+    relation = super(relation)
+    if invitation
+      relation.or(Hackathon::Team.where(id: invitation.team.id))
+    else
+      relation
+    end
   end
 end
