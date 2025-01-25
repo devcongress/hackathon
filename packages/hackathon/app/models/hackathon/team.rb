@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string           not null
+#  status     :integer          default("pending"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  hacker_id  :integer          not null
@@ -25,23 +26,24 @@ class Hackathon::Team < Hackathon::ResourceRecord
   has_many :team_memberships, dependent: :destroy
   has_many :hackers, through: :team_memberships
   has_many :invitations, class_name: "Hackathon::Invitation",
-    dependent: :destroy
+                         dependent: :destroy
 
-  validates :name, presence: true
-  validates :name, uniqueness: {case_sensitive: false}
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
+
+  enum :status, pending: 0, validated: 1
+  validates :status, presence: true,
+                     inclusion: { in: Hackathon::Team.statuses.keys }
 
   attribute :role
   validates :role, presence: true,
-    inclusion: {in: Hackathon::TeamMembership.roles.keys},
-    on: :create
-
-  attribute :validated
+                   inclusion: { in: Hackathon::TeamMembership.roles.keys },
+                   on: :create
 
   after_create do
     team_memberships.create!(hacker: hacker, role:)
   end
 
-  def validated
+  def has_minimum_memberships?
     team_memberships.count >= 3
   end
 
