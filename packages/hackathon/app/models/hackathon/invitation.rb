@@ -33,19 +33,19 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
   belongs_to :profile, class_name: "Profile", optional: true
 
   validates :email, presence: true,
-                    uniqueness: { scope: :team_id, message: "has already been invited" }
+    uniqueness: {scope: :team_id, message: "has already been invited"}
   validates :token, presence: true
-  validates :status, presence: true, inclusion: { in: statuses.keys }
+  validates :status, presence: true
 
-  scope :associated_with_hacker, ->(hacker) { }
+  scope :associated_with_hacker, ->(hacker) {}
 
   private
 
-    def generate_token
-      self.token ||= SecureRandom.urlsafe_base64(64)
-    end
+  def generate_token
+    self.token ||= SecureRandom.urlsafe_base64(64)
+  end
 
-    def set_default_status
-      self.status ||= :pending
-    end
+  def set_default_status
+    self.status ||= :pending
+  end
 end
