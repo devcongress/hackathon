@@ -1,17 +1,17 @@
 class InvitationsController < ApplicationController
-  before_action :set_hacker
+  before_action :set_invitation
 
   def confirm
-    if @invited_hacker
-      if @invited_hacker.accepted?
+    if @invitation
+      if @invitation.accepted?
         redirect_to rodauth(:hacker).login_path,
           alert: "The invitation has already been accepted."
       else
-        cookies.encrypted[:invite_token] = @invited_hacker.token
+        cookies.encrypted[:invite_token] = @invitation.token
 
         redirect_to rodauth(:hacker).create_account_path,
           notice: "Valid invitation link. Complete your profile to join " \
-          "the team: #{@invited_hacker.team.name}."
+          "the team: #{@invitation.team.name}."
       end
     else
       redirect_to root_path,
@@ -21,8 +21,8 @@ class InvitationsController < ApplicationController
 
   private
 
-  def set_hacker
-    @invited_hacker = ::Hackathon::Invitation.includes(:team)
-      .find_by(token: params[:token])
-  end
+    def set_invitation
+      @invitation = ::Hackathon::Invitation.includes(:team)
+                                           .find_by(token: params[:token])
+    end
 end
