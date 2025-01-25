@@ -6,11 +6,7 @@ class HackerDashboardPortal::Hackathon::TeamMembershipDefinition < ::Hackathon::
   }
   edit_page_title "Update Membership Role"
 
-  field :role,
-    choices: Hackathon::TeamMembership.roles.keys.to_h { |role|
-      [role.to_sym, role.titleize]
-    },
-    hint: "Your role on the team"
+  field :role, hint: "Your role on the team"
 
   class NewPage < NewPage
     def render_breadcrumbs

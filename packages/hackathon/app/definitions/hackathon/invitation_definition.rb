@@ -1,4 +1,6 @@
 class Hackathon::InvitationDefinition < Hackathon::ResourceDefinition
+  display :status, as: :string, formatter: ->(value) { value.titleize }
+
   action :resend_invite,
     interaction: Hackathon::Invitations::ResendInvite
 
