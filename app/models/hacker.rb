@@ -28,7 +28,9 @@ class Hacker < ResourceRecord
     profile.name
   end
 
+  def team_owner? = owns_team?(team)
+
   def owns_team?(team)
-    team.hacker == self
+    team.id == owned_team&.id
   end
 end

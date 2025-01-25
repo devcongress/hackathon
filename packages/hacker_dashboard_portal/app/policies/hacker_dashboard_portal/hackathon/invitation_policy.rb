@@ -1,23 +1,18 @@
 class HackerDashboardPortal::Hackathon::InvitationPolicy < ::Hackathon::InvitationPolicy
-  authorize :team
-
   def create?
-    team_hackers_less_than_5? && user.owns_team?(team)
+    false
   end
 
   def read?
-    user.owns_team?(team)
+    user.team_owner?
   end
 
   def destroy?
-    return false if record.accepted?
-
-    true
+    !record.accepted?
   end
 
   def resend_invite?
-    # Allow re-sending invites when the initial invite failed
-    user.owns_team?(team) && (record.failed? || record.pending?)
+    user.team_owner? && !record.accepted?
   end
 
   def permitted_attributes_for_read

@@ -20,4 +20,7 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
       [role.to_sym, role.titleize]
     },
     hint: "Your role on the team"
+
+  action :invite_member,
+    interaction: Hackathon::Teams::InviteMember
 end

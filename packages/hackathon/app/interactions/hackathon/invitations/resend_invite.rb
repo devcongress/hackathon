@@ -5,11 +5,8 @@ module Hackathon
       attribute :resource
 
       def execute
-        if InvitationMailer.with(hacker: resource).send_invite.deliver_later
-          succeed(resource).with_message("Invitation was successfully sent to <#{resource.email}>")
-        else
-          failed(resource.errors)
-        end
+        resource.send_invitation
+        succeed(resource).with_message("Invitation was successfully sent to <#{resource.email}>")
       end
     end
   end

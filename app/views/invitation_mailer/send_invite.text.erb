@@ -1,9 +1,31 @@
-Hi <%= @invited_hacker.email %>!
+Hi <%= @invitation.email %>,
 
-<%= @owner.profile.name %> has invited you to join <%= @team.name %> for the hackathon.
-Click the link below to register and complete your details.
+<%= @owner.profile.name %> has handpicked you to join <%= @team.name %> at Hack by Achieve!
+🎉 This is your exclusive chance to collaborate, innovate, and showcase your skills alongside talented peers.
 
-<%= @url %>
+Here's what to do next:
+👉 Accept your invitation now: Click here to register
+👉 Complete your details to secure your spot—hurry, seats fill fast!
 
-Best,
-Hackathon Team
+Once registered, you'll receive all event details, timelines, and resources to hit the ground running.
+
+Why join?
+
+Team up with <%= @team.name %> and turn ideas into reality.
+
+Network with industry experts and fellow innovators.
+
+Compete for exciting prizes and bragging rights!
+
+Let's make Hack by Achieve unforgettable! 🚀
+
+Best regards,
+The Hack by Achieve Team
+
+----------------------------------------------
+Important:
+
+Your unique registration link: <%= @url %>
+
+Do not share this link—it's tied to your invitation.
+----------------------------------------------

@@ -25,7 +25,7 @@
 require_relative "../hackathon"
 
 class Hackathon::Invitation < Hackathon::ResourceRecord
-  enum :status, pending: 0, sent: 1, accepted: 2, failed: 3
+  enum :status, pending: 0, invited: 1, accepted: 2
 
   before_validation :generate_token, :set_default_status
 
@@ -38,6 +38,12 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
   validates :status, presence: true
 
   scope :associated_with_hacker, ->(hacker) {}
+
+  after_create :send_invitation
+
+  def send_invitation
+    InvitationMailer.with(invitation: self).send_invite.deliver_later
+  end
 
   private
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_25_161326) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_25_162442) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -53,11 +53,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_161326) do
   create_table "hackathon_invitations", force: :cascade do |t|
     t.string "email", null: false
     t.string "token", null: false
+    t.integer "status", default: 0, null: false
     t.integer "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "profile_id"
-    t.integer "status", default: 0, null: false
     t.index ["email", "team_id"], name: "index_hackathon_invitations_on_email_and_team_id", unique: true
     t.index ["profile_id"], name: "index_hackathon_invitations_on_profile_id"
     t.index ["team_id"], name: "index_hackathon_invitations_on_team_id"
@@ -69,7 +69,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_161326) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "invitation_id"
     t.index ["hacker_id"], name: "index_hackathon_team_memberships_on_hacker_id", unique: true
+    t.index ["invitation_id"], name: "index_hackathon_team_memberships_on_invitation_id"
     t.index ["team_id"], name: "index_hackathon_team_memberships_on_team_id"
   end
 
@@ -129,6 +131,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_161326) do
   add_foreign_key "admin_verification_keys", "admins", column: "id"
   add_foreign_key "hackathon_invitations", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_invitations", "profiles"
+  add_foreign_key "hackathon_team_memberships", "hackathon_invitations", column: "invitation_id"
   add_foreign_key "hackathon_team_memberships", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_team_memberships", "hackers"
   add_foreign_key "hackathon_teams", "hackers"

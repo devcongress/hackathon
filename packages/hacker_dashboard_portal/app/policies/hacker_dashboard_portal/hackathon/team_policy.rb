@@ -10,6 +10,10 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
     user.owns_team?(record)
   end
 
+  def invite_member?
+    user.owns_team?(record) && record.invitations.count < 5
+  end
+
   # Core attributes
 
   def permitted_attributes_for_create
