@@ -13,11 +13,11 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    super + [ :role ] - [ :hacker ]
+    super + [:role] - [:hacker]
   end
 
   def permitted_attributes_for_update
-    super - [ :role ]
+    super - [:role]
   end
 
   def permitted_attributes_for_read
@@ -29,16 +29,18 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
       super
     else
       # only team owners should see invitations
-      super - [ :invitations ]
+      super - [:invitations]
     end
   end
 
   # show team to only hackers who belong to it
   relation_scope do |relation|
-    if invitation
+    if user.team.present?
+      relation.where(id: user.team.id) # A team exists, scope on that
+    elsif invitation
       relation.where(id: invitation.team.id)
     else
-      relation.where(id: user.team.id)
+      relation # This is a new team
     end
   end
 end
