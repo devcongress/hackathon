@@ -29,6 +29,13 @@
 
 en:
   activerecord:
+    models:
+      hackathon/team_membership: 
+        one: "Team Member"
+        other: "Team Members"
     attributes:
-      hackathon/team:
+      hackathon/team: 
         hacker: "Team Owner"
+        team_memberships: "Members"
+      hackathon/invitation: 
+        team_membership: "Member"
