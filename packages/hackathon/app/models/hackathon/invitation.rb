@@ -3,8 +3,8 @@
 # Table name: hackathon_invitations
 #
 #  id         :integer          not null, primary key
-#  status     :interger         default("pending"), not null
 #  email      :string           not null
+#  status     :integer          default("pending"), not null
 #  token      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
