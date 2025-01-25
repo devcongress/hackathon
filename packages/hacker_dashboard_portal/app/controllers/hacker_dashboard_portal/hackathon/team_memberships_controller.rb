@@ -21,6 +21,8 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
     def handle_success
       @invitation.accepted!
 
+      connect_profile_to_invitation
+      send_confirmation_email
       delete_invite_cookie
     end
 
@@ -34,5 +36,14 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
 
     def delete_invite_cookie
       cookies.delete(:invite_token)
+    end
+
+    def connect_profile_to_invitation
+      @invitation.update(profile: current_user.profile)
+    end
+
+    def send_confirmation_email
+      InvitationMailer.with(hacker: current_user.profile)
+                      .confirm_invite.deliver_later
     end
 end
