@@ -35,9 +35,8 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
 
   # show team to only hackers who belong to it
   relation_scope do |relation|
-    # relation = super(relation)
     if invitation
-      relation.or(Hackathon::Team.where(id: invitation.team.id))
+      relation.where(id: invitation.team.id)
     else
       relation.where(id: user.team.id)
     end
