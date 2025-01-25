@@ -13,7 +13,7 @@ class HackerDashboardPortal::Hackathon::InvitationsController < ::Hackathon::Inv
         .send_invite
         .deliver_later
 
-      redirect_to @invitation.team,
+      redirect_to @invitation,
                   notice: "Invitation sent to hacker <#{@invitation.email}>"
     else
       redirect_to hackathon_invitations_path,
