@@ -30,11 +30,10 @@ class Hackathon::Team < Hackathon::ResourceRecord
   has_many :invitations, class_name: "Hackathon::Invitation",
     dependent: :destroy
 
-  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  enum :status, unqualified: 0, qualified: 1
 
-  enum :status, pending: 0, validated: 1
-  validates :status, presence: true,
-    inclusion: {in: Hackathon::Team.statuses.keys}
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :status, presence: true, inclusion: {in: Hackathon::Team.statuses.keys}
 
   attribute :role
   validates :role, presence: true,
@@ -47,6 +46,13 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   def has_minimum_memberships?
     team_memberships.count >= 3
+  end
+
+  def run_qualification_checks
+    return unless unqualified? && has_minimum_memberships?
+
+    TeamMailer.with(team: self).qualified_email.deliver_later
+    qualified!
   end
 
   def self.with_minimum_memberships

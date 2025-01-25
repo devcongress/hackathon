@@ -53,7 +53,7 @@ class Hackathon::TeamMembership < Hackathon::ResourceRecord
 
   after_create :send_welcome_email
   after_create :mark_invitation_as_accepted
-  after_create :run_team_eligibility_checks
+  after_create :run_team_qualification_checks
   # add callbacks above.
 
   # add delegations above.
@@ -78,14 +78,7 @@ class Hackathon::TeamMembership < Hackathon::ResourceRecord
     invitation.accepted!
   end
 
-  def run_team_eligibility_checks
-    # TODO
-
-    #   # Check if the team is validated and send confirmation email to the team
-    #   # owner.
-    #   if team.has_minimum_memberships? && team.pending?
-    #     team.validated!
-    #     TeamMailer.with(team: team).validated.deliver_later
-    #   end
+  def run_team_qualification_checks
+    team.run_qualification_checks
   end
 end
