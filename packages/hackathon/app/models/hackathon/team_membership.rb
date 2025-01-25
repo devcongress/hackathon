@@ -51,14 +51,9 @@ class Hackathon::TeamMembership < Hackathon::ResourceRecord
   validates :role, presence: true
   # add validations above.
 
-  after_create do
-    # Check if the team is validated and send confirmation email to the team
-    # owner.
-    if team.has_minimum_memberships? && team.pending?
-      team.validated!
-      TeamMailer.with(team: team).validated.deliver_later
-    end
-  end
+  after_create :send_welcome_email
+  after_create :mark_invitation_as_accepted
+  after_create :run_team_eligibility_checks
   # add callbacks above.
 
   # add delegations above.
@@ -70,4 +65,27 @@ class Hackathon::TeamMembership < Hackathon::ResourceRecord
   end
 
   # add methods above.
+
+  private
+
+  def send_welcome_email
+    TeamMembershipMailer.with(membership: self).welcome_email.deliver_later
+  end
+
+  def mark_invitation_as_accepted
+    return unless invitation
+
+    invitation.accepted!
+  end
+
+  def run_team_eligibility_checks
+    # TODO
+
+    #   # Check if the team is validated and send confirmation email to the team
+    #   # owner.
+    #   if team.has_minimum_memberships? && team.pending?
+    #     team.validated!
+    #     TeamMailer.with(team: team).validated.deliver_later
+    #   end
+  end
 end

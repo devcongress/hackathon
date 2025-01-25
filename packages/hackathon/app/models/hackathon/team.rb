@@ -21,6 +21,8 @@
 require_relative "../hackathon"
 
 class Hackathon::Team < Hackathon::ResourceRecord
+  dynamic_path_parameter :name
+
   belongs_to :hacker
 
   has_many :team_memberships, dependent: :destroy

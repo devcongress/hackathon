@@ -4,7 +4,7 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
   authorize :invitation, through: :current_invitation
 
   skip_before_action :ensure_joined_team, only: [:new, :create]
-  after_action :handle_success, only: [:create]
+  after_action :cleanup_invitation, only: [:create]
 
   def present_scoped_entity? = true
 
@@ -18,12 +18,12 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
 
   private
 
-  def handle_success
-    @invitation.accepted!
-
-    connect_profile_to_invitation
-    send_confirmation_email
-    delete_invite_cookie
+  def resource_params
+    @my_resource_params ||= begin
+      input_params = super
+      input_params[:invitation] = current_invitation if current_invitation
+      input_params
+    end
   end
 
   def current_invitation
@@ -34,16 +34,19 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
     )
   end
 
-  def delete_invite_cookie
+  def cleanup_invitation
     cookies.delete(:invite_token)
   end
 
-  def connect_profile_to_invitation
-    @invitation.update(profile: current_user.profile)
-  end
+  def redirect_url_after_submit
+    if (return_to = url_from(params[:return_to]))
+      return return_to
+    end
 
-  def send_confirmation_email
-    InvitationMailer.with(hacker: current_user.profile)
-      .confirm_invite.deliver_later
+    if action_name == "create"
+      resource_url_for(resource_record!.team)
+    else
+      super
+    end
   end
 end

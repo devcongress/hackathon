@@ -30,7 +30,8 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
   before_validation :generate_token, :set_default_status
 
   belongs_to :team, class_name: "Hackathon::Team"
-  belongs_to :profile, class_name: "Profile", optional: true
+
+  has_one :team_membership
 
   validates :email, presence: true,
     uniqueness: {scope: :team_id, message: "has already been invited"}
@@ -43,6 +44,7 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
 
   def send_invitation
     InvitationMailer.with(invitation: self).send_invite.deliver_later
+    invited! if pending?
   end
 
   private
