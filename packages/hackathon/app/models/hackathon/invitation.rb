@@ -37,6 +37,8 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
   validates :token, presence: true
   validates :status, presence: true, inclusion: { in: statuses.keys }
 
+  scope :associated_with_hacker, ->(hacker) { }
+
   private
 
     def generate_token
