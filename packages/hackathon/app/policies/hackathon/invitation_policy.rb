@@ -12,11 +12,11 @@ class Hackathon::InvitationPolicy < Hackathon::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [ :email ]
+    [:email]
   end
 
   def permitted_attributes_for_read
-    [ :email, :status, :team ]
+    [:email, :status, :team]
   end
 
   # Associations

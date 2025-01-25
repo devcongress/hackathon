@@ -21,8 +21,8 @@ class InvitationsController < ApplicationController
 
   private
 
-    def set_invitation
-      @invitation = ::Hackathon::Invitation.includes(:team)
-                                           .find_by(token: params[:token])
-    end
+  def set_invitation
+    @invitation = ::Hackathon::Invitation.includes(:team)
+      .find_by(token: params[:token])
+  end
 end

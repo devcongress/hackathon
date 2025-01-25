@@ -3,8 +3,8 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
 
   authorize :invitation, through: :current_invitation
 
-  skip_before_action :ensure_joined_team, only: [ :new, :create ]
-  after_action :handle_success, only: [ :create ]
+  skip_before_action :ensure_joined_team, only: [:new, :create]
+  after_action :handle_success, only: [:create]
 
   def present_scoped_entity? = true
 
@@ -18,32 +18,32 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
 
   private
 
-    def handle_success
-      @invitation.accepted!
+  def handle_success
+    @invitation.accepted!
 
-      connect_profile_to_invitation
-      send_confirmation_email
-      delete_invite_cookie
-    end
+    connect_profile_to_invitation
+    send_confirmation_email
+    delete_invite_cookie
+  end
 
-    def current_invitation
-      return unless cookies.encrypted[:invite_token]
+  def current_invitation
+    return unless cookies.encrypted[:invite_token]
 
-      @invitation ||= ::Hackathon::Invitation.find_by(
-        token: cookies.encrypted[:invite_token],
-      )
-    end
+    @invitation ||= ::Hackathon::Invitation.find_by(
+      token: cookies.encrypted[:invite_token]
+    )
+  end
 
-    def delete_invite_cookie
-      cookies.delete(:invite_token)
-    end
+  def delete_invite_cookie
+    cookies.delete(:invite_token)
+  end
 
-    def connect_profile_to_invitation
-      @invitation.update(profile: current_user.profile)
-    end
+  def connect_profile_to_invitation
+    @invitation.update(profile: current_user.profile)
+  end
 
-    def send_confirmation_email
-      InvitationMailer.with(hacker: current_user.profile)
-                      .confirm_invite.deliver_later
-    end
+  def send_confirmation_email
+    InvitationMailer.with(hacker: current_user.profile)
+      .confirm_invite.deliver_later
+  end
 end

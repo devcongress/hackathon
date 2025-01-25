@@ -26,18 +26,18 @@ class Hackathon::Team < Hackathon::ResourceRecord
   has_many :team_memberships, dependent: :destroy
   has_many :hackers, through: :team_memberships
   has_many :invitations, class_name: "Hackathon::Invitation",
-                         dependent: :destroy
+    dependent: :destroy
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false }
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
 
   enum :status, pending: 0, validated: 1
   validates :status, presence: true,
-                     inclusion: { in: Hackathon::Team.statuses.keys }
+    inclusion: {in: Hackathon::Team.statuses.keys}
 
   attribute :role
   validates :role, presence: true,
-                   inclusion: { in: Hackathon::TeamMembership.roles.keys },
-                   on: :create
+    inclusion: {in: Hackathon::TeamMembership.roles.keys},
+    on: :create
 
   after_create do
     team_memberships.create!(hacker: hacker, role:)

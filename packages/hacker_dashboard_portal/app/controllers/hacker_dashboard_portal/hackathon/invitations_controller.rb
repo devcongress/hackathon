@@ -14,20 +14,20 @@ class HackerDashboardPortal::Hackathon::InvitationsController < ::Hackathon::Inv
         .deliver_later
 
       redirect_to @invitation,
-                  notice: "Invitation sent to hacker <#{@invitation.email}>"
+        notice: "Invitation sent to hacker <#{@invitation.email}>"
     else
       redirect_to hackathon_invitations_path,
-                  alert: "The hacker with email <#{invitation_params[:email]}> has been invited already."
+        alert: "The hacker with email <#{invitation_params[:email]}> has been invited already."
     end
   end
 
   private
 
-    def invitation_params
-      params.expect(hackathon_invitation: [ :email ]).merge(team: current_team)
-    end
+  def invitation_params
+    params.expect(hackathon_invitation: [:email]).merge(team: current_team)
+  end
 
-    def current_team
-      @current_team ||= current_user.team
-    end
+  def current_team
+    @current_team ||= current_user.team
+  end
 end

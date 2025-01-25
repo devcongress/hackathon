@@ -5,9 +5,9 @@ class CreateHackathonInvitations < ActiveRecord::Migration[8.0]
       t.string :token, null: false
       t.integer :status, null: false, default: 0 # default is pending
       t.belongs_to :team, null: false,
-                          foreign_key: { to_table: :hackathon_teams }
+        foreign_key: {to_table: :hackathon_teams}
       # email and team_id should be unique together
-      t.index [ :email, :team_id ], unique: true
+      t.index [:email, :team_id], unique: true
 
       t.timestamps
     end

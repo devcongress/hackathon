@@ -5,7 +5,7 @@ class AdminDashboardPortal::HackersController < ::HackersController
 
   private
 
-    def request_params
-      params
-    end
+  def request_params
+    params
+  end
 end

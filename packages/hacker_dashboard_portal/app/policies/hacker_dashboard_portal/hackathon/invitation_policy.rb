@@ -21,12 +21,12 @@ class HackerDashboardPortal::Hackathon::InvitationPolicy < ::Hackathon::Invitati
   end
 
   def permitted_attributes_for_read
-    [ :email, :status ]
+    [:email, :status]
   end
 
   private
 
-    def team_hackers_less_than_5?
-      user.team.hackers.count < 5
-    end
+  def team_hackers_less_than_5?
+    user.team.hackers.count < 5
+  end
 end
