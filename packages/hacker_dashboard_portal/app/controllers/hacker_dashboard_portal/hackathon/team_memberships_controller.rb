@@ -19,6 +19,8 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
   private
 
     def handle_success
+      @invitation.accepted!
+
       delete_invite_cookie
       check_team_validity
     end
@@ -36,8 +38,8 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
     end
 
     def check_team_validity
-      if @invitation.team.validated?
-        TeamMailer.with(team: current_invitation.team).validated.deliver_later
+      if current_user.reload.team.validated?
+        TeamMailer.with(team: current_user.team).validated.deliver_later
       end
     end
 end
