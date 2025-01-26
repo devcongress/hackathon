@@ -27,21 +27,23 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   has_many :team_memberships, dependent: :destroy
   has_many :hackers, through: :team_memberships
-  has_many :invitations, class_name: "Hackathon::Invitation",
-    dependent: :destroy
+  has_many :invitations,
+    class_name: "Hackathon::Invitation", dependent: :destroy
 
   enum :status, unqualified: 0, qualified: 1
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
-  validates :status, presence: true, inclusion: {in: Hackathon::Team.statuses.keys}
+  validates :status, presence: true, inclusion: {
+    in: Hackathon::Team.statuses.keys
+  }
 
   attribute :role
-  validates :role, presence: true,
-    inclusion: {in: Hackathon::TeamMembership.roles.keys},
-    on: :create
+  validates :role, presence: true, inclusion: {
+    in: Hackathon::TeamMembership.roles.keys
+  }, on: :create
 
   after_create do
-    team_memberships.create!(hacker: hacker, role:)
+    team_memberships.create!(hacker:, role:)
   end
 
   def has_minimum_memberships?
