@@ -16,5 +16,4 @@ class Admin < ResourceRecord
   validates :email, presence: true
 
   enum :status, unverified: 1, verified: 2, closed: 3
-  # scope :associated_with_admin, -> (admin) { }
 end
