@@ -7,11 +7,6 @@ class InvitationMailer < ApplicationMailer
       subject: "🚀 You're Invited: Join #{@team.name} at Hack by Achieve!"
   end
 
-  def confirm_invite
-    mail to: email_address_with_name(@owner.email, @invitation.name),
-      subject: "Registration Complete!"
-  end
-
   private
 
   def set_details
