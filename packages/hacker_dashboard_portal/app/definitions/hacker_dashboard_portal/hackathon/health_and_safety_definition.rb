@@ -29,5 +29,8 @@ class HackerDashboardPortal::Hackathon::HealthAndSafetyDefinition < ::Hackathon:
   end
 
   new_page_title "Add Emergency Contact"
-  new_page_description "This person will be contacted in case of an emergency"
+  new_page_description <<~DESC
+    By providing this information, you confirm that you are in good health
+    and consent to this person being contacted in case of an emergency.
+  DESC
 end
