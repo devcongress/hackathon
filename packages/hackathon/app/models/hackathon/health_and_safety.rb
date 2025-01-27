@@ -20,40 +20,13 @@
 require_relative "../hackathon"
 
 class Hackathon::HealthAndSafety < Hackathon::ResourceRecord
-  # add concerns above.
-
-  # add model configurations above.
-
   belongs_to :hacker
-  # add belongs_to associations above.
-
-  # add has_one associations above.
-
-  # add has_many associations above.
-
-  # add attachments above.
-
-  # add scopes above.
 
   validates :name, presence: true
   validates :phone_number, presence: true
   validates :consent, acceptance: true
 
-  # add validations above.
-
-  # add callbacks above.
-
-  # add delegations above.
-
-  # add misc attribute macros above.
-
-  def consent
-    if name.present? && phone_number.present?
-      "Accepted"
-    else
-      "Declined"
-    end
+  def consented
+    valid? ? "Accped" : "Declined"
   end
-
-  # add methods above.
 end

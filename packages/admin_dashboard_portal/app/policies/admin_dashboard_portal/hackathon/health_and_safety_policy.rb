@@ -2,6 +2,6 @@ class AdminDashboardPortal::Hackathon::HealthAndSafetyPolicy < ::Hackathon::Heal
   # Core attributes
 
   def permitted_attributes_for_read
-    super + [:consent, :hacker]
+    super + [:consented, :hacker]
   end
 end
