@@ -1,4 +1,4 @@
-class HackerPolicy < ::ResourcePolicy
+class Hackathon::HealthAndSafetyPolicy < Hackathon::ResourcePolicy
   # Core actions
 
   def create?
@@ -16,22 +16,16 @@ class HackerPolicy < ::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:email, :status]
+    [:name, :phone_number, :consent, :hacker]
   end
 
   def permitted_attributes_for_read
-    [:email, :status]
+    [:name, :phone_number]
   end
 
   # Associations
 
   def permitted_associations
-    %i[profile team emergency_contact]
-  end
-
-  private
-
-  def owner?
-    user == record
+    %i[]
   end
 end

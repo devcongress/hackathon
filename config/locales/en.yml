@@ -30,12 +30,15 @@
 en:
   activerecord:
     models:
-      hackathon/team_membership: 
+      hackathon/team_membership:
         one: "Team Member"
         other: "Team Members"
     attributes:
-      hackathon/team: 
+      hackathon/team:
         hacker: "Team Owner"
         team_memberships: "Members"
-      hackathon/invitation: 
+      hackathon/invitation:
         team_membership: "Member"
+      hackathon/health_and_safety:
+        consent: "Consent and Health Declaration"
+

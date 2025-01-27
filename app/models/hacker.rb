@@ -21,6 +21,8 @@ class Hacker < ResourceRecord
   has_one :team_membership, dependent: :destroy,
     class_name: "Hackathon::TeamMembership"
   has_one :team, through: :team_membership
+  has_one :emergency_contact, class_name: "Hackathon::HealthAndSafety",
+    dependent: :destroy
 
   enum :status, unverified: 1, verified: 2, closed: 3
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_25_162442) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_26_192809) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -48,6 +48,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_162442) do
     t.string "email", null: false
     t.string "password_hash"
     t.index ["email"], name: "index_admins_on_email", unique: true, where: "status IN (1, 2)"
+  end
+
+  create_table "hackathon_health_and_safeties", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "phone_number", null: false
+    t.integer "consent", default: 0, null: false
+    t.integer "hacker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hacker_id"], name: "index_hackathon_health_and_safeties_on_hacker_id"
   end
 
   create_table "hackathon_invitations", force: :cascade do |t|
@@ -129,6 +139,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_162442) do
   add_foreign_key "admin_password_reset_keys", "admins", column: "id"
   add_foreign_key "admin_remember_keys", "admins", column: "id"
   add_foreign_key "admin_verification_keys", "admins", column: "id"
+  add_foreign_key "hackathon_health_and_safeties", "hackers"
   add_foreign_key "hackathon_invitations", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_invitations", "profiles"
   add_foreign_key "hackathon_team_memberships", "hackathon_invitations", column: "invitation_id"

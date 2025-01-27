@@ -8,6 +8,7 @@ module HackerDashboardPortal
 
       included do
         before_action :ensure_profile_complete
+        before_action :ensure_emergency_contact_exists
         before_action :ensure_joined_team
       end
 
@@ -22,6 +23,12 @@ module HackerDashboardPortal
       def ensure_joined_team
         if current_user.team.nil?
           redirect_to(resource_url_for(::Hackathon::Team, action: :new))
+        end
+      end
+
+      def ensure_emergency_contact_exists
+        if current_user.emergency_contact.nil?
+          redirect_to resource_url_for(::Hackathon::HealthAndSafety, action: :new)
         end
       end
     end

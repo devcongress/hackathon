@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string           not null
-#  status     :integer          default("pending"), not null
+#  status     :integer          default("unqualified"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  hacker_id  :integer          not null
