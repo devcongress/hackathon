@@ -53,7 +53,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_26_192809) do
   create_table "hackathon_health_and_safeties", force: :cascade do |t|
     t.string "name", null: false
     t.string "phone_number", null: false
-    t.integer "consent", default: 0, null: false
     t.integer "hacker_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
