@@ -50,16 +50,14 @@ class Hackathon::Team < Hackathon::ResourceRecord
     team_memberships.count >= 3
   end
 
+  # Runs the qualification checks for the team and sends an email to the team
+  # if they are qualified.
+  #
+  # A team is qualified if they have at least 3 members.
   def run_qualification_checks
     return unless unqualified? && has_minimum_memberships?
 
     TeamMailer.with(team: self).qualified_email.deliver_later
     qualified!
-  end
-
-  def self.with_minimum_memberships
-    joins(:team_memberships)
-      .group("hackathon_team_memberships.team_id")
-      .having("COUNT(hackathon_team_memberships.id) >= ?", 3)
   end
 end
