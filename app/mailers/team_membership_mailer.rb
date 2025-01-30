@@ -12,5 +12,6 @@ class TeamMembershipMailer < ApplicationMailer
     @membership = params[:membership]
     @hacker = @membership.hacker
     @team = @membership.team
+    @owner = @team.hacker
   end
 end
