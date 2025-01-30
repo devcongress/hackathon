@@ -30,7 +30,8 @@ class Hackathon::TeamMembership < Hackathon::ResourceRecord
   enum :role,
     developer: 0,
     designer: 1,
-    product_manager: 2
+    product: 2,
+    marketing: 4
 
   # add model configurations above.
 
