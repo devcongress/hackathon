@@ -14,6 +14,10 @@ module HackerDashboardPortal
 
       private
 
+      def make_page_title(title, app_name: "Hackers Dashboard | Hack by Achieve")
+        super
+      end
+
       def ensure_profile_complete
         if current_user.profile.nil?
           redirect_to(resource_url_for(Profile, action: :new))
