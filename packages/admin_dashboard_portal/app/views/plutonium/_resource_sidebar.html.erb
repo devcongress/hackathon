@@ -8,7 +8,7 @@
 
         m.item "Hackathon Data", icon: Phlex::TablerIcons::GridDots do |n|
           registered_resources.each do |resource|
-            next unless ['Team', 'Invitation', 'Hacker'].include?(resource.model_name.human)
+            next unless ['Team', 'Invitation', 'Hacker', 'Check in'].include?(resource.model_name.human)
             n.item resource.model_name.human.pluralize,
               url: resource_url_for(resource, parent: nil)
           end

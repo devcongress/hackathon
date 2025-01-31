@@ -19,10 +19,10 @@ class Hacker < ResourceRecord
   validates :email, presence: true
   has_one :profile, dependent: :destroy
   has_one :team_membership, dependent: :destroy,
-    class_name: "Hackathon::TeamMembership"
+                            class_name: "Hackathon::TeamMembership"
   has_one :team, through: :team_membership
   has_one :emergency_contact, class_name: "Hackathon::HealthAndSafety",
-    dependent: :destroy
+                              dependent: :destroy
 
   enum :status, unverified: 1, verified: 2, closed: 3
 
@@ -34,5 +34,21 @@ class Hacker < ResourceRecord
 
   def owns_team?(team)
     team.id == owned_team&.id
+  end
+
+  def name
+    profile.name
+  end
+
+  def checked_in?
+    Hackathon::CheckIn.pluck(:hacker_id).include? self.id
+  end
+
+  def check_in_status
+    if checked_in?
+      "Checked in"
+    else
+      "Pending"
+    end
   end
 end
