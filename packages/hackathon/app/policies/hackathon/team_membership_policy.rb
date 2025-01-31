@@ -16,7 +16,7 @@ class Hackathon::TeamMembershipPolicy < Hackathon::ResourcePolicy
   end
 
   def permitted_attributes_for_read
-    [:hacker, :team, :role]
+    [:hacker, :role, :check_in_status]
   end
 
   # Associations

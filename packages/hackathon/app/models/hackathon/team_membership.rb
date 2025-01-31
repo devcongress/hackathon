@@ -65,6 +65,10 @@ class Hackathon::TeamMembership < Hackathon::ResourceRecord
     team.name
   end
 
+  def check_in_status
+    hacker.check_in_status
+  end
+
   # add methods above.
 
   private
