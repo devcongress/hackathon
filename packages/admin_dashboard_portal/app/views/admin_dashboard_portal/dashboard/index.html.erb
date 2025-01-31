@@ -12,25 +12,26 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% icon_style = "dark:stroke-white w-12 h-12" %>
     <% registered_resources.each do |resource| %>
-      <% next unless allowed_to?(:index?, resource) && ['Team', 'Invitation', 'Hacker'].include?(resource.model_name.human) %>
-      <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+      <% next unless allowed_to?(:index?, resource) && ['Team', 'Invitation', 'Hacker', "Check in"].include?(resource.model_name.human) %>
+      <div
+        class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden"
+      >
         <div class="p-4">
           <div class="flex items-center space-x-2 mb-2 hover:animate-pulse">
-            <% if resource.model_name.human == 'Team' %>
-              <%= render Phlex::TablerIcons::UsersGroup.new(class: icon_style) %>
-            <% elsif resource.model_name.human == 'Invitation' %>
-              <%= render Phlex::TablerIcons::Mail.new(class: icon_style) %>
-            <% elsif resource.model_name.human == "Hacker" %>
-              <%= render Phlex::TablerIcons::Code.new(class: icon_style) %>
-            <% end %>
-            <a
-              href="<%= resource_url_for(resource, parent: nil) %>"
-              class="
+            <%= render icon_for(resource.model_name.human) %>
+            <div class="flex flex-col">
+              <a
+                href="<%= resource_url_for(resource, parent: nil) %>"
+                class="
                 text-2xl font-medium text-gray-900 dark:text-white truncate hover:underline
               "
-            >
-              <%= resource.model_name.human.pluralize %>
-            </a>
+              >
+                <%= resource.model_name.human.pluralize.titleize %>
+              </a>
+              <p class="text-sm font-medium text-gray dark:text-white">
+                <%= description_for(resource.model_name.human) %>
+              </p>
+            </div>
           </div>
           <div class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
             <%= authorized_resource_scope(resource).count %>
@@ -49,11 +50,10 @@
                 text-2xl font-medium text-gray-900 dark:text-white truncate hover:underline
               "
             >
-              Registered Teams
+              Qualified Teams
             </a>
             <p class="text-sm font-medium text-gray dark:text-white">
-              Registered teams are teams with a minimum of 3 registered
-              members.
+              Qualified teams are teams with a minimum of 3 registered members.
             </p>
           </div>
         </div>
