@@ -32,15 +32,15 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   enum :status, unqualified: 0, qualified: 1
 
-  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :status, presence: true, inclusion: {
-    in: Hackathon::Team.statuses.keys
-  }
+             in: Hackathon::Team.statuses.keys,
+           }
 
   attribute :role
   validates :role, presence: true, inclusion: {
-    in: Hackathon::TeamMembership.roles.keys
-  }, on: :create
+           in: Hackathon::TeamMembership.roles.keys,
+         }, on: :create
 
   after_create do
     team_memberships.create!(hacker:, role:)
@@ -59,5 +59,9 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
     TeamMailer.with(team: self).qualified_email.deliver_later
     qualified!
+  end
+
+  def full?
+    team_memberships.count == 5
   end
 end
