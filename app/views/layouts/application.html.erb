@@ -16,7 +16,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
-  <body>
+  <body class="overflow-y-hidden">
     <div class="bg-white">
       <header class="absolute inset-x-0 top-0 z-50">
         <nav
@@ -187,7 +187,7 @@
             <div
               class="fixed left-1/2 transform -translate-x-1/2 w-full max-w-md bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 rounded-lg shadow-md"
             >
-              <div class="flex items-center justify-between">
+              <div class="flex items-center justify-between gap-2">
                 <p class="text-sm font-medium"><%= flash[:alert] %></p>
                 <button
                   onclick="this.parentElement.parentElement.remove()"
