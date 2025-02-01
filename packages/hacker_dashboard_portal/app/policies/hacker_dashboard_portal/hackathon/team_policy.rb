@@ -11,7 +11,7 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   end
 
   def invite_member?
-    user.owns_team?(record) && record.invitations.count < 5
+    user.owns_team?(record) && record.invitations.count < 5 && !record.full?
   end
 
   # Core attributes
