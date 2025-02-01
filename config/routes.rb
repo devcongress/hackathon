@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   resources :homepage, only: [:index]
+
+  get "/invitations/confirm/:token", to: "invitations#confirm", as: :confirm_invitation
+  post "/invitations/confirm/:token/decline", to: "invitations#decline", as: :decline_invitation
+  post "/invitations/confirm/:token/accept", to: "invitations#accept", as: :accept_invitation
+
   root "homepage#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,8 +17,6 @@ Rails.application.routes.draw do
   #     action: :confirm,
   #     as: :confirm_invitation
 
-  get "/invitations/confirm/:token", to: "invitations#confirm",
-    as: :confirm_invitation
   mount SolidErrors::Engine, at: "/manage/errors"
 
   mount MissionControl::Jobs::Engine, at: "/manage/jobs"
