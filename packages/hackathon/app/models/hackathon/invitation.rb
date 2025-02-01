@@ -25,7 +25,7 @@
 require_relative "../hackathon"
 
 class Hackathon::Invitation < Hackathon::ResourceRecord
-  enum :status, pending: 0, invited: 1, accepted: 2
+  enum :status, pending: 0, invited: 1, accepted: 2, declined: 3
 
   before_validation :generate_token, :set_default_status
 
@@ -34,11 +34,11 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
   has_one :team_membership
 
   validates :email, presence: true,
-    uniqueness: {scope: :team_id, message: "has already been invited"}
+                    uniqueness: { scope: :team_id, message: "has already been invited" }
   validates :token, presence: true
   validates :status, presence: true
 
-  scope :associated_with_hacker, ->(hacker) {}
+  scope :associated_with_hacker, ->(hacker) { }
 
   after_create :send_invitation
 

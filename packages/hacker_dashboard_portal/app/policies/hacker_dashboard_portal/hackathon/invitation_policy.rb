@@ -12,7 +12,7 @@ class HackerDashboardPortal::Hackathon::InvitationPolicy < ::Hackathon::Invitati
   end
 
   def resend_invite?
-    user.team_owner? && !record.accepted?
+    user.team_owner? && !record.accepted? && !record.declined?
   end
 
   def permitted_attributes_for_read
