@@ -19,8 +19,8 @@
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
   
-  <body class="min-h-screen bg-gradient-to-b from-indigo-50/50 to-white">
-    <header class="sticky inset-x-0 top-0 z-50 backdrop-blur-sm bg-white/80 border-b border-gray-100">
+  <body class="min-h-screen bg-gradient-to-b from-indigo-50/50 to-white" data-controller="mobile-menu">
+    <header class="sticky inset-x-0 top-0 z-40 backdrop-blur-sm bg-white/80 border-b border-gray-100">
       <nav class="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto" aria-label="Global">
         <div class="flex lg:flex-1">
           <a href="<%= root_path %>" class="group">
@@ -47,8 +47,9 @@
         </div>
 
         <%# Mobile menu button %>
-        <div class="flex lg:hidden" data-controller="mobile-menu">
-          <button data-action="mobile-menu#open" type="button" 
+        <div class="flex lg:hidden">
+          <button type="button"
+                  data-action="mobile-menu#toggle"
                   class="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-50 transition-colors">
             <span class="sr-only">Open main menu</span>
             <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -56,63 +57,66 @@
             </svg>
           </button>
         </div>
+      </nav>
+    </header>
 
-        <%# Mobile menu panel %>
-        <div class="lg:hidden" role="dialog" aria-modal="true" 
-             data-controller="mobile-menu" 
-             data-mobile-menu-target="menu" 
-             id="menu">
-          <div class="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm" 
-               data-action="click->mobile-menu#close"></div>
-          <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm">
-            <div class="flex items-center justify-between">
-              <a href="<%= root_path %>" class="-m-1.5 p-1.5">
-                <span class="sr-only"><%= app_name %></span>
-                <h1 class="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-800">
-                  <%= app_name %>
-                </h1>
+    <%# Mobile menu panel - Moved outside header %>
+    <div class="lg:hidden hidden" 
+         role="dialog" 
+         aria-modal="true"
+         data-mobile-menu-target="menu">
+      <%# Backdrop %>
+      <div class="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm" 
+           data-action="click->mobile-menu#close"></div>
+      
+      <%# Menu panel %>
+      <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm shadow-lg">
+        <div class="flex items-center justify-between">
+          <a href="<%= root_path %>" class="-m-1.5 p-1.5">
+            <span class="sr-only"><%= app_name %></span>
+            <h1 class="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-800">
+              <%= app_name %>
+            </h1>
+          </a>
+          <button type="button" 
+                  class="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-50"
+                  data-action="mobile-menu#close">
+            <span class="sr-only">Close menu</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/10">
+            <div class="space-y-2 py-6">
+              <a href="<%= root_path %>" 
+                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                Home
               </a>
-              <button type="button" 
-                      class="-m-2.5 rounded-md p-2.5 text-gray-700"
-                      data-action="mobile-menu#close">
-                <span class="sr-only">Close menu</span>
-                <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+              <a href="<%= about_path %>" 
+                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                About
+              </a>
+              <a href="<%= contact_path %>" 
+                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                Contact
+              </a>
+              <a href="<%= rodauth(:hacker).create_account_path %>" 
+                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                Register
+              </a>
             </div>
-            <div class="mt-6 flow-root">
-              <div class="-my-6 divide-y divide-gray-500/10">
-                <div class="space-y-2 py-6">
-                  <a href="<%= root_path %>" 
-                     class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                    Home
-                  </a>
-                  <a href="<%= about_path %>" 
-                     class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                    About
-                  </a>
-                  <a href="<%= contact_path %>" 
-                     class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                    Contact
-                  </a>
-                  <a href="<%= rodauth(:hacker).create_account_path %>" 
-                     class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                    Register
-                  </a>
-                </div>
-                <div class="py-6">
-                  <a href="<%= rodauth(:hacker).login_path %>" 
-                     class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-indigo-600 hover:bg-gray-50">
-                    Sign in
-                  </a>
-                </div>
-              </div>
+            <div class="py-6">
+              <a href="<%= rodauth(:hacker).login_path %>" 
+                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-indigo-600 hover:bg-gray-50">
+                Sign in
+              </a>
             </div>
           </div>
         </div>
-      </nav>
-    </header>
+      </div>
+    </div>
 
     <main>
       <%# Flash messages %>

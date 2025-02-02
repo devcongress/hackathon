@@ -1,16 +1,23 @@
-import { Controller } from "@hotwired/stimulus";
+// app/javascript/controllers/mobile_menu_controller.js
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static targets = ["menu"]
+
   connect() {
-    this.menu = document.getElementById("menu");
-    this.close();
+    // Ensure menu starts hidden
+    this.menuTarget.classList.add("hidden")
   }
 
-  open() {
-    this.menu.classList.remove("hidden");
+  toggle() {
+    this.menuTarget.classList.toggle("hidden")
   }
 
   close() {
-    this.menu.classList.add("hidden");
+    this.menuTarget.classList.add("hidden")
+  }
+
+  open() {
+    this.menuTarget.classList.remove("hidden")
   }
 }
