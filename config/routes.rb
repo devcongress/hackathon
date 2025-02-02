@@ -1,29 +1,17 @@
 Rails.application.routes.draw do
-  resources :homepage, only: [:index]
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  get "up" => "rails/health#show", :as => :rails_health_check
+
+  # resources :homepage, only: [:index]
+  root "homepage#index"
+  get "/about", to: "homepage#about"
 
   get "/invitations/confirm/:token", to: "invitations#confirm", as: :confirm_invitation
   post "/invitations/confirm/:token/decline", to: "invitations#decline", as: :decline_invitation
   post "/invitations/confirm/:token/accept", to: "invitations#accept", as: :accept_invitation
 
-  root "homepage#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", :as => :rails_health_check
-
-  # get "/invitations/confirm/:token",
-  #     controller: "hacker_dashboard_portal/hackathon/invitations",
-  #     action: :confirm,
-  #     as: :confirm_invitation
-
   mount SolidErrors::Engine, at: "/manage/errors"
 
   mount MissionControl::Jobs::Engine, at: "/manage/jobs"
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

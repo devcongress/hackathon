@@ -29,7 +29,7 @@
         nav.with_section do |section|
           section.with_link(
             label: "Sign out",
-            href: try(:logout_url) || "#",
+            href: logout_url,
             class: "rounded-b-lg",
             data: {
               turbo: false,

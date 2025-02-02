@@ -10,7 +10,7 @@
         email: current_user.try(:email) || current_user
       ) do |nav|
         nav.with_section do |section|
-          section.with_link(label: "Sign out", href: try(:logout_url) || "#", class: "rounded-b-lg", data: {turbo: false})
+          section.with_link(label: "Sign out", href: logout_url, class: "rounded-b-lg", data: {turbo: false})
         end
       end
     %>

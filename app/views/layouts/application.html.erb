@@ -66,8 +66,7 @@
             </button>
           </div>
           <div class="hidden lg:flex lg:gap-x-12">
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">Blogs</a>
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">About</a>
+            <a href="<%= about_path %>" class="text-sm/6 font-semibold text-gray-900">About</a>
             <a
               href="<%= rodauth(:hacker).create_account_path %>"
               class="text-sm/6 font-semibold text-gray-900"
@@ -139,7 +138,7 @@
                     >Blogs</a
                   >
                   <a
-                    href="#"
+                    href="<%= about_path %>"
                     class="
                   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900
                   hover:bg-gray-50
