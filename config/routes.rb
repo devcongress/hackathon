@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # resources :homepage, only: [:index]
   root "homepage#index"
   get "/about", to: "homepage#about"
+  get "/contact", to: "homepage#contact"
 
   get "/invitations/confirm/:token", to: "invitations#confirm", as: :confirm_invitation
   post "/invitations/confirm/:token/decline", to: "invitations#decline", as: :decline_invitation
