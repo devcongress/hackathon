@@ -305,7 +305,7 @@ GEM
       phlexi-display
       phlexi-field
       zeitwerk
-    plutonium (0.19.8)
+    plutonium (0.19.9)
       action_policy (~> 0.7.0)
       dry-initializer (~> 3.1)
       listen (~> 3.8)
@@ -344,7 +344,7 @@ GEM
     rabl (0.16.1)
       activesupport (>= 2.3.14)
     racc (1.8.1)
-    rack (3.1.8)
+    rack (3.1.9)
     rack-protection (4.1.1)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
@@ -427,7 +427,7 @@ GEM
     rubocop-performance (1.23.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    ruby-next-core (1.1.0)
+    ruby-next-core (1.1.1)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
     securerandom (0.4.1)

@@ -14,9 +14,7 @@ module HackerDashboardPortal
 
       private
 
-      def make_page_title(title, app_name: "Hackers Dashboard | Hack by Achieve")
-        super
-      end
+      def app_name = "Hack! with Achieve by Petra"
 
       def ensure_profile_complete
         if current_user.profile.nil?
