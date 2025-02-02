@@ -62,10 +62,20 @@ class Hackathon::Team < Hackathon::ResourceRecord
     return unless unqualified? && has_minimum_memberships?
 
     if limit_reached?
-      TeamMailer.with(team: self).late_qualified_email.deliver_later
-    else
-      TeamMailer.with(team: self).qualified_email.deliver_later
+      send_late_qualified_email if unqualified?
+    elsif unqualified?
+      send_qualified_email if unqualified?
     end
+  end
+
+  def send_late_qualified_email
+    TeamMailer.with(team: self).late_qualified_email.deliver_later
+    late_qualified!
+  end
+
+  def send_qualified_email
+    TeamMailer.with(team: self).qualified_email.deliver_later
+    qualified!
   end
 
   def full?
