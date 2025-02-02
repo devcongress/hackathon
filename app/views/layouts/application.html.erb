@@ -25,9 +25,22 @@
     <meta property="og:title" content="<%= content_for(:title) || app_name %>">
     <meta property="og:description" content="<%= content_for(:meta_description) || meta_description %>">
     <meta property="og:image" content="<%= content_for(:meta_image) || meta_image %>">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="event">
     <meta property="og:url" content="<%= request.original_url %>">
     <meta property="og:locale" content="en_GH">
+
+    <%# Event-specific Open Graph tags %>
+    <meta property="event:start_time" content="2025-03-14T19:00:00+00:00">
+    <meta property="event:end_time" content="2025-03-16T14:00:00+00:00">
+    <meta property="event:location" content="Academic City Campus">
+    <meta property="event:street-address" content="Academic City">
+    <meta property="event:locality" content="Accra">
+    <meta property="event:region" content="Greater Accra">
+    <meta property="event:country-name" content="Ghana">
+
+    <%# Additional event details %>
+    <meta property="event:creator" content="Achieve by Petra">
+    <meta property="event:category" content="Hackathon">
     
     <%# Twitter Card Meta Tags %>
     <meta name="twitter:card" content="summary_large_image">
@@ -36,6 +49,12 @@
     <meta name="twitter:description" content="<%= content_for(:meta_description) || meta_description %>">
     <meta name="twitter:image" content="<%= content_for(:meta_image) || meta_image %>">
     <meta name="twitter:creator" content="@theachieveapp">
+    
+    <%# Additional Twitter Card event details %>
+    <meta name="twitter:label1" content="When">
+    <meta name="twitter:data1" content="March 14-16, 2025">
+    <meta name="twitter:label2" content="Where">
+    <meta name="twitter:data2" content="Academic City Campus, Accra">
     
     <%# Mobile Meta Tags %>
     <meta name="apple-mobile-web-app-capable" content="yes">
