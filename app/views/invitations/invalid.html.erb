@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-3xl px-4 py-8 sm:py-16">
-  <div class="bg-white rounded-2xl shadow-md border border-indigo-100/50 px-6 py-12 sm:px-12">
+  <div class="bg-white rounded-2xl shadow-md border border-gray-100/50 px-6 py-12 sm:px-12">
     <!-- Header -->
     <div class="text-center">
       <h1 class="space-y-2">
@@ -7,34 +7,59 @@
         <span class="block text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600">Invalid Invitation</span>
       </h1>
 
+      <!-- Error Icon -->
+      <div class="mt-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      </div>
+
       <!-- Message -->
-      <div class="mt-10 space-y-6">
+      <div class="mt-8 space-y-6">
         <p class="text-lg sm:text-xl text-gray-700 leading-relaxed">
           This invitation link appears to be invalid or has expired
         </p>
-
-        <div class="inline-flex flex-col items-center">
-          <div class="text-xl sm:text-2xl font-bold text-gray-800">
-            Hack! with Achieve by Petra
-          </div>
-          <div class="mt-2 h-1 w-32 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full"></div>
-        </div>
       </div>
 
-      <!-- Helpful Text -->
-      <p class="mt-12 text-xl sm:text-2xl text-gray-700 leading-relaxed">
-        Looking to join a team? You have options!
-      </p>
+      <!-- Options Section -->
+      <div class="mt-12 bg-gray-50 rounded-xl p-6 max-w-xl mx-auto">
+        <h2 class="text-xl sm:text-2xl font-medium text-gray-800">
+          Looking to join the hackathon?
+        </h2>
+        <p class="mt-4 text-gray-600">
+          You can create your own team or connect with others in our community to find teammates!
+        </p>
+      </div>
 
       <!-- Actions -->
       <div class="mt-12 flex flex-col items-center space-y-6">
         <!-- Main Button -->    
         <%=
-          link_to "Create Your Team", rodauth(:hacker).create_account_path,
-                class: "group w-64 rounded-xl bg-gradient-to-r from-gray-600 to-gray-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          link_to "Create Your Team", 
+                  rodauth(:hacker).create_account_path,
+                  class: "group w-64 rounded-xl bg-gradient-to-r from-gray-600 to-gray-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
         %>
 
-        <!-- Secondary Link -->
+        <!-- Community Links -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 text-sm text-gray-600">
+          <a href="https://devcongress-community.slack.com/join/shared_invite/zt-274ooe0gj-CHhsbe78Ez6g0yRG0EQ8rQ#/shared-invite/email" 
+             class="flex items-center space-x-2 hover:text-gray-800">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+            </svg>
+            <span>Join on Slack</span>
+          </a>
+          <span class="hidden sm:inline text-gray-400">•</span>
+          <a href="https://x.com/i/communities/1880201715611308114" 
+             class="flex items-center space-x-2 hover:text-gray-800">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>Join on X</span>
+          </a>
+        </div>
+
+        <!-- Home Link -->
         <%=
           link_to "Return Home",
                   root_path,
