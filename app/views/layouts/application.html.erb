@@ -1,22 +1,70 @@
-<%# app/views/layouts/application.html.erb %>
 <!DOCTYPE html>
 <html lang="en">
-  <% app_name = 'Hack! with Achieve by Petra!' %>
+  <% 
+    app_name = 'Hack! with Achieve by Petra!'
+    # Default meta values - can be overridden with content_for
+    meta_description = 'Join us for 36 hours of innovation at Hack! with Achieve by Petra. Create cutting-edge fintech solutions while learning from industry experts. ₵30k+ in prizes!'
+    # TODO: meta_image = asset_path('og-image.webp') # Make sure to add this image to assets
+    meta_image = nil
+  %>
   <head>
+    <%# Basic Meta Tags %>
+    <meta charset="utf-8">
     <title><%= content_for(:title) || app_name %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= content_for(:meta_description) || meta_description %>">
+    
+    <%# SEO Meta Tags %>
+    <meta name="author" content="Achieve by Petra">
+    <meta name="keywords" content="hackathon, fintech, ghana tech, achieve by petra, academic city, paystack, devcongress, coding competition">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="<%= request.original_url %>">
+    
+    <%# Open Graph Meta Tags %>
+    <meta property="og:site_name" content="<%= app_name %>">
+    <meta property="og:title" content="<%= content_for(:title) || app_name %>">
+    <meta property="og:description" content="<%= content_for(:meta_description) || meta_description %>">
+    <meta property="og:image" content="<%= content_for(:meta_image) || meta_image %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:locale" content="en_GH">
+    
+    <%# Twitter Card Meta Tags %>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@theachieveapp">
+    <meta name="twitter:title" content="<%= content_for(:title) || app_name %>">
+    <meta name="twitter:description" content="<%= content_for(:meta_description) || meta_description %>">
+    <meta name="twitter:image" content="<%= content_for(:meta_image) || meta_image %>">
+    <meta name="twitter:creator" content="@theachieveapp">
+    
+    <%# Mobile Meta Tags %>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="application-name" content="<%= app_name %>">
+    <meta name="apple-mobile-web-app-title" content="<%= app_name %>">
+    
+    <%# Security Headers %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <%# Custom Head Content %>
     <%= yield :head %>
+    
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    
+    <%# Favicon %>
     <%= favicon_link_tag 'favicon.webp' %>
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    
+    <%# Stylesheets and JavaScript %>
     <%= stylesheet_link_tag :app, 'data-turbo-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module' %>
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+
+    <%# Preconnect to external domains %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://maps.googleapis.com">
   </head>
   
   <body class="min-h-screen bg-gradient-to-b from-indigo-50/50 to-white" data-controller="mobile-menu">
