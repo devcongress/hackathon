@@ -6,8 +6,5 @@ class HackerDashboardPortal::Hackathon::TeamMembershipDefinition < ::Hackathon::
   }
   edit_page_title "Update Membership Role"
 
-  class NewPage < NewPage
-    def render_breadcrumbs
-    end
-  end
+  new_page_breadcrumbs false
 end

@@ -1,15 +1,8 @@
 class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefinition
   include HackerDashboardPortal::ResourceDefinition
 
-  class ShowPage < ShowPage
-    def render_breadcrumbs
-    end
-  end
-
-  class NewPage < NewPage
-    def render_breadcrumbs
-    end
-  end
+  show_page_breadcrumbs false
+  new_page_breadcrumbs false
 
   new_page_title "Create your team"
   new_page_description "If you would like to join a team instead, ask your team owner to send you an invite."

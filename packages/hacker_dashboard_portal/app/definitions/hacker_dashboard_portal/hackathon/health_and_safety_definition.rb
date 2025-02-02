@@ -18,15 +18,8 @@ class HackerDashboardPortal::Hackathon::HealthAndSafetyDefinition < ::Hackathon:
   field :consent, as: :checkbox, label: "Consent and Health Declaration",
     hint: @consent_text, required: true
 
-  class NewPage < NewPage
-    def render_breadcrumbs
-    end
-  end
-
-  class ShowPage < ShowPage
-    def render_breadcrumbs
-    end
-  end
+  show_page_breadcrumbs false
+  new_page_breadcrumbs false
 
   new_page_title "Add Emergency Contact"
   new_page_description <<~DESC
