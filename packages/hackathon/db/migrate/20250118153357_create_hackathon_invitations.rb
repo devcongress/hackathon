@@ -2,7 +2,7 @@ class CreateHackathonInvitations < ActiveRecord::Migration[8.0]
   def change
     create_table(:hackathon_invitations) do |t|
       t.string :email, null: false
-      t.string :token, null: false
+      t.string :token
       t.integer :status, null: false, default: 0 # default is pending
       t.belongs_to :team, null: false,
         foreign_key: {to_table: :hackathon_teams}

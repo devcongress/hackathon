@@ -26,7 +26,10 @@ class InvitationsController < ApplicationController
   private
 
   def set_invitation
-    @invitation = ::Hackathon::Invitation.includes(team: [:hacker]).find_by(token: params[:token])
+    invitation_id = Rails.application.message_verifier(:invite_token)
+      .verify(params[:token], purpose: :invitation)
+
+    @invitation = Hackathon::Invitation.find(invitation_id)
   end
 
   # Ensure the invitation is one we are aware of, anything else is forged.
