@@ -1,16 +1,11 @@
 class InvitationsController < ApplicationController
   before_action :set_invitation
-  before_action :validate_inviatation
+  before_action :validate_invitation
 
   # GET /invitation/confirm/:token
   def confirm
-    if @invitation.accepted?
-      redirect_to rodauth(:hacker).login_path,
-        alert: "The invitation has already been accepted."
-    else
-      cookies.encrypted[:invite_token] = @invitation.token
-      @team = @invitation.team
-    end
+    cookies.encrypted[:invite_token] = @invitation.token
+    @team = @invitation.team
   end
 
   # POST /invitation/confirm/:token/decline
@@ -18,19 +13,12 @@ class InvitationsController < ApplicationController
     @invitation.declined!
     cookies.delete(:invite_token)
 
-    redirect_to confirm_invitation_path,
-      alert: "You have declined the invite. " \
-      "Please contact the person who invited you if this was a mistake."
+    redirect_to root_path,
+      alert: "You have declined the invite. Please contact the person who invited you if this was a mistake."
   end
 
   # POST /invitation/confirm/:token/accept
   def accept
-    if @invitation.declined?
-      return redirect_to confirm_invitation_path,
-                         alert: "This invite link has been declined, " \
-                         "contact the person who invited you."
-    end
-
     redirect_to rodauth(:hacker).create_account_path,
       notice: "Complete your account to your continue."
   end
@@ -38,12 +26,14 @@ class InvitationsController < ApplicationController
   private
 
   def set_invitation
-    @invitation = ::Hackathon::Invitation.includes(team: [:hacker])
-                                         .find_by(token: params[:token])
+    @invitation = ::Hackathon::Invitation.includes(team: [:hacker]).find_by(token: params[:token])
   end
 
   # Ensure the invitation is one we are aware of, anything else is forged.
-  def validate_inviatation
-    redirect_to root_path, alert: "Invalid invitation link." unless @invitation
+  def validate_invitation
+    return if @invitation&.invited?
+
+    render :invalid
+    false
   end
 end

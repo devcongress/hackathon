@@ -1,0 +1,46 @@
+<div class="mx-auto max-w-3xl px-4 py-8 sm:py-16">
+  <div class="bg-white rounded-2xl shadow-md border border-indigo-100/50 px-6 py-12 sm:px-12">
+    <!-- Header -->
+    <div class="text-center">
+      <h1 class="space-y-2">
+        <span class="block text-3xl sm:text-5xl font-light text-gray-800">Oops!</span>
+        <span class="block text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600">Invalid Invitation</span>
+      </h1>
+
+      <!-- Message -->
+      <div class="mt-10 space-y-6">
+        <p class="text-lg sm:text-xl text-gray-700 leading-relaxed">
+          This invitation link appears to be invalid or has expired
+        </p>
+
+        <div class="inline-flex flex-col items-center">
+          <div class="text-xl sm:text-2xl font-bold text-gray-800">
+            Hack! with Achieve by Petra
+          </div>
+          <div class="mt-2 h-1 w-32 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Helpful Text -->
+      <p class="mt-12 text-xl sm:text-2xl text-gray-700 leading-relaxed">
+        Looking to join a team? You have options!
+      </p>
+
+      <!-- Actions -->
+      <div class="mt-12 flex flex-col items-center space-y-6">
+        <!-- Main Button -->    
+        <%=
+          link_to "Create Your Team", rodauth(:hacker).create_account_path ,
+                class: "group w-64 rounded-xl bg-gradient-to-r from-gray-600 to-gray-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+        %>
+
+        <!-- Secondary Link -->
+        <%=
+          link_to "Return Home",
+                  root_path,
+                  class: "text-base text-gray-500 hover:text-gray-700 font-medium underline decoration-gray-300 underline-offset-4 hover:decoration-gray-500 transition-colors duration-200"
+        %>
+      </div>
+    </div>
+  </div>
+</div>

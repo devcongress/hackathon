@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><%= content_for(:title) || "Hack by Achieve!" %></title>
+    <title><%= content_for(:title) || "Hack! with Achieve by Petra!" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -16,20 +16,20 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
-  <body class="overflow-y-hidden">
+  <body>
     <div class="bg-white">
-      <header class="absolute inset-x-0 top-0 z-50">
+      <header class="absolute inset-x-0 top-0 z-50 sticky">
         <nav
           class="flex items-center justify-between p-6 lg:px-8"
           aria-label="Global"
         >
           <div class="flex lg:flex-1">
             <a href="<%= root_path %>" class="-m-1.5 p-1.5">
-              <span class="sr-only">Hack by Achieve</span>
+              <span class="sr-only">Hack! with Achieve by Petra</span>
               <h1
                 class="font-bold text-xl text-balance itracking-tight text-gray-900"
               >
-                Hack by Achieve
+                Hack! with Achieve by Petra
               </h1>
             </a>
           </div>
@@ -96,8 +96,8 @@
           >
             <div class="flex items-center justify-between">
               <a href="<%= root_path %>" class="-m-1.5 p-1.5">
-                <span class="sr-only">Hack by Achieve</span>
-                <h1 class="font-bold text-xl">Hack by Achieve</h1>
+                <span class="sr-only">Hack! with Achieve by Petra</span>
+                <h1 class="font-bold text-xl">Hack! with Achieve by Petra</h1>
               </a>
               <button
                 type="button"

@@ -3,7 +3,7 @@ class TeamMailer < ApplicationMailer
 
   def qualified_email
     mail to: email_address_with_name(@owner.email, @owner.profile.name),
-      subject: "✅ Team #{@team.name} Qualified! Next Steps for Hack by Achieve"
+      subject: "✅ Team #{@team.name} Qualified! Next Steps to Hack! with Achieve by Petra"
   end
 
   private

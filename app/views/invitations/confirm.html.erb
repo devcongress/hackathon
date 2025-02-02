@@ -1,41 +1,54 @@
-<%= content_for :title, "Join #{@team.name} | Hack by Achieve" %>
-<div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center">
-  <h1
-    class="
-            text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-7xl
-          "
-  >
-    Join <span class="block"><%= @team.name %></span>
-  </h1>
-  <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-    <%= @team.hacker.name %> has invited you to join <%= @team.name %> for the
-    <span class="text-bold font-medium underline">Hack by Achieve!</span>
-    This is your chance to step up, collaborate with an elite team, and build
-    something amazing.
-  </p>
+<%= content_for :title, "Join #{@team.name} | Hack! with Achieve by Petra" %>
 
-  <p class="mt-8 text-pretty text-lg font-medium text-gray-600 sm:text-xl/8">
-    Will you accept the challenge and make your mark?
-  </p>
-  <p class="text-sm text-gray-600">
-    <span class="font-semibold text-indigo-600">Note: </span>You may be denied
-    access to the team if it's already full. Act fast!
-  </p>
+<div class="mx-auto max-w-3xl px-4 py-8 sm:py-16">
+  <div class="bg-white rounded-2xl shadow-md border border-indigo-100/50 px-6 py-12 sm:px-12">
+    <!-- Header -->
+    <div class="text-center">
+      <h1 class="space-y-2">
+        <span class="block text-3xl sm:text-5xl font-light text-gray-800">Join</span>
+        <span class="block text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-800 to-indigo-600"><%= @team.name %></span>
+      </h1>
 
-  <div class="flex justify-center items-center mt-4 gap-6">
-    <%=
-      button_to "Accept Invite", accept_invitation_path,
-            class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white
-                    shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
-                    focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-    %>
+      <!-- Invitation Message -->
+      <div class="mt-10 space-y-6">
+        <p class="text-lg sm:text-xl text-gray-700 leading-relaxed">
+          <span class="font-medium text-gray-900"><%= @team.hacker.name %></span>
+          has invited you to join
+          <span class="font-medium text-gray-900"><%= @team.name %></span>
+        </p>
 
-    <%=
-      button_to "Decline Invite", decline_invitation_path,
-      class: "rounded-md bg-orange-600 px-3.5 py-2.5 text-sm font-semibold text-white
-                    shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2
-                    focus-visible:outline-offset-2 focus-visible:outline-orange-600",
-            data: {turbo_confirm: "Are you sure you want to decline this invitation?"}
-    %>
+        <div class="inline-flex flex-col items-center">
+          <div class="text-xl sm:text-2xl font-bold text-indigo-800">
+            Hack! with Achieve by Petra
+          </div>
+          <div class="mt-2 h-1 w-32 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Challenge Text -->
+      <p class="mt-12 text-2xl sm:text-3xl font-medium text-gray-800 leading-relaxed">
+        Will you accept the challenge and make your mark?
+      </p>
+
+      <!-- Actions -->
+      <div class="mt-12 flex flex-col items-center space-y-6">
+        <!-- Accept Button -->    
+        <%=
+          button_to "I am Worthy!", accept_invitation_path,
+                class: "group w-64 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        %>
+
+        <!-- Decline Link -->
+        <%=
+          link_to "I've got skill issues",
+                  decline_invitation_path,
+                  class: "text-base text-gray-500 hover:text-gray-700 font-medium underline decoration-gray-300 underline-offset-4 hover:decoration-gray-500 transition-colors duration-200",
+                  data: { 
+                    turbo_method: :post,
+                    turbo_confirm: "Are you sure you want to decline this invitation?"
+                  }
+        %>
+      </div>
+    </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ module AdminDashboardPortal
 
       private
 
-      def make_page_title(title, app_name: "Admin Dashboard | Hack by Achieve")
+      def make_page_title(title, app_name: "Admin Dashboard | Hack! with Achieve by Petra")
         super
       end
     end
