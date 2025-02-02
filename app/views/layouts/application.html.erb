@@ -66,12 +66,12 @@
             </button>
           </div>
           <div class="hidden lg:flex lg:gap-x-12">
-            <a href="<%= about_path %>" class="text-sm/6 font-semibold text-gray-900">About</a>
-            <a
-              href="<%= rodauth(:hacker).create_account_path %>"
-              class="text-sm/6 font-semibold text-gray-900"
-              >Register</a
-            >
+            <a href="<%= root_path %>"
+                class="text-sm/6 font-semibold text-gray-900">Home</a>
+            <a href="<%= about_path %>" 
+                class="text-sm/6 font-semibold text-gray-900">About</a>
+            <a href="<%= rodauth(:hacker).create_account_path %>" 
+                class="text-sm/6 font-semibold text-gray-900">Register</a>
           </div>
           <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <a
@@ -130,12 +130,12 @@
               <div class="-my-6 divide-y divide-gray-500/10">
                 <div class="space-y-2 py-6">
                   <a
-                    href="#"
+                    href="<%= root_path %>"
                     class="
                   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900
                   hover:bg-gray-50
                 "
-                    >Blogs</a
+                    >Home</a
                   >
                   <a
                     href="<%= about_path %>"
@@ -169,7 +169,7 @@
           </div>
         </div>
       </header>
-      <div class="relative isolate px-6 pt-14 lg:px-8">
+      <div class="relative isolate px-6 pt-2 lg:px-8">
         <div
           class="
         absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl
