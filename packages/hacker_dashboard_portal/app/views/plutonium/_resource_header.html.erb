@@ -1,8 +1,9 @@
 <%= render Plutonium::UI::Layout::Header.new do |header| %>
   <% header.with_brand_logo do %>
-    <%= resource_logo_tag(classname: "h-10") %>
+    <%= resource_logo_tag(classname: 'h-10') %>
   <% end %>
   <% header.with_action do %>
+    <%= render Plutonium::UI::ColorModeSelector.new %>
     <%=
       render Plutonium::UI::NavUser.new(
                name: current_user&.profile&.name,
@@ -11,7 +12,7 @@
         if current_user.profile
           nav.with_section do |section|
             section.with_link(
-              label: "My profile",
+              label: 'My profile',
               href: resource_url_for(current_user.profile),
             )
           end
@@ -20,7 +21,7 @@
         if current_user.team
           nav.with_section do |section|
             section.with_link(
-              label: "My team",
+              label: 'My team',
               href: resource_url_for(current_user.team),
             )
           end
@@ -28,9 +29,9 @@
 
         nav.with_section do |section|
           section.with_link(
-            label: "Sign out",
+            label: 'Sign out',
             href: logout_url,
-            class: "rounded-b-lg",
+            class: 'rounded-b-lg',
             data: {
               turbo: false,
             },
