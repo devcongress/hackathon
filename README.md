@@ -1,2 +1,2 @@
-# Hack! with Achieve by Petra
+# Hack! with achieve by Petra
 

@@ -14,7 +14,7 @@ module HackerDashboardPortal
 
       private
 
-      def app_name = "Hack! with Achieve by Petra"
+      def app_name = "Hack! with achieve by Petra"
 
       def ensure_profile_complete
         if current_user.profile.nil?

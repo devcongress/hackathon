@@ -3,12 +3,12 @@ class TeamMailer < ApplicationMailer
 
   def qualified_email
     mail to: @recipient,
-      subject: "Congratulations! 🎉 #{@team.name} Is Qualified for Hack! with Achieve by Petra"
+      subject: "Congratulations! 🎉 #{@team.name} Is Qualified for Hack! with achieve by Petra"
   end
 
   def late_qualified_email
     mail to: @recipient,
-      subject: "Update on Your Team’s Qualification Status for Hack! with Achieve by Petra"
+      subject: "Update on Your Team’s Qualification Status for Hack! with achieve by Petra"
   end
 
   private
