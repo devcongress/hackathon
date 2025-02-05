@@ -40,3 +40,5 @@
 !/.env.template
 !/.env.local.template
 !/.env
+
+/config/credentials/development.key
