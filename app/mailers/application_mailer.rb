@@ -1,7 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: email_address_with_name(
-    "no-reply@hackathon.com",
-    "Hackathon Team"
-  )
+  default from: "Hack! with achieve by Petra <hackathon@theachieveapp.com>"
   layout "mailer"
 end

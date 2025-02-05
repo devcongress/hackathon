@@ -4,7 +4,7 @@ return if ENV["SECRET_KEY_BASE_DUMMY"].present?
 required_env_vars = %w[]
 
 if Rails.env.production?
-  required_env_vars += %w[RAILS_MASTER_KEY DATABASE_URL]
+  required_env_vars += %w[RAILS_MASTER_KEY DATABASE_URL SENDGRID_API_KEY]
 end
 
 # Add additional env vars here
