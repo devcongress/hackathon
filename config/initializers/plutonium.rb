@@ -5,7 +5,7 @@ Plutonium.configure do |config|
 
   config.assets.stylesheet = "application"
   config.assets.script = "application"
-  config.assets.logo = "hackathon_logo.webp"
-  config.assets.favicon = "favicon.webp"
+  config.assets.logo = "Hack-with-Achieve-Logo.png"
+  config.assets.favicon = "favicon.ico"
   # Configure plutonium above.
 end
