@@ -9,7 +9,7 @@ Admin.create(email: "admin@email.com", password_hash: password,
   acme_incorporated: {
     members: [
       {
-        email: "joe@email.com", role: :product_manager, owner: true,
+        email: "joe@email.com", role: :product, owner: true,
         name: "John Doe"
       },
       {email: "esi@email.com", role: :designer, name: "Esi Puma"},
@@ -19,7 +19,7 @@ Admin.create(email: "admin@email.com", password_hash: password,
   lex_corp: {
     members: [
       {
-        email: "sally@email.com", role: :developer, owner: true,
+        email: "sally@email.com", role: :marketing, owner: true,
         name: "Sally Banks"
       },
       {email: "kane@email.com", role: :designer, name: "Kane Rogers"},
