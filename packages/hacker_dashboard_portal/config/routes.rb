@@ -3,7 +3,7 @@ HackerDashboardPortal::Engine.routes.draw do
 
   register_resource ::Hacker
   register_resource ::Hackathon::Team
-  register_resource ::Profile, singular: true
+  register_resource ::Profile # , singular: true
   register_resource ::Hackathon::Invitation
   register_resource ::Hackathon::TeamMembership
   register_resource ::Hackathon::HealthAndSafety
