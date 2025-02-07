@@ -27,6 +27,6 @@ class Hackathon::HealthAndSafety < Hackathon::ResourceRecord
   validates :consent, acceptance: true
 
   def consented
-    valid? ? "Accped" : "Declined"
+    valid? ? "Accepted" : "Declined"
   end
 end
