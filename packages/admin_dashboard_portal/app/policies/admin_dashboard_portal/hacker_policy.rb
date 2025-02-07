@@ -16,7 +16,7 @@ module AdminDashboardPortal
     relation_scope do |relation|
       if params && params[:hackathon_team_id]
         team_id = params[:hackathon_team_id]
-        relation.includes(:team).where(team: { id: team_id })
+        relation.includes(:team).where(team: {id: team_id})
       else
         relation
       end
