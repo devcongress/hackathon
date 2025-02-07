@@ -1,6 +1,6 @@
 class ProfilePolicy < ::ResourcePolicy
   def create?
-    true
+    false
   end
 
   def read?
