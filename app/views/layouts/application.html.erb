@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%
-    app_name = 'Hack! with achieve by Petra!'
-
-    # Default meta values - can be overridden with content_for
-    meta_description =
-      'Join us for 36 hours of innovation at Hack! with achieve by Petra. Create cutting-edge fintech solutions while learning from industry experts. ₵30k+ in prizes!'
-
-    # TODO: meta_image = asset_path('og-image.webp') # Make sure to add this image to assets
-    meta_image = nil
-  %>
+  <% app_name = "Hack! with achieve by Petra!"
+  
+  # Default meta values - can be overridden with content_for
+  meta_description =
+    "Join us for 36 hours of innovation at Hack! with achieve by Petra. Create cutting-edge fintech solutions while learning from industry experts. ₵30k+ in prizes!"
+  
+  # TODO: meta_image = asset_path('og-image.webp') # Make sure to add this image to assets
+  meta_image = nil %>
   <head>
     <%# Basic Meta Tags %>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title><%= content_for(:title) || app_name %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta
       name="description"
       content="<%= content_for(:meta_description) || meta_description %>"
     />
 
     <%# SEO Meta Tags %>
-    <meta name="author" content="Achieve by Petra" />
+    <meta name="author" content="Achieve by Petra"/>
     <meta
       name="keywords"
       content="hackathon, fintech, ghana tech, achieve by petra, academic city, paystack, devcongress, coding competition"
     />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="<%= request.original_url %>" />
+    <meta name="robots" content="index, follow"/>
+    <link rel="canonical" href="<%= request.original_url %>"/>
 
     <%# Open Graph Meta Tags %>
-    <meta property="og:site_name" content="<%= app_name %>" />
-    <meta
-      property="og:title"
-      content="<%= content_for(:title) || app_name %>"
-    />
+    <meta property="og:site_name" content="<%= app_name %>"/>
+    <meta property="og:title" content="<%= content_for(:title) || app_name %>"/>
     <meta
       property="og:description"
       content="<%= content_for(:meta_description) || meta_description %>"
@@ -43,30 +38,27 @@
       property="og:image"
       content="<%= content_for(:meta_image) || meta_image %>"
     />
-    <meta property="og:type" content="event" />
-    <meta property="og:url" content="<%= request.original_url %>" />
-    <meta property="og:locale" content="en_GH" />
+    <meta property="og:type" content="event"/>
+    <meta property="og:url" content="<%= request.original_url %>"/>
+    <meta property="og:locale" content="en_GH"/>
 
     <%# Event-specific Open Graph tags %>
-    <meta property="event:start_time" content="2025-03-14T19:00:00+00:00" />
-    <meta property="event:end_time" content="2025-03-16T14:00:00+00:00" />
-    <meta property="event:location" content="Academic City Campus" />
-    <meta property="event:street-address" content="Academic City" />
-    <meta property="event:locality" content="Accra" />
-    <meta property="event:region" content="Greater Accra" />
-    <meta property="event:country-name" content="Ghana" />
+    <meta property="event:start_time" content="2025-03-14T19:00:00+00:00"/>
+    <meta property="event:end_time" content="2025-03-16T14:00:00+00:00"/>
+    <meta property="event:location" content="Academic City Campus"/>
+    <meta property="event:street-address" content="Academic City"/>
+    <meta property="event:locality" content="Accra"/>
+    <meta property="event:region" content="Greater Accra"/>
+    <meta property="event:country-name" content="Ghana"/>
 
     <%# Additional event details %>
-    <meta property="event:creator" content="Achieve by Petra" />
-    <meta property="event:category" content="Hackathon" />
+    <meta property="event:creator" content="Achieve by Petra"/>
+    <meta property="event:category" content="Hackathon"/>
 
     <%# Twitter Card Meta Tags %>
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@theachieveapp" />
-    <meta
-      name="twitter:title"
-      content="<%= content_for(:title) || app_name %>"
-    />
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@theachieveapp"/>
+    <meta name="twitter:title" content="<%= content_for(:title) || app_name %>"/>
     <meta
       name="twitter:description"
       content="<%= content_for(:meta_description) || meta_description %>"
@@ -75,20 +67,20 @@
       name="twitter:image"
       content="<%= content_for(:meta_image) || meta_image %>"
     />
-    <meta name="twitter:creator" content="@theachieveapp" />
+    <meta name="twitter:creator" content="@theachieveapp"/>
 
     <%# Additional Twitter Card event details %>
-    <meta name="twitter:label1" content="When" />
-    <meta name="twitter:data1" content="March 14-16, 2025" />
-    <meta name="twitter:label2" content="Where" />
-    <meta name="twitter:data2" content="Academic City Campus, Accra" />
+    <meta name="twitter:label1" content="When"/>
+    <meta name="twitter:data1" content="March 14-16, 2025"/>
+    <meta name="twitter:label2" content="Where"/>
+    <meta name="twitter:data2" content="Academic City Campus, Accra"/>
 
     <%# Mobile Meta Tags %>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="theme-color" content="#4f46e5" />
-    <meta name="application-name" content="<%= app_name %>" />
-    <meta name="apple-mobile-web-app-title" content="<%= app_name %>" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="theme-color" content="#4f46e5"/>
+    <meta name="application-name" content="<%= app_name %>"/>
+    <meta name="apple-mobile-web-app-title" content="<%= app_name %>"/>
 
     <%# Security Headers %>
     <%= csrf_meta_tags %>
@@ -101,20 +93,29 @@
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <%# Favicon %>
-    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag "favicon.ico", rel: "favicon" %>
+    <%= favicon_link_tag "apple-touch-icon.png",
+    rel: "apple-touch-icon",
+    sizes: "180x180" %>
+    <%= favicon_link_tag "favicon-32x32.png",
+    rel: "icon",
+    type: "image/png",
+    sizes: "32x32" %>
+    <%= favicon_link_tag "favicon-16x16.png",
+    rel: "icon",
+    type: "image/png",
+    sizes: "16x16" %>
 
     <%# Stylesheets and JavaScript %>
-    <%= stylesheet_link_tag :app, 'data-turbo-track': 'reload' %>
-    <%=
-      javascript_include_tag 'application',
-                             'data-turbo-track': 'reload',
-                             type: 'module'
-    %>
-    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application",
+    "data-turbo-track": "reload",
+    type: "module" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     <%# Preconnect to external domains %>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://maps.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://maps.googleapis.com"/>
   </head>
 
   <body
@@ -122,7 +123,10 @@
     data-controller="mobile-menu"
   >
     <header
-      class="sticky inset-x-0 top-0 z-40 backdrop-blur-sm bg-white/80 border-b border-gray-100"
+      class="
+        sticky inset-x-0 top-0 z-40 backdrop-blur-sm bg-white/80 border-b
+        border-gray-100
+      "
     >
       <nav
         class="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto"
@@ -132,7 +136,11 @@
           <a href="<%= root_path %>" class="group">
             <span class="sr-only"><%= app_name %></span>
             <h1
-              class="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-800 group-hover:from-indigo-500 group-hover:to-indigo-700 transition-all"
+              class="
+                text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r
+                from-indigo-600 to-indigo-800 group-hover:from-indigo-500
+                group-hover:to-indigo-700 transition-all
+              "
             >
               <%= app_name %>
             </h1>
@@ -143,32 +151,39 @@
         <div class="hidden lg:flex lg:gap-x-12">
           <a
             href="<%= root_path %>"
-            class="text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors"
-            >Home</a
-          >
+            class="
+              text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors
+            "
+          >Home</a>
           <a
             href="<%= about_path %>"
-            class="text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors"
-            >About</a
-          >
+            class="
+              text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors
+            "
+          >About</a>
           <a
             href="<%= contact_path %>"
-            class="text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors"
-            >Contact</a
-          >
+            class="
+              text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors
+            "
+          >Contact</a>
           <a
             href="<%= rodauth(:hacker).create_account_path %>"
-            class="text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors"
-            >Register</a
-          >
+            class="
+              text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors
+            "
+          >Register</a>
         </div>
 
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="<%= rodauth(:hacker).login_path %>"
-            class="text-sm font-medium text-indigo-600 hover:text-indigo-500 transition-colors"
+            class="
+              text-sm font-medium text-indigo-600 hover:text-indigo-500 transition-colors
+            "
           >
-            Sign in <span aria-hidden="true" class="ml-1">→</span>
+            Sign in
+            <span aria-hidden="true" class="ml-1">→</span>
           </a>
         </div>
 
@@ -177,7 +192,10 @@
           <button
             type="button"
             data-action="mobile-menu#toggle"
-            class="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-50 transition-colors"
+            class="
+              inline-flex items-center justify-center rounded-md p-2.5 text-gray-700
+              hover:bg-gray-50 transition-colors
+            "
           >
             <span class="sr-only">Open main menu</span>
             <svg
@@ -213,13 +231,19 @@
 
       <%# Menu panel %>
       <div
-        class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm shadow-lg"
+        class="
+          fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6
+          sm:max-w-sm shadow-lg
+        "
       >
         <div class="flex items-center justify-between">
           <a href="<%= root_path %>" class="-m-1.5 p-1.5">
             <span class="sr-only"><%= app_name %></span>
             <h1
-              class="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-800"
+              class="
+                text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r
+                from-indigo-600 to-indigo-800
+              "
             >
               <%= app_name %>
             </h1>
@@ -237,11 +261,7 @@
               stroke-width="1.5"
               stroke="currentColor"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
         </div>
@@ -250,25 +270,37 @@
             <div class="space-y-2 py-6">
               <a
                 href="<%= root_path %>"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                class="
+                  -mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900
+                  hover:bg-gray-50
+                "
               >
                 Home
               </a>
               <a
                 href="<%= about_path %>"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                class="
+                  -mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900
+                  hover:bg-gray-50
+                "
               >
                 About
               </a>
               <a
                 href="<%= contact_path %>"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                class="
+                  -mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900
+                  hover:bg-gray-50
+                "
               >
                 Contact
               </a>
               <a
                 href="<%= rodauth(:hacker).create_account_path %>"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                class="
+                  -mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900
+                  hover:bg-gray-50
+                "
               >
                 Register
               </a>
@@ -276,7 +308,10 @@
             <div class="py-6">
               <a
                 href="<%= rodauth(:hacker).login_path %>"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-indigo-600 hover:bg-gray-50"
+                class="
+                  -mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-indigo-600
+                  hover:bg-gray-50
+                "
               >
                 Sign in
               </a>
@@ -290,11 +325,11 @@
       <%# Flash messages %>
       <% if flash[:alert] %>
         <div
-          class="fixed left-1/2 transform -translate-x-1/2 top-4 w-full max-w-md z-50"
+          class="
+            fixed left-1/2 transform -translate-x-1/2 top-4 w-full max-w-md z-50
+          "
         >
-          <div
-            class="mx-4 bg-white rounded-lg shadow-lg border border-red-100 p-4"
-          >
+          <div class="mx-4 bg-white rounded-lg shadow-lg border border-red-100 p-4">
             <div class="flex items-center justify-between gap-2">
               <p class="text-sm font-medium text-red-700">
                 <%= flash[:alert] %>
@@ -320,7 +355,9 @@
 
     <footer class="mt-32 bg-gray-900">
       <div
-        class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8"
+        class="
+          mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8
+        "
       >
         <div class="flex justify-center space-x-6 md:order-2">
           <a
@@ -371,4 +408,3 @@
     </footer>
   </body>
 </html>
-
