@@ -1,17 +1,17 @@
 <%= content_for :title, "Join #{@team.name} | Hack! with achieve by Petra" %>
 
 <div class="mx-auto max-w-3xl px-4 py-8 sm:py-16">
-  <div class="bg-white rounded-2xl shadow-md border border-indigo-100/50 px-6 py-12 sm:px-12">
+  <div class="bg-white rounded-2xl shadow-md border border-primary-100/50 px-6 py-12 sm:px-12">
     <!-- Header -->
     <div class="text-center">
       <h1 class="space-y-2">
         <span class="block text-3xl sm:text-5xl font-light text-gray-800">You've Been Invited!</span>
-        <span class="block text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-800 to-indigo-600"><%= @team.name %></span>
+        <span class="block text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-800 to-primary-600"><%= @team.name %></span>
       </h1>
 
       <!-- Theme Badge -->
       <div class="mt-6">
-        <span class="inline-flex items-center rounded-full bg-indigo-100 px-4 py-1 text-base font-medium text-indigo-700">
+        <span class="inline-flex items-center rounded-full bg-primary-100 px-4 py-1 text-base font-medium text-primary-700">
           Imagining the Future of Finance with AI
         </span>
       </div>
@@ -28,7 +28,7 @@
         <!-- Event Details -->
         <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left max-w-xl mx-auto">
           <div class="flex items-start space-x-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <div>
@@ -38,7 +38,7 @@
           </div>
           
           <div class="flex items-start space-x-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
@@ -51,12 +51,12 @@
       </div>
 
       <!-- Prize Highlight -->
-      <div class="mt-12 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-6 max-w-xl mx-auto">
+      <div class="mt-12 bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-6 max-w-xl mx-auto">
         <div class="flex items-center justify-center space-x-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <div class="text-xl font-semibold text-indigo-800">₵30,000+ in Prizes</div>
+          <div class="text-xl font-semibold text-primary-800">₵30,000+ in Prizes</div>
         </div>
       </div>
 
@@ -71,7 +71,7 @@
         <%=
           button_to "Let's Hack!",
                     accept_invitation_path,
-                    class: "group w-64 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    class: "group w-64 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
         %>
 
         <!-- Decline Link -->

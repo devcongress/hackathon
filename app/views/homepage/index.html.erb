@@ -1,9 +1,9 @@
 <div class="mx-auto max-w-3xl px-4 py-8 sm:py-16">
   <!-- Announcement Banner -->
   <div class="hidden sm:mb-10 sm:flex sm:justify-center">
-    <div class="relative rounded-full px-4 py-1.5 text-sm text-gray-600 ring-1 ring-indigo-100 bg-indigo-50/50 hover:bg-indigo-50 transition-colors duration-200">
+    <div class="relative rounded-full px-4 py-1.5 text-sm text-gray-600 ring-1 ring-primary-100 bg-primary-50/50 hover:bg-primary-50 transition-colors duration-200">
       Join us March 14-16, 2025 at Academic City Campus
-      <a href="<%= about_path %>" class="font-semibold text-indigo-600 ml-1">
+      <a href="<%= about_path %>" class="font-semibold text-primary-600 ml-1">
         <span class="absolute inset-0" aria-hidden="true"></span>
         Learn more
         <span aria-hidden="true" class="ml-1">→</span>
@@ -11,21 +11,14 @@
     </div>
   </div>
 
-  <div class="bg-white rounded-2xl shadow-md border border-indigo-100/50 px-6 py-12 sm:px-12">
+  <div class="bg-white rounded-2xl shadow-md border border-primary-100/50 px-6 py-12 sm:px-12">
     <div class="text-center">
       <!-- Header -->
-      <h1 class="space-y-2">
-        <span class="block text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-800 to-indigo-600">
-          Hack!
-        </span>
-        <span class="block text-2xl sm:text-3xl font-light text-gray-700 mt-4">
-          with Achieve by Petra
-        </span>
-      </h1>
+      <%= image_tag "Logo-Main.svg", class: "w-64 inline-block" %>
 
       <!-- Theme -->
       <div class="mt-6">
-        <span class="inline-flex items-center rounded-full bg-indigo-100 px-4 py-1 text-base font-medium text-indigo-700">
+        <span class="inline-flex items-center rounded-full bg-primary-100 px-4 py-1 text-base font-medium text-primary-700">
           Imagining the Future of Finance with AI
         </span>
       </div>
@@ -40,15 +33,15 @@
       <!-- Quick Stats -->
       <div class="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 max-w-2xl mx-auto">
         <div class="text-center">
-          <div class="text-2xl sm:text-3xl font-bold text-indigo-600">36hrs</div>
+          <div class="text-2xl sm:text-3xl font-bold text-primary-600">36hrs</div>
           <div class="mt-1 text-base text-gray-600">of Innovation</div>
         </div>
         <div class="text-center">
-          <div class="text-2xl sm:text-3xl font-bold text-indigo-600">₵30k+</div>
+          <div class="text-2xl sm:text-3xl font-bold text-primary-600">₵30k+</div>
           <div class="mt-1 text-base text-gray-600">in Prizes</div>
         </div>
         <div class="text-center col-span-2 sm:col-span-1">
-          <div class="text-2xl sm:text-3xl font-bold text-indigo-600">∞</div>
+          <div class="text-2xl sm:text-3xl font-bold text-primary-600">∞</div>
           <div class="mt-1 text-base text-gray-600">Possibilities</div>
         </div>
       </div>
@@ -56,7 +49,7 @@
       <!-- Key Features -->
       <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 text-left max-w-2xl mx-auto">
         <div class="flex items-start space-x-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
           <div>
@@ -65,7 +58,7 @@
           </div>
         </div>
         <div class="flex items-start space-x-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
           <div>
@@ -79,7 +72,7 @@
       <div class="mt-12 flex flex-col items-center justify-center gap-6">
         <!-- Register Button -->
         <%= link_to "Register Your Team", rodauth(:hacker).create_account_path,
-                   class: "group w-64 sm:w-auto rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+                   class: "group w-64 sm:w-auto rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" %>
 
         <!-- Learn More Link -->
         <%= 
