@@ -8,7 +8,7 @@ class TeamMailer < ApplicationMailer
 
   def late_qualified_email
     mail to: @recipient,
-      subject: "Update on Your Team’s Qualification Status for Hack! with achieve by Petra"
+      subject: "Update on Your Team's Qualification Status for Hack! with achieve by Petra"
   end
 
   private

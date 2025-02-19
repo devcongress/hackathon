@@ -12,7 +12,7 @@ class HackerDashboardPortal::Hackathon::HealthAndSafetyDefinition < ::Hackathon:
   field :name, hint: "Name of the emergency contact."
   field :phone_number, as: :phone,
     hint: "Enter the emergency contact's phone number. " \
-          "Double-check to ensure it’s accurate and reachable."
+          "Double-check to ensure it's accurate and reachable."
 
   # TODO: Find a way to override the default styling
   field :consent, as: :checkbox, label: "Consent and Health Declaration",
