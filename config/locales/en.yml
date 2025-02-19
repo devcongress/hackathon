@@ -42,3 +42,14 @@ en:
       hackathon/health_and_safety:
         consent: "Consent and Health Declaration"
         consented: "Consent and Health Declaration"
+  helpers:
+    submit:
+      profile:
+        create: "Save"
+        update: "Save"
+      hackathon_health_and_safety:
+        create: "Save"
+        update: "Save"
+      hackathon_team_membership:
+        create: "Save"
+        update: "Save"

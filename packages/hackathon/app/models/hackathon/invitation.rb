@@ -52,7 +52,7 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
     self.token = Rails.application.message_verifier(:invite_token)
       .generate(id, purpose: :invitation, expires_in: 1.month)
 
-    save
+    save!
   end
 
   def set_default_status
