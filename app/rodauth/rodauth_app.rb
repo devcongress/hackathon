@@ -11,17 +11,15 @@ class RodauthApp < Rodauth::Rails::App
     r.rodauth(:hacker)
     r.rodauth(:admin)
 
-    # plugin route configuration
-    rodauth(:hacker).load_memory # autologin remembered hackers
-    rodauth(:admin).load_memory # autologin remembered admins
-
     # ==> Authenticating requests
     # Call `rodauth.require_account` for requests that you want to
     # require authentication for. For example:
     #
     # # authenticate /dashboard/* and /account/* requests
-    # if r.path.start_with?("/dashboard") || r.path.start_with?("/account")
-    #   rodauth.require_account
-    # end
+    if r.path.start_with?("/hacker_dashboard")
+      rodauth(:hacker).load_memory # autologin remembered hackers
+    elsif r.path.start_with?("/admin_dashboard")
+      rodauth(:admin).load_memory # autologin remembered admins
+    end
   end
 end

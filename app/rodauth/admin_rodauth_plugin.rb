@@ -16,13 +16,13 @@ class AdminRodauthPlugin < RodauthPlugin
       :login,
       :remember,
       :logout,
-      :create_account,
-      :verify_account,
-      :verify_account_grace_period,
+      # :create_account,
+      # :verify_account,
+      # :verify_account_grace_period,
       :reset_password,
       :reset_password_notify,
-      :change_login,
-      :verify_login_change,
+      # :change_login,
+      # :verify_login_change,
       :change_password,
       :change_password_notify,
       :case_insensitive_login,
@@ -38,8 +38,8 @@ class AdminRodauthPlugin < RodauthPlugin
     accounts_table :admins
     remember_table :admin_remember_keys
     reset_password_table :admin_password_reset_keys
-    verify_account_table :admin_verification_keys
-    verify_login_change_table :admin_login_change_keys
+    # verify_account_table :admin_verification_keys
+    # verify_login_change_table :admin_login_change_keys
 
     # The secret key used for hashing public-facing tokens for various features.
     # Defaults to Rails `secret_key_base`, but you can use your own secret key.
@@ -84,26 +84,26 @@ class AdminRodauthPlugin < RodauthPlugin
     # ==> Emails
     # Use a custom mailer for delivering authentication emails.
 
-    create_reset_password_email do
-      Rodauth::AdminMailer.reset_password(
-        self.class.configuration_name,
-        account_id, reset_password_key_value
-      )
-    end
+    # create_reset_password_email do
+    #   Rodauth::AdminMailer.reset_password(
+    #     self.class.configuration_name,
+    #     account_id, reset_password_key_value
+    #   )
+    # end
 
-    create_verify_account_email do
-      Rodauth::AdminMailer.verify_account(
-        self.class.configuration_name,
-        account_id, verify_account_key_value
-      )
-    end
+    # create_verify_account_email do
+    #   Rodauth::AdminMailer.verify_account(
+    #     self.class.configuration_name,
+    #     account_id, verify_account_key_value
+    #   )
+    # end
 
-    create_verify_login_change_email do |_login|
-      Rodauth::AdminMailer.verify_login_change(
-        self.class.configuration_name,
-        account_id, verify_login_change_key_value
-      )
-    end
+    # create_verify_login_change_email do |_login|
+    #   Rodauth::AdminMailer.verify_login_change(
+    #     self.class.configuration_name,
+    #     account_id, verify_login_change_key_value
+    #   )
+    # end
 
     create_password_changed_email do
       Rodauth::AdminMailer.change_password_notify(
@@ -190,16 +190,16 @@ class AdminRodauthPlugin < RodauthPlugin
     #   Profile.create!(account_id: account_id, name: param("name"))
     # end
 
-    # Do additional cleanup after the account is closed.
-    # after_close_account do
-    #   Profile.find_by!(account_id: account_id).destroy
-    # end
-    create_account_route "register"
+    # # Do additional cleanup after the account is closed.
+    # # after_close_account do
+    # #   Profile.find_by!(account_id: account_id).destroy
+    # # end
+    # create_account_route "register"
 
     # ==> Redirects
 
-    # Redirect to home after login.
-    create_account_redirect "/admin_dashboard"
+    # # Redirect to home after login.
+    # create_account_redirect "/admin_dashboard"
 
     # Redirect to home after login.
     login_redirect "/admin_dashboard"
@@ -207,8 +207,8 @@ class AdminRodauthPlugin < RodauthPlugin
     # Redirect to home page after logout.
     logout_redirect "/"
 
-    # Redirect to wherever login redirects to after account verification.
-    verify_account_redirect { login_redirect }
+    # # Redirect to wherever login redirects to after account verification.
+    # verify_account_redirect { login_redirect }
 
     # Redirect to login page after password reset.
     reset_password_redirect { login_path }
