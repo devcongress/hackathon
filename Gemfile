@@ -89,3 +89,5 @@ gem "omniauth-github", "~> 2.0"
 gem "rodauth-omniauth", "~> 0.6.0"
 
 gem "faker", "~> 3.5", group: :development
+
+gem "inline_svg", "~> 1.10"
