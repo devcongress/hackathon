@@ -309,7 +309,7 @@ GEM
       phlexi-display
       phlexi-field
       zeitwerk
-    plutonium (0.19.11)
+    plutonium (0.19.12)
       action_policy (~> 0.7.0)
       dry-initializer (~> 3.1)
       listen (~> 3.8)
