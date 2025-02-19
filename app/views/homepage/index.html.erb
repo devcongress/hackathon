@@ -1,4 +1,4 @@
-<div class="mx-auto max-w-3xl px-4 py-8 sm:py-16">
+<div class="mx-auto max-w-7xl px-4 py-8 sm:py-16">
   <!-- Announcement Banner -->
   <div class="hidden sm:mb-10 sm:flex sm:justify-center">
     <div class="relative rounded-full px-4 py-1.5 text-sm text-gray-600 ring-1 ring-primary-100 bg-primary-50/50 hover:bg-primary-50 transition-colors duration-200">
@@ -11,10 +11,11 @@
     </div>
   </div>
 
+  <!-- Hero Section -->
   <div class="bg-white rounded-2xl shadow-md border border-primary-100/50 px-6 py-12 sm:px-12">
     <div class="text-center">
       <!-- Header -->
-      <%= image_tag "Logo-Main.svg", class: "w-64 inline-block" %>
+      <%= image_tag "Logo-Main.svg", class: "w-64 inline-block", alt: "Event Logo" %>
 
       <!-- Theme -->
       <div class="mt-6">
@@ -22,8 +23,6 @@
           Imagining the Future of Finance with AI
         </span>
       </div>
-    </div>
-  </div>
 
       <!-- Description -->
       <p class="mt-8 text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
@@ -45,63 +44,129 @@
           <div class="mt-1 text-base text-gray-600">Possibilities</div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Key Features -->
-      <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 text-left max-w-2xl mx-auto">
-        <div class="flex items-start space-x-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          <div>
-            <h3 class="font-semibold text-gray-900">Technical Workshops</h3>
-            <p class="mt-1 text-gray-600">Learn from industry experts and get hands-on experience with building products</p>
-          </div>
-        </div>
-        <div class="flex items-start space-x-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <div>
-            <h3 class="font-semibold text-gray-900">Expert Mentorship</h3>
-            <p class="mt-1 text-gray-600">Get guidance from experienced professionals throughout the hackathon</p>
-          </div>
+  <!-- Key Features -->
+  <div class="mt-16 max-w-2xl mx-auto">
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 text-left">
+      <div class="flex items-start space-x-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <div>
+          <h3 class="font-semibold text-gray-900">Technical Workshops</h3>
+          <p class="mt-1 text-gray-600">Learn from industry experts and get hands-on experience with building products</p>
         </div>
       </div>
-
-      <!-- Actions -->
-      <div class="mt-12 flex flex-col items-center justify-center gap-6">
-        <!-- Register Button -->
-        <%= link_to "Register Your Team", rodauth(:hacker).create_account_path,
-                   class: "group w-64 sm:w-auto rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" %>
-
-        <!-- Learn More Link -->
-        <%= 
-          link_to about_path,
-                  class: "text-base text-gray-500 hover:text-gray-700 font-medium underline decoration-gray-300 underline-offset-4 hover:decoration-gray-500 transition-colors duration-200" do %>
-          Learn more about the event
-          <span aria-hidden="true" class="ml-1">→</span>
-        <% end %>
-      </div>
-
-      <!-- Sponsors -->
-      <div class="mt-16 text-center">
-        <p class="text-base font-medium text-gray-500">Proudly supported by</p>
-        <div class="mt-4 flex justify-center space-x-8">
-          <div class="h-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
-            <!-- Placeholder for sponsor logos -->
-            <svg class="h-full w-auto" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="100" height="40" rx="4" fill="currentColor" class="text-gray-200"/>
-              <text x="50" y="24" text-anchor="middle" class="text-gray-400 text-sm">Paystack</text>
-            </svg>
-          </div>
-          <div class="h-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
-            <svg class="h-full w-auto" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="100" height="40" rx="4" fill="currentColor" class="text-gray-200"/>
-              <text x="50" y="24" text-anchor="middle" class="text-gray-400 text-sm">Academic City</text>
-            </svg>
-          </div>
+      <div class="flex items-start space-x-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <div>
+          <h3 class="font-semibold text-gray-900">Expert Mentorship</h3>
+          <p class="mt-1 text-gray-600">Get guidance from experienced professionals throughout the hackathon</p>
         </div>
       </div>
     </div>
+
+    <!-- Actions -->
+    <div class="mt-12 flex flex-col items-center justify-center gap-6">
+      <!-- Register Button -->
+      <%= link_to "Register Your Team", rodauth(:hacker).create_account_path,
+                 class: "group w-64 sm:w-auto rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" %>
+
+      <!-- Learn More Link -->
+      <%= 
+        link_to about_path,
+                class: "text-base text-gray-500 hover:text-gray-700 font-medium underline decoration-gray-300 underline-offset-4 hover:decoration-gray-500 transition-colors duration-200" do %>
+        Learn more about the event
+        <span aria-hidden="true" class="ml-1">→</span>
+      <% end %>
+    </div>
   </div>
+
+  <!-- Partnerships Section -->
+  <section class="mt-24">
+    <div class="max-w-4xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Partners</h2>
+        <p class="mt-4 text-lg text-gray-600">Collaborating with industry leaders to empower the next generation of fintech innovators</p>
+      </div>
+
+      <!-- Partners Grid -->
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <% 
+          partners = [
+          {
+            name: 'Academic City',
+            logo: 'AcademicCity',
+            description: 'Premier technology university fostering innovation and entrepreneurship',
+            website: 'https://acity.edu.gh'
+          },
+          {
+            name: 'Code & Cocktails',
+            logo: 'CodenCocktails',
+            description: 'Community-driven tech events bringing developers together',
+            website: 'https://codeandcocktails.live/'
+          },
+          {
+            name: 'devCongress',
+            logo: 'devCongress',
+            description: "Ghana's largest developer community supporting tech initiatives",
+            website: 'https://devcongress.org'
+          },
+          {
+            name: 'Kweku Tech',
+            logo: 'kwekuTech',
+            description: 'Leading tech education and consulting platform',
+            website: 'https://x.com/kwekutech'
+          },
+          {
+            name: 'Slightly Techie',
+            logo: 'slightlyTechie',
+            description: 'Innovation hub dedicated to growing tech talent',
+            website: 'https://slightlytechie.com'
+          }
+        ]
+        %>
+
+        <% partners.each do |partner| %>
+          <div class="group relative bg-white rounded-xl border border-gray-200 p-6 hover:border-primary-200 hover:shadow-md transition-all duration-300">
+            <!-- Partner Logo -->
+            <div class="h-12 mb-6">
+              <%= image_tag "partners/#{partner[:logo]}.png", 
+                  class: "h-full w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300",
+                  alt: "#{partner[:name]} logo" %>
+            </div>
+            
+            <!-- Partner Info -->
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900"><%= partner[:name] %></h3>
+              <p class="mt-2 text-sm text-gray-600"><%= partner[:description] %></p>
+              
+              <!-- Visit Website Link -->
+              <%= link_to partner[:website], target: :blank,
+                  class: "mt-4 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700" do %>
+                Visit website
+                <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Partnership CTA -->
+      <div class="mt-16 text-center">
+        <h3 class="text-lg font-semibold text-gray-900">Interested in becoming a partner?</h3>
+        <p class="mt-2 text-gray-600">Join us in shaping the future of finance technology in Africa</p>
+        <%= link_to "Contact Us About Partnership", 
+            contact_path,
+            class: "mt-4 inline-flex items-center rounded-lg border border-primary-600 px-4 py-2 text-sm font-medium text-primary-600 hover:bg-primary-50 transition-colors duration-200" %>
+      </div>
+    </div>
+  </section>
 </div>
