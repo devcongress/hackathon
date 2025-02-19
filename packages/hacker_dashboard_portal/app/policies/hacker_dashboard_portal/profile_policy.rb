@@ -2,12 +2,8 @@ module HackerDashboardPortal
   class ProfilePolicy < ::ProfilePolicy
     include HackerDashboardPortal::ResourcePolicy
 
-    def new?
-      user.profile.nil?
-    end
-
     def create?
-      true
+      user.profile.nil?
     end
 
     def update?
