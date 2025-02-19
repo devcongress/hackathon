@@ -1,10 +1,34 @@
-Someone with an account has requested their login be changed to this email address:
+Hi there! 📧
 
-Old email: <%= @account.email %>
+Important Account Change Request
+==============================
 
-New email: <%= @new_email %>
+We received a request to change the email address associated with your Hack! with achieve by Petra account.
 
-If you did not request this login change, please ignore this message.  If you
-requested this login change, please go to
-<%= @rodauth.verify_login_change_email_link %>
-to verify the login change.
+Requested Change
+===============
+
+🔹 Current Email: <%= @account.email %>
+🔹 New Email: <%= @new_email %>
+
+What's Next?
+============
+
+🔹 If you requested this change: Click the verification link below
+🔹 If you didn't request this: You can safely ignore this message
+
+Email Change Verification Link
+============================
+
+🔗 Verify email change here: <%= @rodauth.verify_login_change_email_link %>
+
+Important Security Note
+======================
+
+This link:
+1️⃣ Is unique to your account
+2️⃣ Should not be shared with anyone
+3️⃣ Will expire shortly for your protection
+
+Best regards,
+The Hack! with achieve by Petra Team
