@@ -27,7 +27,7 @@ class Hacker < ResourceRecord
   enum :status, unverified: 1, verified: 2, closed: 3
 
   def to_label
-    profile.name
+    profile&.name || email
   end
 
   def team_owner? = owns_team?(team)
@@ -37,7 +37,7 @@ class Hacker < ResourceRecord
   end
 
   def name
-    profile.name
+    profile&.name || email
   end
 
   def checked_in?
