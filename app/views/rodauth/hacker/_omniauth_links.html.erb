@@ -1,38 +1,34 @@
-<h1
-  class="
-    text-lg  leading-tight tracking-tight text-gray-900 md:text-xl
-    dark:text-white text-center
-  "
->
-  Continue with
-</h1>
-<div class="flex justify-center gap-4">
-  <div>
-    <%= button_to  rodauth.omniauth_request_path(:github),
+<% if type == "signup" %>
+  <% @github_text = "Sign up with GitHub" %>
+  <% @google_text = "Sign up with Google" %>
+<% else %>
+  <% @github_text = "Sign in with GitHub" %>
+  <% @google_text = "Sign in with Google" %>
+<% end %>
+
+<% omniauth_style =
+  "w-full flex items-center justify-center gap-3 bg-white dark:bg-transparent border border-gray-300 text-gray-700 dark:text-white px-6 py-2 rounded-full transition-colors duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 hover:text-black dark:hover:text-gray-200" %>
+
+<%= button_to rodauth.omniauth_request_path(:github), class: omniauth_style,
   method: :post,
   data: {
     turbo: false,
-  },
-  class:
-  "w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" do %>
-      <div class="flex gap-2 justify-center items-center">
-        <%= render Phlex::TablerIcons::BrandGithub %>
-        <p>GitHub</p>
-      </div>
-    <% end %>
-  </div>
-  <div>
-    <%= button_to  rodauth.omniauth_request_path(:google),
+  } do %>
+  <%= render Phlex::TablerIcons::BrandGithub, class: "w-5 h-5" %>
+  <%= @github_text %>
+<% end %>
+
+<%= button_to rodauth.omniauth_request_path(:google), class: omniauth_style,
   method: :post,
   data: {
     turbo: false,
-  },
-  class:
-  "w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" do %>
-      <div class="flex gap-2 justify-center items-center">
-        <%= render Phlex::TablerIcons::BrandGoogle %>
-        <p>Google</p>
-      </div>
-    <% end %>
-  </div>
+  } do %>
+  <%= render Phlex::TablerIcons::BrandGoogle, class: "w-5 h-5" %>
+  <%= @google_text %>
+<% end %>
+
+<div class="flex items-center my-4">
+  <div class="flex-grow border-t border-gray-300"></div>
+  <span class="px-4 dark:text-white text-gray-700">or</span>
+  <div class="flex-grow border-t border-gray-300"></div>
 </div>

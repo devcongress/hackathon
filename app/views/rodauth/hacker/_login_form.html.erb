@@ -1,12 +1,10 @@
-<%= render "omniauth_links" %>
+<%= render "omniauth_links", type: "sign_in" %>
 <h1
   class="
-    text-md leading-tight tracking-tight text-gray-900 md:text-lg
-    dark:text-white text-center
+    text-md leading-tight tracking-tight text-gray-900 md:text-lg dark:text-white
+    text-center
   "
 >
-  - OR -
-  <br>
   Sign in to your account
 </h1>
 <%= form_with url: rodauth(:hacker).login_path, method: :post, data: { turbo: false }, class: "space-y-4" do |form| %>

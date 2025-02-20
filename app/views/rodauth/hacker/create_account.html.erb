@@ -1,12 +1,10 @@
-<%= render "omniauth_links" %>
+<%= render "omniauth_links", type: "signup" %>
 <h1
   class="
-    text-md leading-tight tracking-tight text-gray-900 md:text-lg
-    dark:text-white text-center
+    text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white
+    text-center
   "
 >
-  - OR -
-  <br>
   Create an account
 </h1>
 <%= form_with url: rodauth(:hacker).create_account_path,
