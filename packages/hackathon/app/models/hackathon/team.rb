@@ -25,7 +25,7 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   MINIMUM_TEAM_MEMBERSHIPS = 3
   MAX_TEAM_MEMBERSHIPS = 5
-  MAX_TEAM_THRESHOLD = 40
+  MAX_TEAM_THRESHOLD = 20
 
   belongs_to :hacker
 
