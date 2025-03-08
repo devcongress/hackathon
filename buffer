@@ -1,6 +1,0 @@
-t.string(: role, null: false)
-validates: role, : name, presence: true
-belongs_to: team, class_name: "Hackathon::Team"
-
-t.belongs_to(: team, null: false,
-  foreign_key: { to_table: : hackathon_teams })
