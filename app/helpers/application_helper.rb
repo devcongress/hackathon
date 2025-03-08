@@ -27,4 +27,8 @@ module ApplicationHelper
     resource = RESOURCES[name]
     resource[:description] if resource
   end
+
+  def event_duration
+    "March 28-30, 2025"
+  end
 end
