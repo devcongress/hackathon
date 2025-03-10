@@ -5,7 +5,7 @@ module AdminDashboardPortal
     authorize :params, optional: true
 
     def check_in?
-      !record.checked_in? && record.team.qualified?
+      !record.checked_in? && record&.team&.qualified?
     end
 
     def permitted_attributes_for_read
