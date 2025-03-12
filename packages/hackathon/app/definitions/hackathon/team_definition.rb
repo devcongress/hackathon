@@ -6,4 +6,8 @@ class Hackathon::TeamDefinition < Hackathon::ResourceDefinition
   scope :qualified do |scope|
     scope.qualified
   end
+
+  scope :unqualified do |scope|
+    scope.unqualified
+  end
 end
