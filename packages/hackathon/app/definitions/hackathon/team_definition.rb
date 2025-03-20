@@ -10,4 +10,8 @@ class Hackathon::TeamDefinition < Hackathon::ResourceDefinition
   scope :unqualified do |scope|
     scope.unqualified
   end
+
+  scope :late_qualified do |scope|
+    scope.late_qualified
+  end
 end
