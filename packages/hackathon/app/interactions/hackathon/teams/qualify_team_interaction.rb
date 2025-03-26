@@ -4,8 +4,10 @@ module Hackathon
       presents label: "Qualify Team", icon: Phlex::TablerIcons::Star
       attribute :resource
 
+      private
+
       def execute
-        if resource.has_minimum_memberships? && resource.late_qualified!
+        if resource.late_qualified?
           resource.qualified!
           resource.send_qualified_email
 
