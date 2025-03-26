@@ -36,15 +36,15 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   enum :status, unqualified: 0, qualified: 1, late_qualified: 2
 
-  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :status, presence: true, inclusion: {
-    in: Hackathon::Team.statuses.keys
-  }
+                       in: Hackathon::Team.statuses.keys,
+                     }
 
   attribute :role
   validates :role, presence: true, inclusion: {
-    in: Hackathon::TeamMembership.roles.keys
-  }, on: :create
+                     in: Hackathon::TeamMembership.roles.keys,
+                   }, on: :create
 
   after_create do
     team_memberships.create!(hacker:, role:)
@@ -62,11 +62,9 @@ class Hackathon::Team < Hackathon::ResourceRecord
     return unless unqualified? && has_minimum_memberships?
 
     if limit_reached?
-      late_qualified!
-      send_late_qualified_email
+      late_qualify!
     elsif unqualified?
-      qualified!
-      send_qualified_email
+      qualify!
     end
   end
 
@@ -84,5 +82,15 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   def limit_reached?
     Hackathon::Team.qualified.count >= MAX_TEAM_THRESHOLD
+  end
+
+  def qualify!
+    qualified!
+    send_qualified_email
+  end
+
+  def late_qualify!
+    late_qualified!
+    send_late_qualified_email
   end
 end

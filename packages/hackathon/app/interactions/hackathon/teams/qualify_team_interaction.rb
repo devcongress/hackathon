@@ -7,15 +7,10 @@ module Hackathon
       private
 
       def execute
-        if resource.late_qualified?
-          resource.qualified!
-          resource.send_qualified_email
+        resource.qualify!
 
-          success(resource)
-            .with_message("#{resource.name} has been administratively qualified")
-        else
-          failed("Team does not meet minimum requirements")
-        end
+        success(resource)
+          .with_message("#{resource.name} has been administratively qualified")
       end
     end
   end
