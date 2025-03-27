@@ -93,4 +93,19 @@ class Hackathon::Team < Hackathon::ResourceRecord
     late_qualified!
     send_late_qualified_email
   end
+
+  def self.generate_csv_for_qualified_team_members
+    headers = %w[hacker_name email team_name]
+    file = "#{Rails.root}/tmp/qualified_team_members_#{DateTime.now}.csv"
+
+    CSV.open(file, "w", write_headers: true, headers: headers) do |writer|
+      qualified.each do |team|
+        team.hackers.each do |hacker|
+          writer << [hacker.profile.name, hacker.email, team.name]
+        end
+      end
+    end
+
+    file
+  end
 end
