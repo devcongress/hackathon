@@ -36,15 +36,13 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   enum :status, unqualified: 0, qualified: 1, late_qualified: 2
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false }
-  validates :status, presence: true, inclusion: {
-                       in: Hackathon::Team.statuses.keys,
-                     }
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :status, presence: true,
+    inclusion: {in: Hackathon::Team.statuses.keys}
 
   attribute :role
-  validates :role, presence: true, inclusion: {
-                     in: Hackathon::TeamMembership.roles.keys,
-                   }, on: :create
+  validates :role, presence: true,
+    inclusion: {in: Hackathon::TeamMembership.roles.keys}, on: :create
 
   after_create do
     team_memberships.create!(hacker:, role:)
@@ -102,6 +100,22 @@ class Hackathon::Team < Hackathon::ResourceRecord
       qualified.each do |team|
         team.hackers.each do |hacker|
           writer << [hacker.profile.name, hacker.email, team.name]
+        end
+      end
+    end
+
+    file
+  end
+
+  def self.generate_csv_for_team_members
+    headers = %w[name contact]
+    file = "#{Rails.root}/tmp/team_members_#{DateTime.now}.csv"
+
+    CSV.open(file, "w", write_headers: true, headers:) do |writer|
+      all.each do |team|
+        team.hackers.each do |hacker|
+          next unless hacker.profile.present?
+          writer << [hacker.profile.name, hacker.profile.telephone_number]
         end
       end
     end

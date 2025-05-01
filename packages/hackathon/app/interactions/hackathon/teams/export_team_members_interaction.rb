@@ -2,14 +2,14 @@ require "csv"
 
 module Hackathon
   module Teams
-    class ExportQualifiedTeamMembersInteraction < ResourceInteraction
-      presents label: "Export Qualified Members to CSV",
-        icon: Phlex::TablerIcons::Send
+    class ExportTeamMembersInteraction < ResourceInteraction
+      presents label: "Export Registered Hackers to CSV",
+        icon: Phlex::TablerIcons::FileExport
 
       private
 
       def execute
-        file = Hackathon::Team.generate_csv_for_qualified_team_members
+        file = Hackathon::Team.generate_csv_for_team_members
 
         if File.exist?(file)
           success(file).with_file_response(
