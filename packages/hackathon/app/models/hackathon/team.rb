@@ -106,20 +106,4 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
     file
   end
-
-  def self.generate_csv_for_team_members
-    headers = %w[name email phone_number]
-    file = "#{Rails.root}/tmp/team_members_#{DateTime.now}.csv"
-
-    CSV.open(file, "w", write_headers: true, headers:) do |writer|
-      all.each do |team|
-        team.hackers.each do |hacker|
-          next unless hacker.profile.present?
-          writer << [hacker.profile.name, hacker.email, hacker.profile.telephone_number]
-        end
-      end
-    end
-
-    file
-  end
 end

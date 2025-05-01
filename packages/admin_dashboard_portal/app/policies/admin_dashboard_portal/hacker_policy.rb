@@ -4,6 +4,10 @@ module AdminDashboardPortal
 
     authorize :params, optional: true
 
+    def export_hackers_to_csv?
+      true
+    end
+
     def check_in?
       !record.checked_in? && record&.team&.qualified?
     end

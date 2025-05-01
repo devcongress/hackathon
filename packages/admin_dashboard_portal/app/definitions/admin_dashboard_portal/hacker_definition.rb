@@ -12,4 +12,10 @@ class AdminDashboardPortal::HackerDefinition < ::HackerDefinition
         query: "%#{query}%"
       )
   end
+
+  action :export_hackers_to_csv,
+    interaction: Hackers::Interactions::ExportHackersToCsvInteraction,
+    resource_action: true,
+    turbo: false,
+    category: :primary
 end

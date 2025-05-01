@@ -8,10 +8,6 @@ module AdminDashboardPortal
       def export_qualified_team_members?
         true
       end
-
-      def export_team_members?
-        true
-      end
     end
   end
 end

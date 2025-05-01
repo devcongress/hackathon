@@ -51,4 +51,18 @@ class Hacker < ResourceRecord
       "Pending"
     end
   end
+
+  def self.to_csv
+    headers = %w[name email phone_number]
+    file = "#{Rails.root}/tmp/hackers.csv"
+
+    CSV.open(file, "w", write_headers: true, headers:) do |writer|
+      all.each do |hacker|
+        next unless hacker.profile.present?
+        writer << [hacker.profile.name, hacker.email, hacker.profile.telephone_number]
+      end
+    end
+
+    file
+  end
 end
