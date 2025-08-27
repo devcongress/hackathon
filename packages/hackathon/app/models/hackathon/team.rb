@@ -94,7 +94,7 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   def self.generate_csv_for_qualified_team_members
     headers = %w[hacker_name email team_name]
-    file = "#{Rails.root}/tmp/qualified_team_members_#{DateTime.now}.csv"
+    file = Rails.root.join("tmp/qualified_team_members_#{DateTime.now}.csv").to_s
 
     CSV.open(file, "w", write_headers: true, headers: headers) do |writer|
       qualified.each do |team|
