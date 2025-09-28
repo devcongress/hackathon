@@ -79,6 +79,25 @@ GEM
     annotated (0.1.1)
       activerecord (>= 3.2)
     ast (2.4.3)
+    aws-eventstream (1.4.0)
+    aws-partitions (1.1166.0)
+    aws-sdk-core (3.233.0)
+      aws-eventstream (~> 1, >= 1.3.0)
+      aws-partitions (~> 1, >= 1.992.0)
+      aws-sigv4 (~> 1.9)
+      base64
+      bigdecimal
+      jmespath (~> 1, >= 1.6.1)
+      logger
+    aws-sdk-kms (1.113.0)
+      aws-sdk-core (~> 3, >= 3.231.0)
+      aws-sigv4 (~> 1.5)
+    aws-sdk-s3 (1.199.1)
+      aws-sdk-core (~> 3, >= 3.231.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.5)
+    aws-sigv4 (1.12.1)
+      aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
@@ -114,6 +133,8 @@ GEM
     debug (1.11.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    dockerfile-rails (1.7.10)
+      rails (>= 3.0.0)
     dotenv (3.1.8)
     drb (2.2.3)
     ed25519 (1.4.0)
@@ -163,6 +184,7 @@ GEM
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
+    jmespath (1.6.2)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
     json (2.13.2)
@@ -190,6 +212,41 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    litestream (0.14.0)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activejob (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      sqlite3
+    litestream (0.14.0-aarch64-linux)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activejob (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      sqlite3
+    litestream (0.14.0-arm64-darwin)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activejob (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      sqlite3
+    litestream (0.14.0-x86_64-darwin)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activejob (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      sqlite3
+    litestream (0.14.0-x86_64-linux)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activejob (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      sqlite3
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -280,6 +337,13 @@ GEM
       racc
     pastel (0.8.0)
       tty-color (~> 0.5)
+    pg (1.6.2)
+    pg (1.6.2-aarch64-linux)
+    pg (1.6.2-aarch64-linux-musl)
+    pg (1.6.2-arm64-darwin)
+    pg (1.6.2-x86_64-darwin)
+    pg (1.6.2-x86_64-linux)
+    pg (1.6.2-x86_64-linux-musl)
     phlex (2.3.1)
       zeitwerk (~> 2.7)
     phlex-rails (2.3.1)
@@ -578,6 +642,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotated (~> 0.1.1)
+  aws-sdk-s3 (~> 1.199)
   bcrypt (~> 3.1)
   bootsnap
   brakeman
@@ -585,6 +650,7 @@ DEPENDENCIES
   cssbundling-rails
   csv (~> 3.3)
   debug
+  dockerfile-rails (>= 1.7)
   dotenv
   faker (~> 3.5)
   inline_svg (~> 1.10)
@@ -592,9 +658,11 @@ DEPENDENCIES
   jsbundling-rails
   kamal
   letter_opener (~> 1.10)
+  litestream (~> 0.14.0)
   mission_control-jobs (~> 1.0)
   omniauth-github (~> 2.0)
   omniauth-google-oauth2 (~> 1.2)
+  pg (~> 1.6)
   plutonium
   propshaft
   puma (>= 5.0)

@@ -97,3 +97,11 @@ gem "csv", "~> 3.3"
 gem "rotp", "~> 6.3"
 
 gem "rqrcode", "~> 3.1"
+
+gem "dockerfile-rails", ">= 1.7", :group => :development
+
+gem "pg", "~> 1.6"
+
+gem "litestream", "~> 0.14.0"
+
+gem "aws-sdk-s3", "~> 1.199", :require => false
