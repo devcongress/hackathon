@@ -20,16 +20,49 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_30_201515) do
     t.index ["uid"], name: "index_account_identities_on_uid"
   end
 
-  create_table "admin_login_change_keys", force: :cascade do |t|
+  create_table "admin_active_session_keys", primary_key: ["admin_id", "session_id"], force: :cascade do |t|
+    t.integer "admin_id"
+    t.string "session_id"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "last_use", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["admin_id"], name: "index_admin_active_session_keys_on_admin_id"
+  end
+
+  create_table "admin_authentication_audit_logs", force: :cascade do |t|
+    t.integer "admin_id", null: false
+    t.datetime "at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.text "message", null: false
+    t.json "metadata"
+    t.index ["admin_id", "at"], name: "audit_admin_admin_id_at_idx"
+    t.index ["admin_id"], name: "index_admin_authentication_audit_logs_on_admin_id"
+    t.index ["at"], name: "audit_admin_at_idx"
+  end
+
+  create_table "admin_lockouts", force: :cascade do |t|
     t.string "key", null: false
-    t.string "login", null: false
     t.datetime "deadline", null: false
+    t.datetime "email_last_sent"
+  end
+
+  create_table "admin_login_failures", force: :cascade do |t|
+    t.integer "number", default: 1, null: false
+  end
+
+  create_table "admin_otp_keys", force: :cascade do |t|
+    t.string "key", null: false
+    t.integer "num_failures", default: 0, null: false
+    t.datetime "last_use", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "admin_password_reset_keys", force: :cascade do |t|
     t.string "key", null: false
     t.datetime "deadline", null: false
     t.datetime "email_last_sent", default: -> { "CURRENT_TIMESTAMP" }, null: false
+  end
+
+  create_table "admin_recovery_codes", primary_key: ["id", "code"], force: :cascade do |t|
+    t.bigint "id"
+    t.string "code"
   end
 
   create_table "admin_remember_keys", force: :cascade do |t|
@@ -141,8 +174,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_30_201515) do
   end
 
   add_foreign_key "account_identities", "hackers", column: "account_id"
-  add_foreign_key "admin_login_change_keys", "admins", column: "id"
+  add_foreign_key "admin_active_session_keys", "admins"
+  add_foreign_key "admin_authentication_audit_logs", "admins"
+  add_foreign_key "admin_lockouts", "admins", column: "id"
+  add_foreign_key "admin_login_failures", "admins", column: "id"
+  add_foreign_key "admin_otp_keys", "admins", column: "id"
   add_foreign_key "admin_password_reset_keys", "admins", column: "id"
+  add_foreign_key "admin_recovery_codes", "admins", column: "id"
   add_foreign_key "admin_remember_keys", "admins", column: "id"
   add_foreign_key "admin_verification_keys", "admins", column: "id"
   add_foreign_key "hackathon_check_ins", "hackers"

@@ -103,6 +103,7 @@ GEM
       xpath (~> 3.2)
     childprocess (5.1.0)
       logger (~> 1.5)
+    chunky_png (1.4.0)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.4)
     crass (1.0.6)
@@ -421,6 +422,11 @@ GEM
       roda (~> 3.76)
       rodauth (~> 2.36)
       rodauth-model (~> 0.2)
+    rotp (6.3.0)
+    rqrcode (3.1.0)
+      chunky_png (~> 1.0)
+      rqrcode_core (~> 2.0)
+    rqrcode_core (2.0.0)
     rubocop (1.75.8)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -595,6 +601,8 @@ DEPENDENCIES
   rails (~> 8.0.1)
   rodauth-omniauth (~> 0.6.0)
   rodauth-rails (~> 2.0)
+  rotp (~> 6.3)
+  rqrcode (~> 3.1)
   selenium-webdriver
   sequel-activerecord_connection (~> 2.0)
   solid_cable

@@ -33,13 +33,52 @@ class CreateRodauthAdminBaseRememberVerifyAccountResetPasswordVerifyLoginChange 
       t.datetime :email_last_sent, null: false, default: -> { "CURRENT_TIMESTAMP" }
     end
 
-    # Used by the verify login change feature
-    create_table :admin_login_change_keys, id: false do |t|
+    # Used by the otp feature
+    create_table :admin_otp_keys, id: false do |t|
       t.bigint :id, primary_key: true
       t.foreign_key :admins, column: :id
       t.string :key, null: false
-      t.string :login, null: false
+      t.integer :num_failures, null: false, default: 0
+      t.datetime :last_use, null: false, default: -> { "CURRENT_TIMESTAMP" }
+    end
+
+    # Used by the recovery codes feature
+    create_table :admin_recovery_codes, primary_key: [:id, :code] do |t|
+      t.bigint :id
+      t.foreign_key :admins, column: :id
+      t.string :code
+    end
+
+    # Used by the lockout feature
+    create_table :admin_login_failures, id: false do |t|
+      t.bigint :id, primary_key: true
+      t.foreign_key :admins, column: :id
+      t.integer :number, null: false, default: 1
+    end
+    create_table :admin_lockouts, id: false do |t|
+      t.bigint :id, primary_key: true
+      t.foreign_key :admins, column: :id
+      t.string :key, null: false
       t.datetime :deadline, null: false
+      t.datetime :email_last_sent
+    end
+
+    # Used by the active sessions feature
+    create_table :admin_active_session_keys, primary_key: [:admin_id, :session_id] do |t|
+      t.references :admin, foreign_key: true
+      t.string :session_id
+      t.datetime :created_at, null: false, default: -> { "CURRENT_TIMESTAMP" }
+      t.datetime :last_use, null: false, default: -> { "CURRENT_TIMESTAMP" }
+    end
+
+    # Used by the audit logging feature
+    create_table :admin_authentication_audit_logs do |t|
+      t.references :admin, foreign_key: true, null: false
+      t.datetime :at, null: false, default: -> { "CURRENT_TIMESTAMP" }
+      t.text :message, null: false
+      t.json :metadata
+      t.index [:admin_id, :at], name: "audit_admin_admin_id_at_idx"
+      t.index :at, name: "audit_admin_at_idx"
     end
   end
 end

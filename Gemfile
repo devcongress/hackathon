@@ -93,3 +93,7 @@ gem "faker", "~> 3.5", group: :development
 gem "inline_svg", "~> 1.10"
 
 gem "csv", "~> 3.3"
+
+gem "rotp", "~> 6.3"
+
+gem "rqrcode", "~> 3.1"
