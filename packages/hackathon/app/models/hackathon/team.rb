@@ -23,9 +23,9 @@ require_relative "../hackathon"
 class Hackathon::Team < Hackathon::ResourceRecord
   dynamic_path_parameter :name
 
-  MINIMUM_TEAM_MEMBERSHIPS = 3
-  MAX_TEAM_MEMBERSHIPS = 5
-  MAX_TEAM_THRESHOLD = 20
+  MINIMUM_TEAM_MEMBERSHIPS = 2
+  MAX_TEAM_MEMBERSHIPS = 4
+  MAX_TEAM_THRESHOLD = 10
 
   belongs_to :hacker
 
@@ -55,7 +55,7 @@ class Hackathon::Team < Hackathon::ResourceRecord
   # Runs the qualification checks for the team and sends an email to the team
   # if they are qualified.
   #
-  # A team is qualified if they have at least 3 members.
+  # A team is qualified if they have at least {MINIMUM_TEAM_MEMBERSHIPS} members.
   def run_qualification_checks
     return unless unqualified? && has_minimum_memberships?
 

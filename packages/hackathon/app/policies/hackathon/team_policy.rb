@@ -12,11 +12,11 @@ class Hackathon::TeamPolicy < Hackathon::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:hacker, :name]
+    [:name, :hacker]
   end
 
   def permitted_attributes_for_read
-    [:hacker, :name, :status]
+    [:name, :hacker, :status]
   end
 
   # Associations

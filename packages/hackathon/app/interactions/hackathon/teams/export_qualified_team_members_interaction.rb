@@ -3,7 +3,7 @@ require "csv"
 module Hackathon
   module Teams
     class ExportQualifiedTeamMembersInteraction < ResourceInteraction
-      presents label: "Export Qualified Members to CSV",
+      presents label: "Export Qualified Teams",
         icon: Phlex::TablerIcons::Send
 
       private
