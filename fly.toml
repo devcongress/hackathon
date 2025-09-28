@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for hackathon-black-frost-7080 on 2025-09-28T17:32:23+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'hackathon-black-frost-7080'
+primary_region = 'fra'
+console_command = '/rails/bin/rails console'
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[mounts]
+  source = "unicef_hack_25"
+  destination = "/data"
+  processes= ["app"]
