@@ -6,12 +6,15 @@
           url: root_path,
           icon: Phlex::TablerIcons::Home
 
-        m.item "Hackathon Data", icon: Phlex::TablerIcons::GridDots do |n|
-          registered_resources.each do |resource|
-            next unless ['Team', 'Invitation', 'Hacker', 'Check in'].include?(resource.model_name.human)
-            n.item resource.model_name.human.pluralize,
-              url: resource_url_for(resource, parent: nil)
-          end
+        [
+          [Hackathon::Team, Phlex::TablerIcons::Users], 
+          [Hacker, Phlex::TablerIcons::User], 
+          [Hackathon::Invitation, Phlex::TablerIcons::MailForward], 
+          [Hackathon::CheckIn, Phlex::TablerIcons::CircleCheck]
+        ].each do |resource, icon|
+          m.item resource.model_name.human.pluralize,
+            url: resource_url_for(resource, parent: nil),
+            icon: icon
         end
       end
     )

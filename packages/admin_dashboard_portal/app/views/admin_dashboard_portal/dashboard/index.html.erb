@@ -1,66 +1,97 @@
-<div class="container mx-auto p-4">
-  <div class="flex items-center justify-between mb-6">
-    <h5
-      class="
-        mb-2 text-3xl font-extrabold leading-none tracking-tight text-gray-900
-        md:text-4xl dark:text-white
-      "
-    >
+<div class="container mx-auto p-4 max-w-7xl">
+  <header class="mb-8">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
       Hackathon Dashboard
-    </h5>
+    </h1>
+    <p class="text-gray-600 dark:text-gray-400">
+      Overview of all hackathon activities and resources
+    </p>
+  </header>
+
+  <!-- Summary Statistics -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+    <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-4 text-white">
+      <div class="text-2xl font-bold"><%= Hackathon::Team.count %></div>
+      <div class="text-blue-100 text-sm">Total Teams</div>
+    </div>
+    <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-4 text-white">
+      <div class="text-2xl font-bold"><%= Hackathon::Team.qualified.count %></div>
+      <div class="text-green-100 text-sm">Qualified Teams</div>
+    </div>
+    <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg p-4 text-white">
+      <div class="text-2xl font-bold"><%= authorized_resource_scope(registered_resources.find { |r| r.model_name.human == 'Hacker' }).count rescue 0 %></div>
+      <div class="text-purple-100 text-sm">Total Hackers</div>
+    </div>
+    <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-4 text-white">
+      <div class="text-2xl font-bold"><%= authorized_resource_scope(registered_resources.find { |r| r.model_name.human == 'Invitation' }).count rescue 0 %></div>
+      <div class="text-orange-100 text-sm">Invitations</div>
+    </div>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <% icon_style = "dark:stroke-white w-12 h-12" %>
+
+  <!-- Resource Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <% icon_style = "w-8 h-8 text-current" %>
     <% registered_resources.each do |resource| %>
       <% next unless allowed_to?(:index?, resource) && ['Team', 'Invitation', 'Hacker', "Check in"].include?(resource.model_name.human) %>
-      <div
-        class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden"
-      >
-        <div class="p-4">
-          <div class="flex items-center space-x-2 mb-2 hover:animate-pulse">
-            <%= render icon_for(resource.model_name.human) %>
-            <div class="flex flex-col">
-              <a
-                href="<%= resource_url_for(resource, parent: nil) %>"
-                class="
-                text-2xl font-medium text-gray-900 dark:text-white truncate hover:underline
-              "
-              >
-                <%= resource.model_name.human.pluralize.titleize %>
-              </a>
-              <p class="text-sm font-medium text-gray dark:text-white">
-                <%= description_for(resource.model_name.human) %>
+      <a href="<%= resource_url_for(resource, parent: nil) %>" class="group block h-full">
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full flex flex-col">
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-start space-x-4 mb-4">
+              <div class="flex-shrink-0 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-blue-900 transition-colors duration-300">
+                <div class="text-gray-600 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                  <%= render icon_for(resource.model_name.human, style: icon_style) %>
+                </div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                  <%= resource.model_name.human.pluralize.titleize %>
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <%= description_for(resource.model_name.human) %>
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-auto">
+              <div class="text-2xl font-bold text-gray-900 dark:text-white">
+                <%= authorized_resource_scope(resource).count %>
+              </div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+                <%= resource.model_name.human.pluralize %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+    <!-- Qualified Teams Special Card -->
+    <a href="<%= hackathon_teams_path(q: { scope: 'qualified' }) %>" class="group block h-full">
+      <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 shadow-lg rounded-xl overflow-hidden border border-yellow-200 dark:border-yellow-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full flex flex-col">
+        <div class="p-6 flex-1 flex flex-col">
+          <div class="flex items-start space-x-4 mb-4">
+            <div class="flex-shrink-0 p-3 bg-yellow-200 dark:bg-yellow-800 rounded-lg group-hover:bg-yellow-300 dark:group-hover:bg-yellow-700 transition-colors duration-300">
+              <div class="text-yellow-700 dark:text-yellow-300">
+                <%= render Phlex::TablerIcons::Bulb.new(class: icon_style) %>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors duration-200">
+                Qualified Teams
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                Qualified teams are teams with a minimum of <%= Hackathon::Team::MINIMUM_TEAM_MEMBERSHIPS %> registered members.
               </p>
             </div>
           </div>
-          <div class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
-            <%= authorized_resource_scope(resource).count %>
+          <div class="flex items-center justify-between mt-auto">
+            <div class="text-2xl font-bold text-gray-900 dark:text-white">
+              <%= Hackathon::Team.qualified.size %>
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+              Teams
+            </div>
           </div>
         </div>
       </div>
-    <% end %>
-    <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
-      <div class="p-4">
-        <div class="flex items-center space-x-2 mb-2 hover:animate-pulse">
-          <%= render Phlex::TablerIcons::Bulb.new(class: icon_style) %>
-          <div class="flex flex-col">
-            <a
-              href="<%= hackathon_teams_path(q: { scope: 'qualified' }) %>"
-              class="
-                text-2xl font-medium text-gray-900 dark:text-white truncate hover:underline
-              "
-            >
-              Qualified Teams
-            </a>
-            <p class="text-sm font-medium text-gray dark:text-white">
-              Qualified teams are teams with a minimum of 3 registered members.
-            </p>
-          </div>
-        </div>
-        <div class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
-          <%= Hackathon::Team.qualified.size %>
-        </div>
-      </div>
-    </div>
+    </a>
   </div>
 </div>

@@ -1,19 +1,19 @@
 module ApplicationHelper
   RESOURCES = {
     "Team" => {
-      icon: Phlex::TablerIcons::UsersGroup,
+      icon: Phlex::TablerIcons::Users,
       description: "View team details, including members and their roles."
     },
     "Hacker" => {
-      icon: Phlex::TablerIcons::Code,
+      icon: Phlex::TablerIcons::User,
       description: "View all registered hackers and their details. Check in hackers to events."
     },
     "Invitation" => {
-      icon: Phlex::TablerIcons::Mail,
+      icon: Phlex::TablerIcons::MailForward,
       description: "View and track invitations sent to potential team members."
     },
     "Check in" => {
-      icon: Phlex::TablerIcons::Tent,
+      icon: Phlex::TablerIcons::CircleCheck,
       description: "View event check-in records and attendance history."
     }
   }.freeze
