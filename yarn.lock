@@ -225,10 +225,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@radioactive-labs/plutonium@^0.3.2":
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/@radioactive-labs/plutonium/-/plutonium-0.3.4.tgz#e95bb03991559abc4dde9e371924b733c9187a47"
-  integrity sha512-QpuOlWisvDTyo80AtcS5MzaVXZsEtmVjtXiqqhjEBX+ZGZGACPzrM3Tq65HI9Jmu8Am9WGMMzO84B3A02BkpHg==
+"@radioactive-labs/plutonium@^0.4.11":
+  version "0.4.11"
+  resolved "https://registry.yarnpkg.com/@radioactive-labs/plutonium/-/plutonium-0.4.11.tgz#ee79cf3dcda69d3a2a4c29814985ddeca2c9a248"
+  integrity sha512-yqp5GO4e0TaN0HVloCft6UIfwzLqpe3GcioWz5cs1lo7E20/qWQVrWhNuAvVDsW3z329uhhO+bFs81hlepb9Qg==
   dependencies:
     "@hotwired/stimulus" "^3.2.2"
     "@hotwired/turbo" "^8.0.4"
