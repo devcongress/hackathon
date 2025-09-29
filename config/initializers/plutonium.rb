@@ -5,7 +5,7 @@ Plutonium.configure do |config|
 
   config.assets.stylesheet = "application"
   config.assets.script = "application"
-  config.assets.logo = "Logo-Monochrome.svg"
+  config.assets.logo = "neural-network.png"
   config.assets.favicon = "favicon.ico"
   # Configure plutonium above.
 end
