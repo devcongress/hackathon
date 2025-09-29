@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", :as => :rails_health_check
 
   # resources :homepage, only: [:index]
-  root "homepage#index"
+  root to: redirect('/hacker/login')
   get "/about", to: "homepage#about"
   get "/contact", to: "homepage#contact"
 
