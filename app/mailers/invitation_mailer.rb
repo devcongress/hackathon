@@ -4,7 +4,7 @@ class InvitationMailer < ApplicationMailer
   def send_invite
     @url = confirm_invitation_url(token: @invitation.token)
     mail to: @invitation.email,
-      subject: "🚀 You're Invited: Join #{@team.name} for Hack! with achieve by Petra 🚀"
+      subject: "🚀 You're Invited: Join #{@team.name} for UNICEF StartUp Lab Hack 🚀"
   end
 
   private

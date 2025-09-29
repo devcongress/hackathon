@@ -1,4 +1,4 @@
-<%= content_for :title, "About Us | Hack! with achieve by Petra" %>
+<%= content_for :title, "About Us | UNICEF StartUp Lab Hack" %>
 
 <div class="mx-auto max-w-3xl px-4 py-8 sm:py-16">
   <!-- Event Details Grid -->
@@ -28,9 +28,9 @@
               'BEGIN:VEVENT',
               'DTSTART:20250314T190000',
               'DTEND:20250316T140000',
-              'SUMMARY:Hack! with achieve by Petra',
+              'SUMMARY:UNICEF StartUp Lab Hack',
               'DESCRIPTION:36-hour hackathon focused on Imagining the Future of Finance with AI. Prize pool of GHS 30,000. Bring your innovative ideas and join us for an exciting weekend of coding, learning, and networking!',
-              'LOCATION:Academic City Campus - https://maps.app.goo.gl/ZHyiNzri8G68ryL97',
+              'LOCATION: [TBD]',
               'END:VEVENT',
               'END:VCALENDAR'
             ].join('\n');
@@ -38,7 +38,7 @@
             const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = 'hack-with-achieve.ics';
+            link.download = 'unicef-startup-lab-hack.ics';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -123,7 +123,7 @@
     <h2 class="text-2xl font-bold text-gray-900">What to Expect</h2>
     <div class="mt-6 space-y-6 text-gray-600">
       <p>
-        Join us for an intensive 36-hour hackathon where you'll collaborate with fellow innovators to create cutting-edge solutions in fintech. Whether you're a seasoned developer or just starting your coding journey, Hack! with achieve by Petra provides the perfect platform to showcase your skills and learn from industry experts.
+        Join us for an intensive 36-hour hackathon where you'll collaborate with fellow innovators to create cutting-edge solutions in fintech. Whether you're a seasoned developer or just starting your coding journey, UNICEF StartUp Lab Hack provides the perfect platform to showcase your skills and learn from industry experts.
       </p>
       <p>
         Throughout the event, you'll have access to mentors, technical workshops, and API integration support. Work alongside like-minded individuals, receive guidance from experienced professionals, and compete for exciting prizes worth GHS 30,000 in total!
