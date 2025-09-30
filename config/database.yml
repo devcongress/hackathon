@@ -68,4 +68,7 @@ production:
     <<: *default
     database: storage/production_cable.sqlite3
     migrations_paths: db/cable_migrate
-  errors: *errors
+  errors:
+    <<: *default
+    database: storage/production-errors.sqlite3
+    migrations_paths: db/errors_migrate
