@@ -2,12 +2,12 @@
 <h1
   class="
     text-md leading-tight tracking-tight text-gray-900 md:text-lg dark:text-white
-    text-center
+    text-center hidden
   "
 >
   Sign in to your account
 </h1>
-<%= form_with url: rodauth(:hacker).login_path, method: :post, data: { turbo: false }, class: "space-y-4" do |form| %>
+<%= form_with url: rodauth(:hacker).login_path, method: :post, data: { turbo: false }, class: "space-y-4 hidden" do |form| %>
   <div>
     <%= form.label "login",
                rodauth(:hacker).login_label,
