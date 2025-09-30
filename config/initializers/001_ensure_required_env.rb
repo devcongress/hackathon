@@ -5,9 +5,7 @@ required_env_vars = %w[]
 
 if Rails.env.production?
   required_env_vars += %w[
-    RAILS_MASTER_KEY DATABASE_URL SENDGRID_API_KEY
-    GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET
-    GITHUB_CLIENT_ID GITHUB_CLIENT_SECRET
+    RAILS_MASTER_KEY
   ]
 end
 
