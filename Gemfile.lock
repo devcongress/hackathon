@@ -378,7 +378,7 @@ GEM
       phlexi-display
       phlexi-field (~> 0.2.0)
       zeitwerk
-    plutonium (0.26.9)
+    plutonium (0.26.10)
       action_policy (~> 0.7.0)
       listen (~> 3.8)
       pagy (~> 9.0)
