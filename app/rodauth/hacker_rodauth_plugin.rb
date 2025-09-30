@@ -79,7 +79,6 @@ class HackerRodauthPlugin < RodauthPlugin
     # Requires the JSON feature
     # only_json? false
 
-
     send_email do |email|
       # queue email delivery on the mailer after the transaction commits
       db.after_commit { email.deliver_later }
@@ -106,6 +105,25 @@ class HackerRodauthPlugin < RodauthPlugin
 
     # ==> Passwords
 
+    # Passwords shorter than 8 characters are considered weak according to OWASP.
+    # password_minimum_length 8
+
+    # Custom password complexity requirements (alternative to password_complexity feature).
+    # password_meets_requirements? do |password|
+    #   super(password) && password_complex_enough?(password)
+    # end
+    # auth_class_eval do
+    #   def password_complex_enough?(password)
+    #     return true if password.match?(/\d/) && password.match?(/[^a-zA-Z\d]/)
+    #     set_password_requirement_error_message(:password_simple, "requires one number and one special character")
+    #     false
+    #   end
+    # end
+
+    # = bcrypt
+
+    # bcrypt has a maximum input length of 72 bytes, truncating any extra bytes.
+    password_maximum_bytes 72 if respond_to?(:password_maximum_bytes)
 
     # ==> Remember Feature
 
@@ -147,11 +165,17 @@ class HackerRodauthPlugin < RodauthPlugin
     #   Profile.find_by!(account_id: account_id).destroy
     # end
 
-
     # ==> Redirects
 
-    # Redirect to dashboard after omniauth login/create
-    after_omniauth_create_account { redirect "/hacker_dashboard" }
+    # Ensure auto-login after omniauth account creation
+    omniauth_create_account? true
+
+    # Redirect to dashboard after omniauth login/create (user is auto-logged in)
+    after_omniauth_create_account do
+      # Explicitly login if not already logged in
+      login_session(account_id) unless logged_in?
+      redirect "/hacker_dashboard"
+    end
 
     # Redirect to home after login.
     login_redirect "/hacker_dashboard"
