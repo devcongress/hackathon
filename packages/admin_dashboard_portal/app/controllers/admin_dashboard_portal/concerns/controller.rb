@@ -8,7 +8,7 @@ module AdminDashboardPortal
 
       private
 
-      def app_name = "Admin Dashboard | Hack! with achieve by Petra"
+      def app_name = "Admin Dashboard | UNICEF StartUp Lab Hack"
     end
   end
 end

@@ -3,7 +3,7 @@ class TeamMembershipMailer < ApplicationMailer
 
   def welcome_email
     mail to: email_address_with_name(@hacker.email, @hacker.profile.name),
-      subject: "🌟 Welcome to Hack! with achieve by Petra, #{@hacker.profile.name}! 🚀"
+      subject: "🌟 Welcome to UNICEF StartUp Lab Hack, #{@hacker.profile.name}! 🚀"
   end
 
   private
