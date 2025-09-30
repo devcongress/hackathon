@@ -5,8 +5,11 @@ required_env_vars = %w[]
 
 if Rails.env.production?
   required_env_vars += %w[
-    RAILS_MASTER_KEY
+    RAILS_MASTER_KEY DATABASE_URL
+    POSTMARK_API_TOKEN
+    GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET
   ]
+  # GITHUB_CLIENT_ID GITHUB_CLIENT_SECRET
 end
 
 # Add additional env vars here
