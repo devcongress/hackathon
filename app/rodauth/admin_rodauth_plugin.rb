@@ -150,8 +150,11 @@ class AdminRodauthPlugin < RodauthPlugin
     # Or only remember users that have ticked a "Remember Me" checkbox on login.
     # after_login { remember_login if param_or_nil("remember") }
 
-    # Extend user's remember period when remembered via a cookie
+    # Extend  user's remember period when remembered via a cookie
     extend_remember_deadline? true
+
+    # Use separate session key for admin authentication
+    session_key "_admin_session"
 
     # Store the user's remember cookie under a namespace
     remember_cookie_key "_admin_remember"

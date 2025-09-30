@@ -136,6 +136,9 @@ class HackerRodauthPlugin < RodauthPlugin
     # Extend user's remember period when remembered via a cookie
     extend_remember_deadline? true
 
+    # Use separate session key for hacker authentication
+    session_key "_hacker_session"
+
     # Store the user's remember cookie under a namespace
     remember_cookie_key "_hacker_remember"
 
