@@ -17,15 +17,6 @@ class HackerRodauthPlugin < RodauthPlugin
       :login,
       :remember,
       :logout,
-      :create_account,
-      :verify_account,
-      :verify_account_grace_period,
-      :reset_password,
-      :reset_password_notify,
-      :change_login,
-      :verify_login_change,
-      :change_password,
-      :change_password_notify,
       :case_insensitive_login,
       :internal_request
     )
@@ -47,9 +38,6 @@ class HackerRodauthPlugin < RodauthPlugin
     # Change prefix of table and foreign key column names from default "account"
     accounts_table :hackers
     remember_table :hacker_remember_keys
-    reset_password_table :hacker_password_reset_keys
-    verify_account_table :hacker_verification_keys
-    verify_login_change_table :hacker_login_change_keys
 
     # The secret key used for hashing public-facing tokens for various features.
     # Defaults to Rails `secret_key_base`, but you can use your own secret key.
@@ -73,7 +61,6 @@ class HackerRodauthPlugin < RodauthPlugin
     # Change some default param keys.
     login_param "email"
     login_label "Email"
-    # password_confirm_param "confirm_password"
 
     # Redirect back to originally requested location after authentication.
     login_return_to_requested_location? true
@@ -91,39 +78,6 @@ class HackerRodauthPlugin < RodauthPlugin
     # Accept both api and form requests
     # Requires the JSON feature
     # only_json? false
-
-    # ==> Emails
-    # Use a custom mailer for delivering authentication emails.
-
-    create_reset_password_email do
-      Rodauth::HackerMailer.reset_password(self.class.configuration_name,
-        account_id, reset_password_key_value)
-    end
-
-    create_verify_account_email do
-      Rodauth::HackerMailer.verify_account(self.class.configuration_name,
-        account_id, verify_account_key_value)
-    end
-
-    create_verify_login_change_email do |_login|
-      Rodauth::HackerMailer.verify_login_change(
-        self.class.configuration_name,
-        account_id,
-        verify_login_change_key_value
-      )
-    end
-
-    create_password_changed_email do
-      Rodauth::HackerMailer.change_password_notify(
-        self.class.configuration_name, account_id
-      )
-    end
-
-    create_reset_password_notify_email do
-      Rodauth::HackerMailer.reset_password_notify(
-        self.class.configuration_name, account_id
-      )
-    end
 
     send_email do |email|
       # queue email delivery on the mailer after the transaction commits
@@ -152,7 +106,7 @@ class HackerRodauthPlugin < RodauthPlugin
     # ==> Passwords
 
     # Passwords shorter than 8 characters are considered weak according to OWASP.
-    password_minimum_length 8
+    # password_minimum_length 8
 
     # Custom password complexity requirements (alternative to password_complexity feature).
     # password_meets_requirements? do |password|
@@ -181,6 +135,9 @@ class HackerRodauthPlugin < RodauthPlugin
 
     # Extend user's remember period when remembered via a cookie
     extend_remember_deadline? true
+
+    # Use separate session key for hacker authentication
+    session_key "_hacker_session"
 
     # Store the user's remember cookie under a namespace
     remember_cookie_key "_hacker_remember"
@@ -211,24 +168,24 @@ class HackerRodauthPlugin < RodauthPlugin
     #   Profile.find_by!(account_id: account_id).destroy
     # end
 
-    create_account_route "register"
-
     # ==> Redirects
 
-    # Redirect to home after login.
-    create_account_redirect "/hacker_dashboard"
+    # Ensure auto-login after omniauth account creation
+    omniauth_create_account? true
+
+    # Redirect to dashboard after omniauth login/create (user is auto-logged in)
+    after_omniauth_create_account do
+      # Explicitly login if not already logged in
+      login_session(account_id) unless logged_in?
+      redirect "/hacker_dashboard"
+    end
 
     # Redirect to home after login.
     login_redirect "/hacker_dashboard"
 
     # Redirect to home page after logout.
-    logout_redirect "/"
+    logout_redirect "/hacker_dashboard"
 
-    # Redirect to wherever login redirects to after account verification.
-    verify_account_redirect { login_redirect }
-
-    # Redirect to login page after password reset.
-    reset_password_redirect { login_path }
     # ==> Deadlines
     # Change default deadlines for some actions.
     # verify_account_grace_period 3.days.to_i

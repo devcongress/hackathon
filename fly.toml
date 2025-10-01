@@ -23,6 +23,9 @@ console_command = '/rails/bin/rails console'
   cpu_kind = 'shared'
   cpus = 1
 
+[env]
+  SOLID_QUEUE_IN_PUMA = "true"
+
 [mounts]
   source = "unicef_hack_25"
   destination = "/rails/storage"

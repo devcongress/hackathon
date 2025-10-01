@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", :as => :rails_health_check
 
   # resources :homepage, only: [:index]
-  root "homepage#index"
+  root to: redirect("/hacker/login")
   get "/about", to: "homepage#about"
   get "/contact", to: "homepage#contact"
 
@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   post "/invitations/confirm/:token/decline", to: "invitations#decline", as: :decline_invitation
   post "/invitations/confirm/:token/accept", to: "invitations#accept", as: :accept_invitation
 
-  mount SolidErrors::Engine, at: "/manage/errors"
-
-  mount MissionControl::Jobs::Engine, at: "/manage/jobs"
+  constraints Rodauth::Rails.authenticate(:hacker) do
+    mount SolidErrors::Engine, at: "/manage/errors"
+    mount MissionControl::Jobs::Engine, at: "/manage/jobs"
+  end
 end

@@ -378,7 +378,7 @@ GEM
       phlexi-display
       phlexi-field (~> 0.2.0)
       zeitwerk
-    plutonium (0.26.9)
+    plutonium (0.26.10)
       action_policy (~> 0.7.0)
       listen (~> 3.8)
       pagy (~> 9.0)
@@ -398,6 +398,11 @@ GEM
       tailwind_merge
       tty-prompt (~> 0.23.1)
       zeitwerk
+    postmark (1.25.1)
+      json
+    postmark-rails (0.22.1)
+      actionmailer (>= 3.0.0)
+      postmark (>= 1.21.3, < 2.0)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -664,6 +669,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 1.2)
   pg (~> 1.6)
   plutonium
+  postmark-rails (~> 0.22.1)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
