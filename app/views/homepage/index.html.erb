@@ -8,8 +8,7 @@
       "
     >
       Join us
-      <%= event_duration %>
-      at Academic City Campus
+      <%= event_duration %> 
       <a href="<%= about_path %>" class="font-semibold text-primary-600 ml-1">
         <span class="absolute inset-0" aria-hidden="true"></span>
         Learn more
@@ -25,7 +24,7 @@
   >
     <div class="text-center">
       <!-- Header -->
-      <%= image_tag "neural-network.png", class: "w-64 inline-block", alt: "Event Logo" %>
+      <%= image_tag "banner_2.png", class: "w-128 inline-block", alt: "Event Logo" %>
       <!-- Theme -->
       <div class="mt-6">
         <span
@@ -34,7 +33,7 @@
             font-medium text-primary-700
           "
         >
-          Imagining the Future of Finance with AI
+          Transform Education. Empower Voices. Build the Future
         </span>
       </div>
       <!-- Description -->
@@ -56,7 +55,7 @@
         </div>
         <div class="text-center">
           <div class="text-2xl sm:text-3xl font-bold text-primary-600">
-            ₵30k+
+            $15,000
           </div>
           <div class="mt-1 text-base text-gray-600">in Prizes</div>
         </div>
@@ -149,42 +148,23 @@
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <% partners = [
           {
-            name: "Academic City",
-            logo: "AcademicCity",
-            description:
-              "Premier technology university fostering innovation and entrepreneurship",
-            website: "https://acity.edu.gh",
+            name: "MEST Africa",
+            logo: "mest_africa",
+            description: "Building Africa’s Next Generation of Tech Entrepreneurs",
+            website: "https://meltwater.org",
           },
           {
-            name: "Code & Cocktails",
-            logo: "CodenCocktails",
-            description: "Community-driven tech events bringing developers together",
-            website: "https://codeandcocktails.live/",
+            name: "UNICEF Ghana",
+            logo: "unicef_gh",
+            description: "For Every Child",
+            website: "https://www.unicef.org/ghana/",
           },
           {
-            name: "devCongress",
-            logo: "devCongress",
+            name: "DevCongress",
+            logo: "dev_congress",
             description:
               "Ghana's largest developer community supporting tech initiatives",
             website: "https://devcongress.org",
-          },
-          {
-            name: "Kweku Tech",
-            logo: "kwekuTech",
-            description: "Leading tech education and consulting platform",
-            website: "https://x.com/kwekutech",
-          },
-          {
-            name: "Slightly Techie",
-            logo: "slightlyTechie",
-            description: "Innovation hub dedicated to growing tech talent",
-            website: "https://slightlytechie.com",
-          },
-          {
-            name: "GamerzHive",
-            logo: "GamerzHive",
-            description: "The Ultimate Gaming Ecosystem",
-            website: "https://www.gamerzhive.com/",
           },
         ] %>
 
@@ -235,83 +215,6 @@
           Join us in shaping the future of finance technology in Africa
         </p>
         <%= link_to "Contact Us About Partnership",
-        contact_path,
-        class:
-          "mt-4 inline-flex items-center rounded-lg border border-primary-600 px-4 py-2 text-sm font-medium text-primary-600 hover:bg-primary-50 transition-colors duration-200" %>
-      </div>
-    </div>
-  </section>
-  <!-- Sponsors Section -->
-  <section class="mt-24">
-    <div class="max-w-4xl mx-auto">
-      <!-- Section Header -->
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Our Sponsors
-        </h2>
-        <p class="mt-4 text-lg text-gray-600">
-          Supported by visionary sponsors committed to driving fintech
-          innovation forward.
-        </p>
-      </div>
-      <!-- Sponsors Grid -->
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <% sponsors = [
-          {
-            name: "Consolidated Bank Ghana Ltd.",
-            logo: "CBG",
-            description: "Your gateway to simple, secure, and unique Banking",
-            website: "",
-          },
-        ] %>
-
-        <% sponsors.each do |sponsor| %>
-          <div
-            class="
-              group relative bg-white rounded-xl border border-gray-200 p-6
-              hover:border-primary-200 hover:shadow-md transition-all duration-300
-            "
-          >
-            <!-- Sponsor Logo -->
-            <div class="h-12 mb-6">
-              <%= image_tag "sponsors/#{sponsor[:logo]}.png",
-              class:
-                "h-full w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300",
-              alt: "#{sponsor[:name]} logo" %>
-            </div>
-            <!-- Sponsor Info -->
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900">
-                <%= sponsor[:name] %>
-              </h3>
-              <p class="mt-2 text-sm text-gray-600">
-                <%= sponsor[:description] %>
-              </p>
-              <!-- Visit Website Link -->
-              <%= link_to sponsor[:website], target: :blank,
-                  class: "mt-4 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700" do %>
-                Visit website
-                <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <!-- Sponsorship CTA -->
-      <div class="mt-16 text-center">
-        <h3 class="text-lg font-semibold text-gray-900">
-          Interested in becoming a sponsor?
-        </h3>
-        <p class="mt-2 text-gray-600">
-          Join us in shaping the future of finance technology in Africa
-        </p>
-        <%= link_to "Contact Us About Sponsorship",
         contact_path,
         class:
           "mt-4 inline-flex items-center rounded-lg border border-primary-600 px-4 py-2 text-sm font-medium text-primary-600 hover:bg-primary-50 transition-colors duration-200" %>
