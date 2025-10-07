@@ -21,38 +21,6 @@
         <h3 class="text-lg font-semibold text-gray-900">Hackathon Dates</h3>
         <p class="mt-2 text-gray-600 font-medium">November 12-14, 2025</p>
         <p class="text-gray-600">3-day intensive hackathon</p>
-        <button 
-          onclick="addToCalendar()"
-          class="mt-2 inline-flex items-center space-x-2 text-sm text-primary-600 hover:text-primary-500 transition-colors duration-150">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-          </svg>
-          <span>Add to Calendar</span>
-        </button>
-        <script>
-          function addToCalendar() {
-            const icsContent = [
-              'BEGIN:VCALENDAR',
-              'VERSION:2.0',
-              'BEGIN:VEVENT',
-              'DTSTART:20251112T090000',
-              'DTEND:20251114T180000',
-              'SUMMARY:UNICEF StartUp Lab Hackathon 2025: AI for Inclusive Learning',
-              'DESCRIPTION:3-day hackathon focused on developing AI-powered solutions for inclusive learning, particularly for children with hearing impairments and speech difficulties. $15,000 prize pool. Transform education and empower voices!',
-              'LOCATION:Ghana (Location TBD)',
-              'END:VEVENT',
-              'END:VCALENDAR'
-            ].join('\n');
-
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = 'unicef-ai-inclusive-learning-hackathon.ics';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }
-        </script>
       </div>
     </div>
 
@@ -258,7 +226,7 @@
       <div class="text-center">
         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-900 mb-2">Design Innovation</h3>
@@ -292,7 +260,7 @@
     <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Key Dates - Mark Your Calendar</h2>
     <div class="space-y-4">
       <div class="flex items-center p-4 bg-gradient-to-r from-primary-50 to-blue-50 rounded-lg border border-primary-200">
-        <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4 border border-primary-300">
+        <div class="w-[4.5rem] h-[4.5rem] bg-primary-100 rounded-full flex items-center justify-center mr-4 border border-primary-300">
           <span class="font-semibold text-primary-600">Oct 6</span>
         </div>
         <div>
@@ -302,7 +270,7 @@
       </div>
       
       <div class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mr-4 border border-gray-300">
+        <div class="w-[4.5rem] h-[4.5rem] bg-gray-100 rounded-full flex items-center justify-center mr-4 border border-gray-300">
           <span class="font-semibold text-gray-600">Oct-Nov</span>
         </div>
         <div>
@@ -312,7 +280,7 @@
       </div>
       
       <div class="flex items-center p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200">
-        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4 border border-yellow-300">
+        <div class="w-[4.5rem] h-[4.5rem] bg-yellow-100 rounded-full flex items-center justify-center mr-4 border border-yellow-300">
           <span class="font-semibold text-yellow-600">Nov 11</span>
         </div>
         <div>
@@ -322,14 +290,59 @@
       </div>
       
       <div class="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
-        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 border border-green-300">
-          <span class="font-semibold text-green-600">Nov 12-14</span>
+        <div class="w-[4.5rem] h-[4.5rem] bg-green-100 rounded-full flex items-center justify-center mr-4 border border-green-300">
+          <span class="font-semibold text-green-600">Nov 12</span>
         </div>
         <div>
-          <h3 class="font-semibold text-gray-900">3-Day Hackathon</h3>
+          <h3 class="font-semibold text-gray-900">Hack Starts</h3>
           <p class="text-gray-600">Intensive development, mentorship, and presentations</p>
         </div>
       </div>
+      <div class="flex items-center p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-lg border border-red-200">
+        <div class="w-[4.5rem] h-[4.5rem] bg-red-100 rounded-full flex items-center justify-center mr-4 border border-red-300">
+          <span class="font-semibold text-red-600">Nov 14</span>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900">Hack Ends, Finalists Announced and Awarded</h3>
+          <p class="text-gray-600">Projects validated, judged and prizes awarded</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Add to Calendar Button -->
+    <div class="text-center mt-8">
+      <button 
+        onclick="addToCalendar()"
+        class="inline-flex items-center space-x-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-150 shadow-md hover:shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        <span class="font-medium">Add All Events to Calendar</span>
+      </button>
+      <script>
+        function addToCalendar() {
+          const icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'BEGIN:VEVENT',
+            'DTSTART:20251112T090000',
+            'DTEND:20251114T180000',
+            'SUMMARY:UNICEF StartUp Lab Hackathon 2025: AI for Inclusive Learning',
+            'DESCRIPTION:3-day hackathon focused on developing AI-powered solutions for inclusive learning, particularly for children with hearing impairments and speech difficulties. $15,000 prize pool. Transform education and empower voices!',
+            'LOCATION:Ghana (Location TBD)',
+            'END:VEVENT',
+            'END:VCALENDAR'
+          ].join('\\n');
+
+          const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'unicef-ai-inclusive-learning-hackathon.ics';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      </script>
     </div>
   </div>
 
@@ -338,59 +351,67 @@
     <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Partnership Power</h2>
     <p class="text-lg text-gray-600 text-center mb-8">This hackathon brings together the expertise of:</p>
     
-    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <% partners = [
-        {
-          name: "UNICEF Ghana",
-          logo: "unicef_gh",
-          description: "Global expertise in child development and inclusive education",
-          website: "https://www.unicef.org/ghana/",
-          color: "blue"
-        },
-        {
-          name: "MEST Africa",
-          logo: "mest_africa",
-          description: "Leading technology training and entrepreneurship support",
-          website: "https://meltwater.org",
-          color: "green"
-        },
-        {
-          name: "DevCongress",
-          logo: "dev_congress",
-          description: "Ghana's premier tech community driving innovation",
-          website: "https://devcongress.org",
-          color: "purple"
-        },
-      ] %>
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <% partners = [
+          {
+            name: "MEST Africa",
+            logo: "mest_africa",
+            description: "Building Africa’s Next Generation of Tech Entrepreneurs",
+            website: "https://meltwater.org",
+          },
+          {
+            name: "UNICEF Ghana",
+            logo: "unicef_gh",
+            description: "For Every Child",
+            website: "https://www.unicef.org/ghana/",
+          },
+          {
+            name: "DevCongress",
+            logo: "dev_congress",
+            description:
+              "Ghana's largest developer community supporting tech initiatives",
+            website: "https://devcongress.org",
+          },
+        ] %>
 
-      <% partners.each do |partner| %>
-        <div class="text-center">
-          <div class="w-20 h-20 bg-<%= partner[:color] %>-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <!-- Try to display logo if available, otherwise show letter -->
-            <% begin %>
+        <% partners.each do |partner| %>
+          <div
+            class="
+              group relative bg-white rounded-xl border border-gray-200 p-6
+              hover:border-primary-200 hover:shadow-md transition-all duration-300
+            "
+          >
+            <!-- Partner Logo -->
+            <div class="h-12 mb-6">
               <%= image_tag "partners/#{partner[:logo]}.png",
-                  class: "h-12 w-12 object-contain",
-                  alt: "#{partner[:name]} logo" %>
-            <% rescue %>
-              <span class="text-2xl font-bold text-<%= partner[:color] %>-600"><%= partner[:name][0] %></span>
-            <% end %>
+              class:
+                "h-full w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300",
+              alt: "#{partner[:name]} logo" %>
+            </div>
+            <!-- Partner Info -->
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">
+                <%= partner[:name] %>
+              </h3>
+              <p class="mt-2 text-sm text-gray-600">
+                <%= partner[:description] %>
+              </p>
+              <!-- Visit Website Link -->
+              <%= link_to partner[:website], target: :blank,
+                  class: "mt-4 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700" do %>
+                Visit website
+                <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              <% end %>
+            </div>
           </div>
-          <h3 class="font-semibold text-gray-900"><%= partner[:name] %></h3>
-          <p class="text-gray-600 mt-2 mb-4"><%= partner[:description] %></p>
-          <%= link_to partner[:website], target: :blank,
-              class: "inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700" do %>
-            Visit website
-            <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path
-                fill-rule="evenodd"
-                d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
   </div>
 
 
