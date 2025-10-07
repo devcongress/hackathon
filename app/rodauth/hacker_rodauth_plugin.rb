@@ -15,6 +15,7 @@ class HackerRodauthPlugin < RodauthPlugin
     enable(
       :omniauth,
       :login,
+      :create_account,
       :remember,
       :logout,
       :case_insensitive_login,
