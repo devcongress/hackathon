@@ -29,6 +29,6 @@ module ApplicationHelper
   end
 
   def event_duration
-    "March 28-30, 2025"
+    "November 12-14, 2025"
   end
 end
