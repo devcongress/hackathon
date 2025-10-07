@@ -8,7 +8,7 @@ module.exports = {
   plugins: [
     // add plugins here
   ].concat(
-    plutoniumTailwindConfig.plugins.map(function (plugin) {
+    plutoniumTailwindConfig.plugins.map(function(plugin) {
       switch (typeof plugin) {
         case "function":
           return tailwindPlugin(plugin);
@@ -23,17 +23,17 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: "#E8F5E9", // Lightest shade for subtle backgrounds
-          100: "#C8E6C9", // Light shade for secondary elements
-          200: "#A5D6A7", // Light shade for accents
-          300: "#81C784", // Mid-light shade for buttons or icons
-          400: "#66BB6A", // Mid shade for primary actions
-          500: "#4CAF50", // Base green for primary elements
-          600: "#43A047", // Slightly darker for hover states
-          700: "#388E3C", // Darker shade for active states
-          800: "#2E7D32", // Dark shade for text or strong accents
-          900: "#1B5E20", // Darkest shade for high-contrast text
-          950: "#0D3B10", // Very dark for backgrounds or large text
+          50: "#E0F7FE", // Lightest shade for subtle backgrounds
+          100: "#B3ECFD", // Light shade for secondary elements
+          200: "#80DFFC", // Light shade for accents
+          300: "#4DD2FB", // Mid-light shade for buttons or icons
+          400: "#26C8FA", // Mid shade for hover states
+          500: "#00AEEF", // Base cyan for primary elements
+          600: "#009DD6", // Slightly darker for active states
+          700: "#0089BC", // Darker shade for pressed states
+          800: "#0075A3", // Dark shade for text or strong accents
+          900: "#005A7D", // Darkest shade for high-contrast text
+          950: "#003D54", // Very dark for backgrounds or large text
         },
       },
     },

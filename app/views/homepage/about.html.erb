@@ -1,177 +1,436 @@
-<%= content_for :title, "About Us | UNICEF StartUp Lab Hack" %>
+<%= content_for :title, "AI for Inclusive Learning | UNICEF StartUp Lab Hackathon 2025" %>
 
-<div class="mx-auto max-w-3xl px-4 py-8 sm:py-16">
+<div class="mx-auto max-w-4xl px-4 py-8 sm:py-16">
+  <!-- Hero Section -->
+  <div class="text-center mb-16">
+    <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+      AI for Inclusive Learning
+    </h1>
+    <p class="text-xl text-gray-600 mb-2">Transform Education. Empower Voices. Build the Future.</p>
+    <p class="text-lg text-primary-600 font-semibold">UNICEF StartUp Lab Hackathon 2025</p>
+  </div>
+
   <!-- Event Details Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
     <!-- Date -->
-    <div class="flex items-start space-x-4">
+    <div class="flex items-start space-x-4 p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
       </svg>
       <div>
-        <h3 class="text-lg font-semibold text-gray-900">Date</h3>
-        <p class="mt-2 text-gray-600"><%= event_duration %></p>
-        <p class="text-gray-600">Friday evening through Sunday afternoon</p>
-        <button 
-          onclick="addToCalendar()"
-          class="mt-2 inline-flex items-center space-x-2 text-sm text-primary-600 hover:text-primary-500 transition-colors duration-150">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-          </svg>
-          <span>Add to Calendar</span>
-        </button>
-        <script>
-          function addToCalendar() {
-            const icsContent = [
-              'BEGIN:VCALENDAR',
-              'VERSION:2.0',
-              'BEGIN:VEVENT',
-              'DTSTART:20250314T190000',
-              'DTEND:20250316T140000',
-              'SUMMARY:UNICEF StartUp Lab Hack',
-              'DESCRIPTION:36-hour hackathon focused on Imagining the Future of Finance with AI. Prize pool of GHS 30,000. Bring your innovative ideas and join us for an exciting weekend of coding, learning, and networking!',
-              'LOCATION: [TBD]',
-              'END:VEVENT',
-              'END:VCALENDAR'
-            ].join('\n');
+        <h3 class="text-lg font-semibold text-gray-900">Hackathon Dates</h3>
+        <p class="mt-2 text-gray-600 font-medium">November 12-14, 2025</p>
+        <p class="text-gray-600">3-day intensive hackathon</p>
+      </div>
+    </div>
 
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = 'unicef-startup-lab-hack.ics';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }
-        </script>
+    <!-- Team Size -->
+    <div class="flex items-start space-x-4 p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900">Team Requirements</h3>
+        <p class="mt-2 text-gray-600">2-4 members per team</p>
+        <p class="text-sm text-gray-500">Diverse backgrounds encouraged</p>
+      </div>
+    </div>
+
+    <!-- Registration Timeline -->
+    <div class="flex items-start space-x-4 p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900">Registration</h3>
+        <p class="mt-2 text-gray-600">Team Registration Opens: October 6th</p>
+        <p class="text-gray-600">Team Formation Closes: November 11th</p>
       </div>
     </div>
 
     <!-- Location -->
-    <div class="flex items-start space-x-4">
+    <div class="flex items-start space-x-4 p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
       <div>
         <h3 class="text-lg font-semibold text-gray-900">Location</h3>
-        <p class="mt-2 text-gray-600">
-          <a href="https://maps.app.goo.gl/ZHyiNzri8G68ryL97" 
-             target="_blank" 
-             class="text-primary-600 hover:text-primary-500 hover:underline">
-            Academic City Campus
-          </a>
-        </p>
+        <p class="mt-2 text-gray-600">Ghana (Venue TBD)</p>
+        <p class="text-sm text-gray-500">Details coming soon</p>
       </div>
     </div>
+  </div>
 
-    <!-- Duration -->
-    <div class="flex items-start space-x-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900">Duration</h3>
-        <p class="mt-2 text-gray-600">36 hours of innovation</p>
-        <p class="text-gray-600">Friday 7 PM – Sunday 2 PM</p>
-      </div>
+  <!-- Prize Pool -->
+  <div class="mb-16">
+    <div class="flex items-center justify-center mb-8">
+      <h2 class="text-3xl font-bold text-gray-900">$15,000 Prize Pool</h2>
     </div>
-
-    <!-- Team Size -->
-    <div class="flex items-start space-x-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900">Team Size</h3>
-        <p class="mt-2 text-gray-600">3-5 members per team</p>
-      </div>
-    </div>
-
-    <!-- Prize Pool -->
-    <div class="md:col-span-2 mt-4">
-      <div class="flex items-start space-x-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <div class="flex-1">
-          <h3 class="text-lg font-semibold text-gray-900">Prize Pool</h3>
-          <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-lg p-4 text-center">
-              <span class="text-2xl">🥇</span>
-              <h4 class="font-semibold text-gray-900 mt-2">First Place</h4>
-              <p class="text-gray-700 font-medium">GHS 15,000</p>
+    <div class="text-center">
+      <p class="text-lg text-gray-600 mb-6">Plus incubation support, funding access, and mentorship from UNICEF and MEST Africa</p>
+      <div class="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Beyond Prizes</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
             </div>
-            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 text-center">
-              <span class="text-2xl">🥈</span>
-              <h4 class="font-semibold text-gray-900 mt-2">Second Place</h4>
-              <p class="text-gray-700 font-medium">GHS 10,000</p>
+            <p class="font-medium text-gray-900">Incubation Programs</p>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
             </div>
-            <div class="bg-gradient-to-br from-amber-50/80 to-orange-50 rounded-lg p-4 text-center">
-              <span class="text-2xl">🥉</span>
-              <h4 class="font-semibold text-gray-900 mt-2">Third Place</h4>
-              <p class="text-gray-700 font-medium">GHS 5,000</p>
+            <p class="font-medium text-gray-900">UNICEF Mentorship</p>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
             </div>
+            <p class="font-medium text-gray-900">Pilot Implementation</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- About Section -->
-  <div class="mt-16">
-    <h2 class="text-2xl font-bold text-gray-900">What to Expect</h2>
-    <div class="mt-6 space-y-6 text-gray-600">
-      <p>
-        Join us for an intensive 36-hour hackathon where you'll collaborate with fellow innovators to create cutting-edge solutions in fintech. Whether you're a seasoned developer or just starting your coding journey, UNICEF StartUp Lab Hack provides the perfect platform to showcase your skills and learn from industry experts.
-      </p>
-      <p>
-        Throughout the event, you'll have access to mentors, technical workshops, and API integration support. Work alongside like-minded individuals, receive guidance from experienced professionals, and compete for exciting prizes worth GHS 30,000 in total!
+  <!-- The Challenge -->
+  <div class="mb-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">The Challenge That Matters</h2>
+    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 mb-8">
+      <div class="prose prose-lg max-w-none text-gray-700">
+        <p class="text-lg leading-relaxed mb-6">
+          Over the past three decades, Ghana has made significant progress in expanding access to education. More children are in school today than ever before. But some groups of learners are still being left behind—particularly <strong class="text-gray-900">children with hearing impairments and speech difficulties</strong>.
+        </p>
+        <p class="leading-relaxed mb-6">
+          For these children, sign language is not optional—it is their primary way of communicating and learning. Yet until recently, schools across Ghana used different signs depending on their community or teacher. This lack of consistency created barriers for deaf learners and made it harder for them to progress in education.
+        </p>
+        <p class="leading-relaxed mb-6">
+          To address this, the Ghana National Association of the Deaf (GNAD) along with UNICEF and other key stakeholders developed the <strong class="text-gray-900">Harmonized Ghanaian Sign Language Dictionary</strong>, a groundbreaking resource that brings uniformity and recognition to Ghanaian Sign Language.
+        </p>
+        <div class="bg-white rounded-lg p-6 border-l-4 border-primary-500">
+          <p class="text-gray-800 font-medium mb-2">The Problem:</p>
+          <p class="text-gray-700">This dictionary exists mainly in print. It is static, difficult to use widely, and not yet integrated into classrooms, digital platforms, or assistive technologies.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center bg-gradient-to-r from-primary-600 to-blue-600 text-white rounded-2xl p-8">
+      <h3 class="text-2xl font-bold mb-4">Your Mission</h3>
+      <p class="text-lg opacity-90">
+        Harness the power of AI and assistive technologies to bridge this communication gap and create truly inclusive learning environments.
       </p>
     </div>
   </div>
 
-  <!-- Highlights -->
-  <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-    <!-- Learning & Growth -->
-    <div class="flex items-start space-x-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900">Learning & Growth</h3>
-        <ul class="mt-2 space-y-2 text-gray-600">
-          <li>Technical workshops</li>
-          <li>Mentorship from industry professionals</li>
-          <li>Networking opportunities with peers and experts</li>
-        </ul>
+  <!-- Solution Requirements -->
+  <div class="mb-16">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">Solution Requirements</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900">Accessible</h3>
+        </div>
+        <p class="text-gray-600">Available to learners regardless of socio-economic background</p>
       </div>
-    </div>
 
-    <!-- Prizes & Recognition -->
-    <div class="flex items-start space-x-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-      </svg>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900">Prizes & Recognition</h3>
-        <ul class="mt-2 space-y-2 text-gray-600">
-          <li>GHS 30,000 total prize pool</li>
-          <li>SWAG for all participants</li>
-          <li>Opportunity to showcase your solution to industry leaders</li>
-          <li>Potential for continued mentorship after the event</li>
-        </ul>
+      <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900">User-Friendly</h3>
+        </div>
+        <p class="text-gray-600">Designed for varying technical skill levels</p>
+      </div>
+
+      <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h4a1 1 0 011 1v2m3 0V1.5a.5.5 0 01.5-.5h2a.5.5 0 01.5.5V4m-12 0h16l-1 16H6L5 4z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900">Accurate</h3>
+        </div>
+        <p class="text-gray-600">Precise in interpreting Ghanaian Sign Language</p>
+      </div>
+
+      <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900">Scalable</h3>
+        </div>
+        <p class="text-gray-600">Ready for nationwide implementation</p>
+      </div>
+
+      <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900">Sustainable</h3>
+        </div>
+        <p class="text-gray-600">Cost-effective for long-term deployment</p>
+      </div>
+
+      <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900">Culturally Sensitive</h3>
+        </div>
+        <p class="text-gray-600">Respectful of Ghanaian learning environments</p>
       </div>
     </div>
   </div>
+
+  <!-- Who Should Apply -->
+  <div class="mb-16">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Who Should Apply?</h2>
+    <p class="text-lg text-gray-600 text-center mb-8">We're looking for diverse teams of 2-4 that combine:</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Technical Excellence</h3>
+        <p class="text-gray-600">Developers, data scientists, AI specialists</p>
+      </div>
+
+      <div class="text-center">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Design Innovation</h3>
+        <p class="text-gray-600">UI/UX designers who understand accessibility</p>
+      </div>
+
+      <div class="text-center">
+        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Domain Expertise</h3>
+        <p class="text-gray-600">Educators, linguists, special education advocates</p>
+      </div>
+
+      <div class="text-center">
+        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Diverse Perspectives</h3>
+        <p class="text-gray-600">Varied backgrounds and geographic representation</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="mb-16">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Key Dates - Mark Your Calendar</h2>
+    <div class="space-y-4">
+      <div class="flex items-center p-4 bg-gradient-to-r from-primary-50 to-blue-50 rounded-lg border border-primary-200">
+        <div class="w-[4.5rem] h-[4.5rem] bg-primary-100 rounded-full flex items-center justify-center mr-4 border border-primary-300">
+          <span class="font-semibold text-primary-600">Oct 6</span>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900">Hack Launch & Team Registration Opens</h3>
+          <p class="text-gray-600">Start forming your team</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+        <div class="w-[4.5rem] h-[4.5rem] bg-gray-100 rounded-full flex items-center justify-center mr-4 border border-gray-300">
+          <span class="font-semibold text-gray-600">Oct-Nov</span>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900">Info Sessions & Workshops</h3>
+          <p class="text-gray-600">October 14, 20, 27 • November 3, 10</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200">
+        <div class="w-[4.5rem] h-[4.5rem] bg-yellow-100 rounded-full flex items-center justify-center mr-4 border border-yellow-300">
+          <span class="font-semibold text-yellow-600">Nov 11</span>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900">Team Formation Closes & Problem Statement Released</h3>
+          <p class="text-gray-600">Final teams confirmed</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+        <div class="w-[4.5rem] h-[4.5rem] bg-green-100 rounded-full flex items-center justify-center mr-4 border border-green-300">
+          <span class="font-semibold text-green-600">Nov 12</span>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900">Hack Starts</h3>
+          <p class="text-gray-600">Intensive development, mentorship, and presentations</p>
+        </div>
+      </div>
+      <div class="flex items-center p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-lg border border-red-200">
+        <div class="w-[4.5rem] h-[4.5rem] bg-red-100 rounded-full flex items-center justify-center mr-4 border border-red-300">
+          <span class="font-semibold text-red-600">Nov 14</span>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900">Hack Ends, Finalists Announced and Awarded</h3>
+          <p class="text-gray-600">Projects validated, judged and prizes awarded</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Add to Calendar Button -->
+    <div class="text-center mt-8">
+      <button 
+        onclick="addToCalendar()"
+        class="inline-flex items-center space-x-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-150 shadow-md hover:shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        <span class="font-medium">Add All Events to Calendar</span>
+      </button>
+      <script>
+        function addToCalendar() {
+          const icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'BEGIN:VEVENT',
+            'DTSTART:20251112T090000',
+            'DTEND:20251114T180000',
+            'SUMMARY:UNICEF StartUp Lab Hackathon 2025: AI for Inclusive Learning',
+            'DESCRIPTION:3-day hackathon focused on developing AI-powered solutions for inclusive learning, particularly for children with hearing impairments and speech difficulties. $15,000 prize pool. Transform education and empower voices!',
+            'LOCATION:Ghana (Location TBD)',
+            'END:VEVENT',
+            'END:VCALENDAR'
+          ].join('\\n');
+
+          const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'unicef-ai-inclusive-learning-hackathon.ics';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      </script>
+    </div>
+  </div>
+
+  <!-- Partnership -->
+  <div class="mb-16">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Partnership Power</h2>
+    <p class="text-lg text-gray-600 text-center mb-8">This hackathon brings together the expertise of:</p>
+    
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <% partners = [
+          {
+            name: "MEST Africa",
+            logo: "mest_africa",
+            description: "Building Africa’s Next Generation of Tech Entrepreneurs",
+            website: "https://meltwater.org",
+          },
+          {
+            name: "UNICEF Ghana",
+            logo: "unicef_gh",
+            description: "For Every Child",
+            website: "https://www.unicef.org/ghana/",
+          },
+          {
+            name: "DevCongress",
+            logo: "dev_congress",
+            description:
+              "Ghana's largest developer community supporting tech initiatives",
+            website: "https://devcongress.org",
+          },
+        ] %>
+
+        <% partners.each do |partner| %>
+          <div
+            class="
+              group relative bg-white rounded-xl border border-gray-200 p-6
+              hover:border-primary-200 hover:shadow-md transition-all duration-300
+            "
+          >
+            <!-- Partner Logo -->
+            <div class="h-12 mb-6">
+              <%= image_tag "partners/#{partner[:logo]}.png",
+              class:
+                "h-full w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300",
+              alt: "#{partner[:name]} logo" %>
+            </div>
+            <!-- Partner Info -->
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">
+                <%= partner[:name] %>
+              </h3>
+              <p class="mt-2 text-sm text-gray-600">
+                <%= partner[:description] %>
+              </p>
+              <!-- Visit Website Link -->
+              <%= link_to partner[:website], target: :blank,
+                  class: "mt-4 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700" do %>
+                Visit website
+                <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+
 
   <!-- CTA Section -->
-  <div class="mt-16 text-center">
-    <h2 class="text-2xl font-bold text-gray-900">Ready to Make Your Mark?</h2>
-    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
-      <%= link_to "Register Your Team", 
+  <div class="text-center bg-gradient-to-r from-primary-600 to-blue-600 text-white rounded-2xl p-12">
+    <h2 class="text-3xl font-bold mb-4">Ready to Build the Future?</h2>
+    <p class="text-xl opacity-90 mb-6">
+      This is more than a hackathon. It's your chance to create technology that opens doors, amplifies voices, and transforms education for thousands of children in Ghana.
+    </p>
+    <p class="text-lg opacity-80 mb-8">
+      <em>The code you write here changes lives.</em>
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+      <%= link_to "Apply Now with Your Team", 
                    rodauth(:hacker).create_account_path,
-                   class: "group w-64 sm:w-auto rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" %>
+                   class: "group bg-white text-primary-600 rounded-xl px-8 py-4 text-lg font-semibold shadow-lg transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-600" %>
     </div>
+    <p class="mt-6 text-primary-100">
+      <strong>Your team. Your skills. Ghana's future.</strong>
+    </p>
   </div>
 </div>
