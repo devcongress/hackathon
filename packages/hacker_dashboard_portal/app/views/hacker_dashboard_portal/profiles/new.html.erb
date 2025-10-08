@@ -1,0 +1,82 @@
+<div class="mx-auto max-w-7xl px-4 py-12 sm:py-16">
+  <div class="max-w-xl mx-auto">
+
+    <!-- Main Card -->
+    <div class="bg-white rounded-2xl shadow-md border border-primary-100/50 px-6 py-12 sm:px-12">
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Welcome! 👋</h1>
+        <p class="mt-4 text-lg text-gray-700">
+          We're excited to have you join us. Let's get your profile set up.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <%= form_with model: resource_record!,
+                    url: profiles_path,
+                    local: true,
+                    class: "space-y-6" do |f| %>
+
+        <!-- Error Messages -->
+        <% if resource_record!.errors.any? %>
+          <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-red-800">
+                  <%= pluralize(resource_record!.errors.count, "error") %> prevented this profile from being saved:
+                </h3>
+                <ul class="mt-2 text-sm text-red-700 list-disc list-inside">
+                  <% resource_record!.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <!-- Full Name Field -->
+        <div>
+          <%= f.label :name, class: "flex items-center gap-2 mt-2 block mb-2 text-base font-bold text-gray-500" do %>
+            <%= render Phlex::TablerIcons::User.new(class: "w-4 h-4") %>
+            <span>Full Name</span>
+          <% end %>
+          <%= f.text_field :name,
+                          required: true,
+                          autofocus: true,
+                          placeholder: "John Doe",
+                          class: "w-full p-2 border rounded-md shadow-sm font-medium text-sm focus:ring-2 border-gray-300 placeholder-gray-400 focus:ring-primary-500 focus:border-primary-500" %>
+        </div>
+
+        <!-- Phone Number Field -->
+        <div>
+          <%= f.label :telephone_number, class: "flex items-center gap-2 mt-2 block mb-2 text-base font-bold text-gray-500" do %>
+            <%= render Phlex::TablerIcons::Phone.new(class: "w-4 h-4") %>
+            <span>Phone Number</span>
+          <% end %>
+          <%= f.telephone_field :telephone_number,
+                                required: true,
+                                placeholder: "+233 XX XXX XXXX",
+                                class: "w-full p-2 border rounded-md shadow-sm font-medium text-sm focus:ring-2 border-gray-300 placeholder-gray-400 focus:ring-primary-500 focus:border-primary-500" %>
+          <p class="text-sm text-gray-500 mt-1.5">
+            Include country code (e.g., +233)
+          </p>
+        </div>
+
+        <!-- Hidden Return To Field -->
+        <%= f.hidden_field :return_to, value: params[:return_to] %>
+
+        <!-- Submit Button -->
+        <div class="pt-4">
+          <%= f.submit "Continue to Dashboard",
+                      class: "w-full rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
