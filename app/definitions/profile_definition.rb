@@ -5,6 +5,8 @@ class ProfileDefinition < ::ResourceDefinition
   edit_page_title "Edit Your Profile"
   index_page_title "Team Members"
 
+  input :skillsets, as: :select, multiple: true, choices: Profile::SKILLSETS.invert
+
   class Form < Form
     private
 

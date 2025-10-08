@@ -378,6 +378,7 @@ GEM
       phlexi-display
       phlexi-field (~> 0.2.0)
       zeitwerk
+    phonelib (0.10.12)
     plutonium (0.26.10)
       action_policy (~> 0.7.0)
       listen (~> 3.8)
@@ -668,6 +669,7 @@ DEPENDENCIES
   omniauth-github (~> 2.0)
   omniauth-google-oauth2 (~> 1.2)
   pg (~> 1.6)
+  phonelib (~> 0.10.12)
   plutonium
   postmark-rails (~> 0.22.1)
   propshaft

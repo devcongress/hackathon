@@ -23,8 +23,13 @@ class Hackathon::HealthAndSafety < Hackathon::ResourceRecord
   belongs_to :hacker
 
   validates :name, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, phone: {possible: true, types: :mobile}
   validates :consent, acceptance: true
+
+  def phone_number=(value)
+    parsed = Phonelib.parse(value)
+    super(parsed.valid? ? parsed.e164 : value)
+  end
 
   def consented
     valid? ? "Accepted" : "Declined"
