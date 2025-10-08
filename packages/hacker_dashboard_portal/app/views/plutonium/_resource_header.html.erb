@@ -1,10 +1,9 @@
 <%= render Plutonium::UI::Layout::Header.new do |header| %>
   <% header.with_brand_logo do %>
-    <%= inline_svg_tag(resource_logo_asset, class: "h-12 dark:text-white") %>
+    <%= image_tag(resource_logo_asset, class: "h-12 dark:text-white") %>
   <% end %>
 
   <% header.with_action do %>
-    <%= render Plutonium::UI::ColorModeSelector.new %>
     <%=
       render Plutonium::UI::NavUser.new(
                name: current_user&.profile&.name,
