@@ -8,7 +8,9 @@ class HackerDashboardPortal::ProfilesController < ::ProfilesController
   layout :resolve_layout
 
   def new
-    if resource_record?
+    authorize_current! resource_class
+
+    unless current_user.profile.nil?
       redirect_to root_path
       return
     end
@@ -19,6 +21,6 @@ class HackerDashboardPortal::ProfilesController < ::ProfilesController
   private
 
   def resolve_layout
-    (action_name == "new") ? "onboarding" : "resource"
+    %w[new create].include?(action_name) ? "onboarding" : "resource"
   end
 end

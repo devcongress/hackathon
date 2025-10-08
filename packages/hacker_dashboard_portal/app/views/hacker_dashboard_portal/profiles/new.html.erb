@@ -68,12 +68,44 @@
           </p>
         </div>
 
+        <!-- Skillsets Field -->
+        <div>
+          <%= f.label :skillsets, class: "flex items-center gap-2 mt-2 block mb-2 text-base font-bold text-gray-500" do %>
+            <%= render Phlex::TablerIcons::Code.new(class: "w-4 h-4") %>
+            <span>Skillsets</span>
+          <% end %>
+          <div class="grid grid-cols-2 gap-3">
+            <% Profile::SKILLSETS.each do |label, value| %>
+              <label class="flex items-center">
+                <%= check_box_tag "profile[skillsets][]", value,
+                    (resource_record!.skillsets || []).include?(value),
+                    id: "profile_skillsets_#{value}",
+                    class: "rounded border-gray-300 text-primary-600 shadow-sm focus:ring-primary-500" %>
+                <span class="ml-2 text-sm text-gray-700"><%= label %></span>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Region Field -->
+        <div>
+          <%= f.label :region, class: "flex items-center gap-2 mt-2 block mb-2 text-base font-bold text-gray-500" do %>
+            <%= render Phlex::TablerIcons::MapPin.new(class: "w-4 h-4") %>
+            <span>Region</span>
+          <% end %>
+          <%= f.select :region,
+                       Profile::REGIONS,
+                       {prompt: "Select your region"},
+                       required: true,
+                       class: "w-full p-2 border rounded-md shadow-sm font-medium text-sm focus:ring-2 border-gray-300 focus:ring-primary-500 focus:border-primary-500" %>
+        </div>
+
         <!-- Hidden Return To Field -->
         <%= f.hidden_field :return_to, value: params[:return_to] %>
 
         <!-- Submit Button -->
         <div class="pt-4">
-          <%= f.submit "Continue to Dashboard",
+          <%= f.submit "Continue",
                       class: "w-full rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-4 text-lg font-semibold text-white shadow-md transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" %>
         </div>
       <% end %>
