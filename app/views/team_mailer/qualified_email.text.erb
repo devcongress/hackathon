@@ -9,14 +9,14 @@ What's Next?
 2️⃣ Review event rules: Familiarize your team with guidelines and schedules [insert link to rules].
 3️⃣ Finalize details: Need to tweak your team name or project idea? Update them in your dashboard.
 
-🗓 Event kickoff: <%= ApplicationMailer.event_date %> | 7:00 PM GMT sharp
-📍 Location: Academic City Campus
-🗺️ Google Map Directions: https://maps.app.goo.gl/SifT5QSLbQQV91Ye8
+🗓 Event kickoff: <%= ApplicationMailer.event_date %> | <%= ApplicationMailer.event_time %>
+📍 Location: <%= ApplicationMailer.location %>
+🗺️ Google Map Directions: <%= ApplicationMailer.location_map %>
 
 Let's turn this qualification into a winning opportunity! 🚀
 
 Best regards,
-The UNICEF StartUp Lab Hack Team
+<%= ApplicationMailer.hack_name %> Team
 
 P.S. Remind your team to check their emails regularly for updates—missing critical info could cost you the competition! 🔥
 

@@ -14,11 +14,11 @@ What's Next?
 Key Details to Mark
 ===================
 
-🗓 Kickoff: <%= ApplicationMailer.event_date %> | 7PM GMT
-📍 Location: Academic City Campus
-🗺️ Google Map Directions: https://maps.app.goo.gl/SifT5QSLbQQV91Ye8
+🗓 Event kickoff: <%= ApplicationMailer.event_date %> | <%= ApplicationMailer.event_time %>
+📍 Location: <%= ApplicationMailer.location %>
+🗺️ Google Map Directions: <%= ApplicationMailer.location_map %>
 
 Let's make UNICEF StartUp Lab Hack legendary. It's time to build, break, and shine! 💻✨
 
 Best regards,
-The UNICEF StartUp Lab Hack Team
+<%= ApplicationMailer.hack_name %> Team
