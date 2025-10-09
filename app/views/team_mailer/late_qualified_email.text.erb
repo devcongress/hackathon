@@ -8,6 +8,7 @@ What Does Late-Qualified Mean?
 
 Due to overwhelming interest, we've reached the maximum team threshold for the event.
 While your team has met the minimum requirements, your participation will depend on availability if any registered teams drop out or fail to complete their registration.
+So be on the lookout in your inbox.
 
 
 What's Next?
@@ -22,13 +23,13 @@ We'll notify you if a spot opens up and your team is selected to participate.
 Key Details to Keep in Mind
 ===========================
 
-🗓 Event kickoff: <%= ApplicationMailer.event_date %> | 7:00 PM sharp
-📍 Location: Academic City Campus
-🗺️ Google Map Directions: https://maps.app.goo.gl/SifT5QSLbQQV91Ye8
+🗓 Event kickoff: <%= ApplicationMailer.event_date %> | <%= ApplicationMailer.event_time %>
+📍 Location: <%= ApplicationMailer.location %>
+🗺️ Google Map Directions: <%= ApplicationMailer.location_map %>
 
 We appreciate your enthusiasm and patience. Let's keep the momentum going—good things come to those who wait! 🚀
 
 Best regards,
-The UNICEF StartUp Lab Hack Team
+<%= ApplicationMailer.hack_name %> Team
 
 P.S. Encourage your team to check their emails regularly for updates. If a spot opens up, we'll need you to act fast! 🔥
