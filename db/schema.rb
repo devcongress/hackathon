@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_08_003839) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_10_183403) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -172,6 +172,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_08_003839) do
     t.datetime "updated_at", null: false
     t.text "skillsets"
     t.string "region"
+    t.string "sex"
     t.index ["hacker_id"], name: "index_profiles_on_hacker_id", unique: true
   end
 
