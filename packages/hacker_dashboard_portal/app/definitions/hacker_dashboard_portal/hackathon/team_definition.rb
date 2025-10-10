@@ -13,7 +13,9 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
     },
     hint: "Your role on the team"
 
-  display :name, wrapper: {class: "col-span-full row-start-1"}
+  display :name, wrapper: {class: "col-span-2 row-start-1"}
+  display :hacker, wrapper: {class: "col-span-2"}
+  display :status, wrapper: {class: "col-span-full"}
 
   action :invite_member,
     interaction: Hackathon::Teams::InviteMember
