@@ -1,10 +1,10 @@
 <div class="max-w-6xl mx-auto p-6">
   <div class="mb-8">
-    <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome, <%= current_user.name || current_user.email %>!</h1>
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Welcome, <%= current_user.name || current_user.email %>!</h1>
     <% if current_user.team.present? %>
-      <p class="text-gray-600">Manage your team and track your hackathon progress.</p>
+      <p class="text-gray-600 dark:text-gray-300">Manage your team and track your hackathon progress.</p>
     <% else %>
-      <p class="text-gray-600">Get started by creating or joining a team for the hackathon.</p>
+      <p class="text-gray-600 dark:text-gray-300">Get started by creating or joining a team for the hackathon.</p>
     <% end %>
   </div>
 </div>
