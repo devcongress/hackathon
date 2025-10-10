@@ -1,6 +1,10 @@
 module NavigatesBackToTeam
   extend ActiveSupport::Concern
 
+  included do
+    include Phlex::Rails::Helpers::LinkTo
+  end
+
   private
 
   def render_breadcrumbs
