@@ -22,4 +22,16 @@ class HackerDashboardPortal::Hackathon::HealthAndSafetiesController < ::Hackatho
   def resolve_layout
     %w[new create].include?(action_name) ? "onboarding" : "resource"
   end
+
+  def redirect_url_after_submit
+    if (return_to = url_from(params[:return_to]))
+      return return_to
+    end
+
+    if action_name == "create"
+      root_path
+    else
+      super
+    end
+  end
 end

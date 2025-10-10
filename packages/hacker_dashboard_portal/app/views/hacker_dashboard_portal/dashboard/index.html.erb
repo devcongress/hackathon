@@ -1,0 +1,16 @@
+<div class="max-w-6xl mx-auto p-6">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome, <%= current_user.name || current_user.email %>!</h1>
+    <% if current_user.team.present? %>
+      <p class="text-gray-600">Manage your team and track your hackathon progress.</p>
+    <% else %>
+      <p class="text-gray-600">Get started by creating or joining a team for the hackathon.</p>
+    <% end %>
+  </div>
+</div>
+
+<% if current_user.team.blank? %>
+  <%= render "team_onboarding" %>
+<% else %>
+  <%= render "team_dashboard" %>
+<% end %>

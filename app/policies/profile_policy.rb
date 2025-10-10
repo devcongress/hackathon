@@ -10,11 +10,11 @@ class ProfilePolicy < ::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:hacker, :name, :telephone_number, :region, :skillsets]
+    [:hacker, :name, :telephone_number, :sex, :region, :skillsets]
   end
 
   def permitted_attributes_for_read
-    %i[hacker name telephone_number region skillsets]
+    %i[hacker name telephone_number sex region skillsets]
   end
 
   # Associations

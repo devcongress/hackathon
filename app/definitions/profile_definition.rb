@@ -1,21 +1,7 @@
 class ProfileDefinition < ::ResourceDefinition
-  new_page_title "Complete Your Profile"
-  show_page_title "Profile"
-
-  edit_page_title "Edit Your Profile"
-  index_page_title "Team Members"
-
-  input :skillsets, as: :select, multiple: true, choices: Profile::SKILLSETS.invert
-
-  class Form < Form
-    private
-
-    def render_actions
-      input name: "return_to", value: request.params[:return_to], type: :hidden, hidden: true
-
-      actions_wrapper {
-        render submit_button
-      }
-    end
+  input :skillsets, as: :slim_select, multiple: true, choices: Profile::SKILLSETS.invert
+  input :sex, choices: Profile::SEXES.invert
+  display :skillsets, wrapper: {class: "col-span-full"} do |a|
+    Profile::SKILLSETS.invert.slice(*a.value).values.join ", "
   end
 end

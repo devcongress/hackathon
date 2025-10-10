@@ -52,12 +52,29 @@ class Hackathon::Team < Hackathon::ResourceRecord
     team_memberships.count >= MINIMUM_TEAM_MEMBERSHIPS
   end
 
+  def has_member_from_outside_accra?
+    hackers.joins(:profile).where.not("LOWER(profiles.region) = ?", "greater accra").exists?
+  end
+
+  def has_female_member?
+    hackers.joins(:profile).where(profiles: {sex: "female"}).exists?
+  end
+
+  def meets_qualification_requirements?
+    has_minimum_memberships? &&
+      has_member_from_outside_accra? &&
+      has_female_member?
+  end
+
   # Runs the qualification checks for the team and sends an email to the team
   # if they are qualified.
   #
-  # A team is qualified if they have at least {MINIMUM_TEAM_MEMBERSHIPS} members.
+  # A team is qualified if they have:
+  # - at least {MINIMUM_TEAM_MEMBERSHIPS} members
+  # - at least 1 member from outside Greater Accra
+  # - at least 1 female member
   def run_qualification_checks
-    return unless unqualified? && has_minimum_memberships?
+    return unless unqualified? && meets_qualification_requirements?
 
     if limit_reached?
       late_qualify!

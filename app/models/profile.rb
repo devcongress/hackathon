@@ -5,6 +5,7 @@
 #  id               :integer          not null, primary key
 #  name             :string           not null
 #  region           :string
+#  sex              :string
 #  skillsets        :text
 #  telephone_number :string
 #  created_at       :datetime         not null
@@ -50,6 +51,11 @@ class Profile < ::ResourceRecord
     "Ahafo"
   ].freeze
 
+  SEXES = {
+    "Male" => "male",
+    "Female" => "female"
+  }.freeze
+
   belongs_to :hacker
   has_one :team, through: :hacker
   has_one :emergency_contact, through: :hacker
@@ -60,6 +66,7 @@ class Profile < ::ResourceRecord
   validates :telephone_number, presence: true, phone: {possible: true, types: :mobile}
   validates :skillsets, presence: true
   validates :region, presence: true, inclusion: {in: REGIONS}
+  validates :sex, presence: true, inclusion: {in: SEXES.values}, allow_blank: true
 
   def telephone_number=(value)
     parsed = Phonelib.parse(value)
@@ -69,6 +76,14 @@ class Profile < ::ResourceRecord
   def skillsets=(value)
     value = value.compact_blank if value.is_a?(Array)
     super
+  end
+
+  def completed?
+    name.present? &&
+      telephone_number.present? &&
+      region.present? &&
+      sex.present? &&
+      skillsets.present?
   end
 
   private
