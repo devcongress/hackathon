@@ -1,12 +1,5 @@
-class HackerDashboardPortal::Hackathon::TeamMembershipDefinition < ::Hackathon::TeamMembershipDefinition
+class HackerDashboardPortal::Hackathon::InvitationDefinition < ::Hackathon::InvitationDefinition
   include HackerDashboardPortal::ResourceDefinition
-
-  new_page_title -> {
-    render_title "Join #{current_parent.name}"
-  }
-  edit_page_title "Update Membership Role"
-
-  new_page_breadcrumbs false
 
   class Form < Form
     private
