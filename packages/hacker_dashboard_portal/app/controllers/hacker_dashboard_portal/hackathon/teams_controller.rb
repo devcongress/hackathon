@@ -6,6 +6,17 @@ class HackerDashboardPortal::Hackathon::TeamsController < ::Hackathon::TeamsCont
 
   def present_scoped_entity? = true
 
+  def new
+    authorize_current! resource_class
+
+    unless current_user.team.nil?
+      redirect_to root_path
+      return
+    end
+
+    super
+  end
+
   private
 
   # Complete team membership for invited hacker by allowing them select
