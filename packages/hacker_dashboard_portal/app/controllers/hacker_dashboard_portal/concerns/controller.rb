@@ -43,6 +43,7 @@ module HackerDashboardPortal
       end
 
       def current_invitation
+        return if current_user.team
         return unless cookies.encrypted[:invite_token]
 
         @invitation ||= ::Hackathon::Invitation.find_by(
