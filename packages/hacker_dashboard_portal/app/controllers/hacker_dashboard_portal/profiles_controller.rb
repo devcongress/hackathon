@@ -5,6 +5,7 @@ class HackerDashboardPortal::ProfilesController < ::ProfilesController
   skip_before_action :ensure_profile_completed, only: [:edit, :update]
   skip_before_action :ensure_emergency_contact_exists, only: [:new, :create]
   skip_before_action :ensure_joined_team, only: [:new, :create]
+  skip_before_action :check_pending_invitation, only: [:new, :create]
 
   def new
     authorize_current! resource_class

@@ -3,6 +3,7 @@ class HackerDashboardPortal::Hackathon::HealthAndSafetiesController < ::Hackatho
 
   skip_before_action :ensure_emergency_contact_exists, only: [:new, :create]
   skip_before_action :ensure_joined_team, only: [:new, :create]
+  skip_before_action :check_pending_invitation, only: [:new, :create]
 
   layout :resolve_layout
 

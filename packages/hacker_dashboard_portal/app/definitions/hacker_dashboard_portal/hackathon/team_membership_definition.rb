@@ -4,6 +4,8 @@ class HackerDashboardPortal::Hackathon::TeamMembershipDefinition < ::Hackathon::
   new_page_title -> {
     render_title "Join #{current_parent.name}"
   }
+  new_page_description "Select your role on the team to complete your invitation"
+
   edit_page_title "Update Membership Role"
 
   new_page_breadcrumbs false

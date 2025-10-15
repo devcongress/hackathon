@@ -182,6 +182,9 @@ class HackerRodauthPlugin < RodauthPlugin
     end
 
     # Redirect to home after login.
+    create_account_redirect "/hacker_dashboard"
+
+    # Redirect to home after login.
     login_redirect "/hacker_dashboard"
 
     # Redirect to home page after logout.

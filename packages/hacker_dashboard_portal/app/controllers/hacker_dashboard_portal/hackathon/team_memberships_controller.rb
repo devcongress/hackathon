@@ -4,17 +4,9 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
   authorize :invitation, through: :current_invitation
 
   skip_before_action :ensure_joined_team, only: [:new, :create]
-  after_action :cleanup_invitation, only: [:create]
+  skip_before_action :check_pending_invitation, only: [:new, :create]
 
   def present_scoped_entity? = true
-
-  def set_page_title(title)
-    if title == "Create #{resource_class.model_name.human.titleize}"
-      super("Join #{current_parent.name}")
-    else
-      super
-    end
-  end
 
   private
 
@@ -24,18 +16,6 @@ class HackerDashboardPortal::Hackathon::TeamMembershipsController < ::Hackathon:
       input_params[:invitation] = current_invitation if current_invitation
       input_params
     end
-  end
-
-  def current_invitation
-    return unless cookies.encrypted[:invite_token]
-
-    @invitation ||= ::Hackathon::Invitation.find_by(
-      token: cookies.encrypted[:invite_token]
-    )
-  end
-
-  def cleanup_invitation
-    cookies.delete(:invite_token)
   end
 
   def redirect_url_after_submit

@@ -46,6 +46,10 @@ class Hackathon::Invitation < Hackathon::ResourceRecord
     invited! if pending?
   end
 
+  def usable?
+    !accepted? && !declined?
+  end
+
   private
 
   def generate_token
