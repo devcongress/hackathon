@@ -16,4 +16,7 @@ class HackerDashboardPortal::ProfilesController < ::ProfilesController
 
     super
   end
+
+  def show
+  end
 end
