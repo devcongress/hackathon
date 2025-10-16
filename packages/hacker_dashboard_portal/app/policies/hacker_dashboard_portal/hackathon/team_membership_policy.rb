@@ -2,6 +2,10 @@ class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::Team
   authorize :invitation, allow_nil: true
   # Core attributes
 
+  def new?
+    true
+  end
+
   def create?
     user.team.nil?
   end
