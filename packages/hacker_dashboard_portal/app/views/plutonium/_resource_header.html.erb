@@ -9,7 +9,7 @@
                name: current_user&.profile&.name,
                email: current_user&.email,
              ) do |nav|
-        if current_user.profile
+        if current_user.profile&.persisted?
           nav.with_section do |section|
             section.with_link(
               label: 'My profile',
@@ -18,7 +18,7 @@
           end
         end
 
-        if current_user.team
+        if current_user.team&.persisted?
           nav.with_section do |section|
             section.with_link(
               label: 'My team',
