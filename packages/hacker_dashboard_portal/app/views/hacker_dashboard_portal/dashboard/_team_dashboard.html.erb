@@ -46,7 +46,7 @@
           </div>
         </div>
         <div>
-          <p class="text-lg font-bold text-gray-900 dark:text-white"><%= team.role&.titleize || 'Member' %></p>
+          <p class="text-lg font-bold text-gray-900 dark:text-white"><%= current_user.team_membership&.role&.titleize || 'Member' %></p>
           <p class="text-sm text-gray-600 dark:text-gray-300">Your Role</p>
         </div>
       </div>
