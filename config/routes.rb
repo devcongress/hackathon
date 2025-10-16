@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post "/invitations/confirm/:token/decline", to: "invitations#decline", as: :decline_invitation
   post "/invitations/confirm/:token/accept", to: "invitations#accept", as: :accept_invitation
 
-  constraints Rodauth::Rails.authenticate(:hacker) do
+  constraints Rodauth::Rails.authenticate(:admin) do
     mount SolidErrors::Engine, at: "/manage/errors"
     mount MissionControl::Jobs::Engine, at: "/manage/jobs"
   end
