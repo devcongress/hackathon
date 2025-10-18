@@ -15,7 +15,7 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
 
   display :name, wrapper: {class: "col-span-2 row-start-1"}
   display :hacker, wrapper: {class: "col-span-2"}
-  display :status, wrapper: {class: "col-span-full"}
+  display :status, wrapper: {class: "col-span-full"}, formatter: ->(value) { value.titleize }
 
   action :invite_member,
     interaction: Hackathon::Teams::InviteMember

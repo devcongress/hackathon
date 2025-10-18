@@ -31,7 +31,7 @@ class HackerDashboardPortal::Hackathon::TeamMembershipPolicy < ::Hackathon::Team
     if invitation && user.team.nil?
       relation.or(Hackathon::Team.where(id: invitation.team.id))
     else
-      relation
+      relation.where(team: user.team)
     end
   end
 end
