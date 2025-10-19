@@ -7,18 +7,16 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
   new_page_description "If you would like to join a team instead, ask your team owner to send you an invite."
   edit_page_title "Update team"
 
-  field :role,
-    choices: Hackathon::TeamMembership.roles.keys.to_h { |role|
-      [role.to_sym, role.titleize]
-    },
-    hint: "Your role on the team"
+  field :role, hint: "Your role on the team",
+    choices: Hackathon::TeamMembership.roles.keys.to_h { |role| [role.to_sym, role.titleize] }
 
   display :name, wrapper: {class: "col-span-2 row-start-1"}
   display :hacker, wrapper: {class: "col-span-2"}
   display :status, wrapper: {class: "col-span-full"}, formatter: ->(value) { value.titleize }
 
   action :invite_member,
-    interaction: Hackathon::Teams::InviteMember
+    interaction: Hackathon::Teams::InviteMember, category: :primary,
+    position: 5
 
   action(:submit_project,
     record_action: true,
