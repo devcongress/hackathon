@@ -6,7 +6,7 @@ module AdminDashboardPortal
       end
 
       def invite_team?
-        record.qualified? || record.late_qualified?
+        record.qualified? && record.project_submission.present?
       end
 
       def export_qualified_team_members?

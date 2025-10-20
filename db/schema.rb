@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_10_183403) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_20_003255) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -112,6 +112,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_10_183403) do
     t.index ["team_id"], name: "index_hackathon_invitations_on_team_id"
   end
 
+  create_table "hackathon_project_submissions", force: :cascade do |t|
+    t.integer "team_id", null: false
+    t.text "about_project", null: false
+    t.text "about_team", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_hackathon_project_submissions_on_team_id", unique: true
+  end
+
   create_table "hackathon_team_memberships", force: :cascade do |t|
     t.integer "hacker_id", null: false
     t.integer "team_id", null: false
@@ -190,6 +199,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_10_183403) do
   add_foreign_key "hackathon_health_and_safeties", "hackers"
   add_foreign_key "hackathon_invitations", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_invitations", "profiles"
+  add_foreign_key "hackathon_project_submissions", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_team_memberships", "hackathon_invitations", column: "invitation_id"
   add_foreign_key "hackathon_team_memberships", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_team_memberships", "hackers"

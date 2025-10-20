@@ -33,7 +33,7 @@ class Hacker < ResourceRecord
   def team_owner? = owns_team?(team)
 
   def owns_team?(team)
-    team.id == owned_team&.id
+    team&.id == owned_team&.id
   end
 
   def name

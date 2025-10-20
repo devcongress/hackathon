@@ -20,6 +20,9 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
   action :invite_member,
     interaction: Hackathon::Teams::InviteMember
 
+  action :submit_project,
+    interaction: Hackathon::Teams::SubmitProjectInteraction
+
   class ShowPage < ShowPage
     include Phlex::Rails::Helpers::LinkTo
 

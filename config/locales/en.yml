@@ -33,10 +33,14 @@ en:
       hackathon/team_membership:
         one: "Team Member"
         other: "Team Members"
+      hackathon/project_submission:
+        one: "Project"
+        other: "Projects"
     attributes:
       hackathon/team:
         hacker: "Team Owner"
         team_memberships: "Members"
+        project_submission: "Project"
       hackathon/invitation:
         team_membership: "Member"
       hackathon/health_and_safety:

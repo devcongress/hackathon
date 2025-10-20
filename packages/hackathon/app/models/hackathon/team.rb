@@ -33,6 +33,7 @@ class Hackathon::Team < Hackathon::ResourceRecord
   has_many :hackers, through: :team_memberships
   has_many :invitations,
     class_name: "Hackathon::Invitation", dependent: :destroy
+  has_one :project_submission, dependent: :destroy
 
   enum :status, unqualified: 0, qualified: 1, late_qualified: 2, invited: 3
 

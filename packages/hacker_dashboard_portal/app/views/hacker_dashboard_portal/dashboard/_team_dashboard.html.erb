@@ -16,6 +16,33 @@
     </div>
   </div>
 
+  <!-- Project Submission Call to Action -->
+  <% if team.project_submission.blank? && allowed_to?(:submit_project?, team) %>
+    <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl shadow-md p-6 mb-6 border-2 border-green-200 dark:border-green-800">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+          <div class="w-12 h-12 bg-green-500 dark:bg-green-600 rounded-full flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-bold text-green-900 dark:text-green-100 mb-2">Your team is qualified! Time to submit your project</h3>
+          <p class="text-green-800 dark:text-green-200 mb-4">
+            Congratulations! Your team has met all the qualification requirements. The next step is to submit your project information so we can learn more about what you're building.
+          </p>
+          <a href="<%= resource_url_for(team) %>" class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            Submit Your Project
+          </a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <!-- Quick Stats Grid -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
     <!-- Team Members Stat -->

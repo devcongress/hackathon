@@ -18,6 +18,10 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
     user.owns_team?(record) && record.invitations.count < 5 && !record.full?
   end
 
+  def submit_project?
+    user.owns_team?(record) && record.project_submission.nil?
+  end
+
   # Core attributes
 
   def permitted_attributes_for_create
