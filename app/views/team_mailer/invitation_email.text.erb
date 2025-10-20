@@ -1,0 +1,41 @@
+Hi <%= @owner.profile.name %>,
+
+Congratulations! 🎉 We're thrilled to officially invite <%= @team.name %> to attend the UNICEF StartUp Lab Hack event!
+
+Your team has been selected from our qualified teams to participate in the in-person hackathon. This is an incredible opportunity to showcase your skills, collaborate with talented peers, and make a real impact.
+
+Event Details
+=============
+
+🗓 Date: <%= ApplicationMailer.event_date %>
+⏰ Time: <%= ApplicationMailer.event_time %>
+📍 Location: <%= ApplicationMailer.location %>
+🗺️ Directions: <%= ApplicationMailer.location_map %>
+
+What to Do Next
+===============
+
+1️⃣ Confirm attendance: Make sure all team members can attend
+2️⃣ Complete profiles: Ensure all team members have finalized their profiles: 🔗 <%= @dashboard_portal_url %>
+3️⃣ Check-in: All team members must check in when they arrive at the event
+4️⃣ Prepare: Review the event schedule and rules, and come ready to innovate!
+
+Important Notes
+===============
+
+⚠️ All team members must be present to participate
+⚠️ Check-in is required for entry to the event
+⚠️ Review all event guidelines and code of conduct
+
+We can't wait to see what <%= @team.name %> creates! This is your moment to shine! 🚀
+
+Best regards,
+<%= ApplicationMailer.hack_name %> Team
+
+P.S. Don't forget to bring your laptops, chargers, and creative energy! ⚡
+
+---------------------------------------------------------------------------
+Key Links
+
+🔗 Team Dashboard: <%= @dashboard_portal_url %>
+---------------------------------------------------------------------------

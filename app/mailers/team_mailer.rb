@@ -11,6 +11,11 @@ class TeamMailer < ApplicationMailer
       subject: "Update on Your Team's Qualification Status for UNICEF StartUp Lab Hack"
   end
 
+  def invitation_email
+    mail to: @recipient,
+      subject: "You're Invited! 🎉 #{@team.name} Is Officially Confirmed for UNICEF StartUp Lab Hack"
+  end
+
   private
 
   def set_details

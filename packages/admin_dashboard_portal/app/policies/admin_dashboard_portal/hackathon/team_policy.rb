@@ -5,6 +5,10 @@ module AdminDashboardPortal
         record.late_qualified?
       end
 
+      def invite_team?
+        record.qualified? || record.late_qualified?
+      end
+
       def export_qualified_team_members?
         true
       end

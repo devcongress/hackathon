@@ -9,7 +9,7 @@ module AdminDashboardPortal
     end
 
     def check_in?
-      !record.checked_in? && record&.team&.qualified?
+      !record.checked_in? && record&.team&.invited?
     end
 
     def permitted_attributes_for_read

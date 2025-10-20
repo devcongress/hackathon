@@ -5,6 +5,10 @@ class AdminDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefinit
     interaction: Hackathon::Teams::QualifyTeamInteraction,
     confirmation: "Are you sure you want to qualify this team?"
 
+  action :invite_team,
+    interaction: Hackathon::Teams::InviteTeamInteraction,
+    confirmation: "Are you sure you want to invite this team to the event?"
+
   action :export_qualified_team_members,
     interaction: Hackathon::Teams::ExportQualifiedTeamMembersInteraction,
     resource_action: true,

@@ -34,7 +34,7 @@ class Hackathon::Team < Hackathon::ResourceRecord
   has_many :invitations,
     class_name: "Hackathon::Invitation", dependent: :destroy
 
-  enum :status, unqualified: 0, qualified: 1, late_qualified: 2
+  enum :status, unqualified: 0, qualified: 1, late_qualified: 2, invited: 3
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :status, presence: true,
@@ -73,6 +73,9 @@ class Hackathon::Team < Hackathon::ResourceRecord
   # - at least {MINIMUM_TEAM_MEMBERSHIPS} members
   # - at least 1 member from outside Greater Accra
   # - at least 1 female member
+  #
+  # Note: Qualification allows participation in pre-event activities.
+  # Use invite! to allow teams to attend the actual event and be checked in.
   def run_qualification_checks
     return unless unqualified? && meets_qualification_requirements?
 
@@ -89,6 +92,10 @@ class Hackathon::Team < Hackathon::ResourceRecord
 
   def send_qualified_email
     TeamMailer.with(team: self).qualified_email.deliver_later
+  end
+
+  def send_invitation_email
+    TeamMailer.with(team: self).invitation_email.deliver_later
   end
 
   def full?
@@ -108,6 +115,11 @@ class Hackathon::Team < Hackathon::ResourceRecord
   def late_qualify!
     late_qualified!
     send_late_qualified_email
+  end
+
+  def invite!
+    invited!
+    send_invitation_email
   end
 
   def self.generate_csv_for_qualified_team_members
