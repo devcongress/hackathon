@@ -96,7 +96,8 @@ class Hackathon::Team < Hackathon::ResourceRecord
   end
 
   def limit_reached?
-    Hackathon::Team.qualified.count >= MAX_TEAM_THRESHOLD
+    # Hackathon::Team.qualified.count >= MAX_TEAM_THRESHOLD
+    false
   end
 
   def qualify!
