@@ -14,4 +14,8 @@ class Hackathon::TeamDefinition < Hackathon::ResourceDefinition
   scope :late_qualified do |scope|
     scope.late_qualified
   end
+
+  scope :invited do |scope|
+    scope.invited
+  end
 end
