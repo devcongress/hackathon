@@ -39,6 +39,7 @@ class Hackathon::Event < Hackathon::ResourceRecord
   scope :published, -> { where(status: :published) }
   scope :upcoming, -> { published.where("scheduled_at > ?", Time.current).order(scheduled_at: :asc) }
   scope :past, -> { published.where("scheduled_at <= ?", Time.current).order(scheduled_at: :desc) }
+  scope :associated_with_hacker, ->(hacker) { published }
   # add scopes above.
 
   validates :title, presence: true

@@ -109,3 +109,5 @@ gem "aws-sdk-s3", "~> 1.199", require: false
 gem "postmark-rails", "~> 0.22.1"
 
 gem "phonelib", "~> 0.10.12"
+
+gem "icalendar"

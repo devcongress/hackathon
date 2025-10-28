@@ -1,0 +1,32 @@
+Hi <%= @hacker.profile.name %>,
+
+We have an exciting event coming up for UNICEF StartUp Lab Hack! 📅
+
+<%= @event.title %>
+<%= "=" * @event.title.length %>
+
+Type: <%= @event.event_type.titleize %>
+Date & Time: <%= @event.scheduled_at.strftime("%B %d, %Y at %I:%M %p GMT") %>
+<% if @event.duration.present? %>Duration: <%= @event.duration %> minutes<% end %>
+
+<%= @event.description %>
+
+<% if @event.meeting_link.present? %>
+Join the Event
+==============
+
+Meeting Link: <%= @event.meeting_link %>
+
+A calendar invite (.ics file) is attached to this email. Add it to your calendar so you don't miss it! 📆
+<% end %>
+
+We look forward to seeing you there!
+
+Best regards,
+<%= ApplicationMailer.hack_name %> Team
+
+---------------------------------------------------------------------------
+Key Links
+
+🔗 View All Events: <%= @dashboard_url %>
+---------------------------------------------------------------------------

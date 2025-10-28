@@ -12,7 +12,7 @@ class Hackathon::EventPolicy < Hackathon::ResourcePolicy
   # Core attributes
 
   def permitted_attributes_for_create
-    [:title, :description, :event_type, :scheduled_at, :duration, :meeting_link, :video_url, :status]
+    [:title, :description, :event_type, :scheduled_at, :duration, :meeting_link, :video_url]
   end
 
   def permitted_attributes_for_read
