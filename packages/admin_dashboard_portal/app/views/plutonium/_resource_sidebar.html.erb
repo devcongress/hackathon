@@ -7,10 +7,11 @@
           icon: Phlex::TablerIcons::Home
 
         [
-          [Hackathon::Team, Phlex::TablerIcons::Users], 
-          [Hacker, Phlex::TablerIcons::User], 
-          [Hackathon::Invitation, Phlex::TablerIcons::MailForward], 
-          [Hackathon::CheckIn, Phlex::TablerIcons::CircleCheck]
+          [Hackathon::Team, Phlex::TablerIcons::Users],
+          [Hacker, Phlex::TablerIcons::User],
+          [Hackathon::Invitation, Phlex::TablerIcons::MailForward],
+          [Hackathon::CheckIn, Phlex::TablerIcons::CircleCheck],
+          [Hackathon::Event, Phlex::TablerIcons::Calendar]
         ].each do |resource, icon|
           m.item resource.model_name.human.pluralize,
             url: resource_url_for(resource, parent: nil),

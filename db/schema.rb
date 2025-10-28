@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_20_003255) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_28_014544) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -88,6 +88,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_20_003255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hacker_id"], name: "index_hackathon_check_ins_on_hacker_id"
+  end
+
+  create_table "hackathon_events", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "event_type", default: 0, null: false
+    t.datetime "scheduled_at", null: false
+    t.integer "duration"
+    t.string "meeting_link"
+    t.string "video_url"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scheduled_at"], name: "index_hackathon_events_on_scheduled_at"
+    t.index ["status"], name: "index_hackathon_events_on_status"
   end
 
   create_table "hackathon_health_and_safeties", force: :cascade do |t|
