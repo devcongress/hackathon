@@ -1,6 +1,10 @@
 class HackerDashboardPortal::Hackathon::ProjectSubmissionPolicy < ::Hackathon::ProjectSubmissionPolicy
+  def new?
+    true
+  end
+
   def create?
-    false
+    user.owns_team?(user.team) && user.team.project_submission.nil?
   end
 
   def read?

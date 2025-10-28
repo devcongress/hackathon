@@ -20,8 +20,25 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
   action :invite_member,
     interaction: Hackathon::Teams::InviteMember
 
-  action :submit_project,
-    interaction: Hackathon::Teams::SubmitProjectInteraction
+  action(:submit_project,
+    record_action: true,
+    icon: Phlex::TablerIcons::FileText,
+    label: "Submit Project",
+    route_options: Plutonium::Action::RouteOptions.new(
+      url_resolver: ->(team) {
+        resource_url_for(Hackathon::ProjectSubmission, action: :new)
+      }
+    ))
+
+  action(:edit_project,
+    record_action: true,
+    icon: Phlex::TablerIcons::FileText,
+    label: "Edit Project",
+    route_options: Plutonium::Action::RouteOptions.new(
+      url_resolver: ->(team) {
+        resource_url_for(team.project_submission, action: :edit)
+      }
+    ))
 
   class ShowPage < ShowPage
     include Phlex::Rails::Helpers::LinkTo

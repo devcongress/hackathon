@@ -32,7 +32,7 @@
           <p class="text-green-800 dark:text-green-200 mb-4">
             Congratulations! Your team has met all the qualification requirements. The next step is to submit your project information so we can learn more about what you're building.
           </p>
-          <a href="<%= resource_url_for(team) %>" class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
+          <a href="<%= resource_url_for(Hackathon::ProjectSubmission, action: :new) %>" class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>

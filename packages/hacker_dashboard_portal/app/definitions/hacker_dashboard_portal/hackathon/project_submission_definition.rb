@@ -13,11 +13,18 @@ class HackerDashboardPortal::Hackathon::ProjectSubmissionDefinition < ::Hackatho
     end
   end
 
+  new_page_title "Submit your team's project"
+  edit_page_title "Edit your team's project"
+
   class IndexPage < IndexPage
     include NavigatesBackToTeam
   end
 
   class ShowPage < ShowPage
+    include NavigatesBackToTeam
+  end
+
+  class NewPage < NewPage
     include NavigatesBackToTeam
   end
 
