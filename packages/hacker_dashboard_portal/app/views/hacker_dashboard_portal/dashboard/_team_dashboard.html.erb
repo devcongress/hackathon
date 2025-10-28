@@ -17,7 +17,7 @@
   </div>
 
   <!-- Project Submission Call to Action -->
-  <% if team.project_submission.blank? && allowed_to?(:submit_project?, team) %>
+  <% if allowed_to?(:submit_project?, team) %>
     <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl shadow-md p-6 mb-6 border-2 border-green-200 dark:border-green-800">
       <div class="flex items-start gap-4">
         <div class="flex-shrink-0">

@@ -19,7 +19,7 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   end
 
   def submit_project?
-    user.owns_team?(record) && record.project_submission.nil?
+    record.qualified? && user.owns_team?(record) && record.project_submission.nil?
   end
 
   def edit_project?
