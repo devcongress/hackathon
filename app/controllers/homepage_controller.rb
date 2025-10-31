@@ -4,4 +4,7 @@ class HomepageController < ApplicationController
 
   def about
   end
+
+  def prizes
+  end
 end
