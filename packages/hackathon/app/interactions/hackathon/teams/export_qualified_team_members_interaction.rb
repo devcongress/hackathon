@@ -9,7 +9,7 @@ module Hackathon
       private
 
       def execute
-        file = Hackathon::Team.generate_csv_for_qualified_team_members
+        file = ::Hackathon::Team.generate_csv_for_qualified_team_members
 
         if File.exist?(file)
           success(file).with_file_response(
