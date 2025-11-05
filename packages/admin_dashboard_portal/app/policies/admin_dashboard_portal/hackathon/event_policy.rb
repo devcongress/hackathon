@@ -1,10 +1,14 @@
 class AdminDashboardPortal::Hackathon::EventPolicy < ::Hackathon::EventPolicy
-  def update?
-    record.draft?
-  end
-
   def publish_event?
     # Only allow publishing draft events
     record.draft?
+  end
+
+  def permitted_attributes_for_update
+    if record.published?
+      [:video_url]
+    else
+      super
+    end
   end
 end
