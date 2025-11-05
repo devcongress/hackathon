@@ -17,11 +17,15 @@ module Hackathon
         # Change status to published
         resource.published!
 
-        # Queue background job to send emails to all hackers
-        SendEventEmailsJob.perform_later(resource.id)
-
-        success(resource)
-          .with_message("#{resource.title} has been published! Emails are being sent to all hackers.")
+        # Only send emails for upcoming events, not past events
+        if resource.upcoming?
+          SendEventEmailsJob.perform_later(resource.id)
+          success(resource)
+            .with_message("#{resource.title} has been published! Emails are being sent to all hackers.")
+        else
+          success(resource)
+            .with_message("#{resource.title} has been published! (No emails sent for past events)")
+        end
       end
     end
   end
