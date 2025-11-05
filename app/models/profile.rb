@@ -68,6 +68,8 @@ class Profile < ::ResourceRecord
   validates :region, presence: true, inclusion: {in: REGIONS}
   validates :sex, presence: true, inclusion: {in: SEXES.values}, allow_blank: true
 
+  after_save :run_team_qualification_checks, if: :saved_change_to_sex_or_region?
+
   def telephone_number=(value)
     parsed = Phonelib.parse(value)
     super(parsed.valid? ? parsed.e164 : value)
@@ -87,6 +89,14 @@ class Profile < ::ResourceRecord
   end
 
   private
+
+  def saved_change_to_sex_or_region?
+    saved_change_to_sex? || saved_change_to_region?
+  end
+
+  def run_team_qualification_checks
+    team&.run_qualification_checks
+  end
 
   def skillsets_must_be_valid
     return if skillsets.blank?
