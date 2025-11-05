@@ -13,8 +13,7 @@ class HackerDashboardPortal::Hackathon::ProjectSubmissionPolicy < ::Hackathon::P
   end
 
   def update?
-    # Only team owners can update their team's submission
-    user.owns_team?(record.team)
+    false
   end
 
   # Scope to only show the current user's team submission

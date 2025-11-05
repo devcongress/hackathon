@@ -11,7 +11,7 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   end
 
   def update?
-    user.owns_team?(record)
+    false
   end
 
   def invite_member?
