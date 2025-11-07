@@ -11,8 +11,4 @@ class AdminDashboardPortal::Hackathon::EventPolicy < ::Hackathon::EventPolicy
       super
     end
   end
-
-  def permitted_attributes_for_index
-    [:title, :event_type, :scheduled_at, :status]
-  end
 end

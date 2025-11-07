@@ -19,6 +19,10 @@ class Hackathon::EventPolicy < Hackathon::ResourcePolicy
     [:title, :description, :event_type, :scheduled_at, :duration, :meeting_link, :video_url, :status]
   end
 
+  def permitted_attributes_for_index
+    [:title, :event_type, :scheduled_at, :status]
+  end
+
   # Associations
 
   def permitted_associations
