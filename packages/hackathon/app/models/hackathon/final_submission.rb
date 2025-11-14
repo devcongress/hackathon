@@ -11,7 +11,7 @@
 #
 # Indexes
 #
-#  index_hackathon_final_submissions_on_peoples_choice_vote_id  (peoples_choice_vote_id) UNIQUE
+#  index_hackathon_final_submissions_on_peoples_choice_vote_id  (peoples_choice_vote_id)
 #  index_hackathon_final_submissions_on_team_id                 (team_id) UNIQUE
 #
 # Foreign Keys

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_14_102254) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_14_175836) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -111,7 +111,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_14_102254) do
     t.integer "peoples_choice_vote_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["peoples_choice_vote_id"], name: "index_hackathon_final_submissions_on_peoples_choice_vote_id", unique: true
+    t.index ["peoples_choice_vote_id"], name: "index_hackathon_final_submissions_on_peoples_choice_vote_id"
     t.index ["team_id"], name: "index_hackathon_final_submissions_on_team_id", unique: true
   end
 
