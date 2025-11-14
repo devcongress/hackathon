@@ -10,6 +10,7 @@ AdminDashboardPortal::Engine.routes.draw do
   register_resource ::Hackathon::CheckIn
   register_resource ::Hackathon::ProjectSubmission
   register_resource ::Hackathon::Event
+  register_resource ::Hackathon::FinalSubmission
   # register resources above.
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -43,6 +43,33 @@
     </div>
   <% end %>
 
+  <!-- Final Submission Call to Action -->
+  <% if allowed_to?(:submit_final_project?, team) %>
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl shadow-md p-6 mb-6 border-2 border-blue-200 dark:border-blue-800">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+          <div class="w-12 h-12 bg-blue-500 dark:bg-blue-600 rounded-full flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-bold text-blue-900 dark:text-blue-100 mb-2">You're invited! Submit your final project</h3>
+          <p class="text-blue-800 dark:text-blue-200 mb-4">
+            Your team has been selected to present! Submit your final project with your GitHub repository, presentation, and vote for your favorite project.
+          </p>
+          <a href="<%= resource_url_for(Hackathon::FinalSubmission, action: :new) %>" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"></path>
+            </svg>
+            Submit Final Project
+          </a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <!-- Quick Stats Grid -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
     <!-- Team Members Stat -->

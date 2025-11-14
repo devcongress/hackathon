@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_28_014544) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_14_102254) do
   create_table "account_identities", force: :cascade do |t|
     t.integer "account_id", null: false
     t.string "provider"
@@ -103,6 +103,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_014544) do
     t.datetime "updated_at", null: false
     t.index ["scheduled_at"], name: "index_hackathon_events_on_scheduled_at"
     t.index ["status"], name: "index_hackathon_events_on_status"
+  end
+
+  create_table "hackathon_final_submissions", force: :cascade do |t|
+    t.integer "team_id", null: false
+    t.string "github_repo", null: false
+    t.integer "peoples_choice_vote_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["peoples_choice_vote_id"], name: "index_hackathon_final_submissions_on_peoples_choice_vote_id", unique: true
+    t.index ["team_id"], name: "index_hackathon_final_submissions_on_team_id", unique: true
   end
 
   create_table "hackathon_health_and_safeties", force: :cascade do |t|
@@ -211,6 +221,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_014544) do
   add_foreign_key "admin_remember_keys", "admins", column: "id"
   add_foreign_key "admin_verification_keys", "admins", column: "id"
   add_foreign_key "hackathon_check_ins", "hackers"
+  add_foreign_key "hackathon_final_submissions", "hackathon_teams", column: "peoples_choice_vote_id"
+  add_foreign_key "hackathon_final_submissions", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_health_and_safeties", "hackers"
   add_foreign_key "hackathon_invitations", "hackathon_teams", column: "team_id"
   add_foreign_key "hackathon_invitations", "profiles"

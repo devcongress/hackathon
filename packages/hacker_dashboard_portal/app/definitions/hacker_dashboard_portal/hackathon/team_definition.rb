@@ -34,7 +34,27 @@ class HackerDashboardPortal::Hackathon::TeamDefinition < ::Hackathon::TeamDefini
     label: "Edit Project",
     route_options: Plutonium::Action::RouteOptions.new(
       url_resolver: ->(team) {
-        resource_url_for(team.project_submission, action: :edit)
+        resource_url_for(team.project_submission, parent: resource_record!, action: :edit)
+      }
+    ))
+
+  action(:submit_final_project,
+    record_action: true,
+    icon: Phlex::TablerIcons::RocketOff,
+    label: "Submit Final Project",
+    route_options: Plutonium::Action::RouteOptions.new(
+      url_resolver: ->(team) {
+        resource_url_for(Hackathon::FinalSubmission, parent: resource_record!, action: :new)
+      }
+    ))
+
+  action(:edit_final_project,
+    record_action: true,
+    icon: Phlex::TablerIcons::Rocket,
+    label: "Edit Final Project",
+    route_options: Plutonium::Action::RouteOptions.new(
+      url_resolver: ->(team) {
+        resource_url_for(team.final_submission, action: :edit)
       }
     ))
 

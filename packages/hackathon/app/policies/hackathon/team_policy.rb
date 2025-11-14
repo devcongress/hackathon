@@ -23,7 +23,11 @@ class Hackathon::TeamPolicy < Hackathon::ResourcePolicy
 
   def permitted_associations
     if record.project_submission
-      %i[project_submission team_memberships invitations]
+      if record.final_submission
+        %i[final_submission project_submission team_memberships invitations]
+      else
+        %i[project_submission team_memberships invitations]
+      end
     else
       %i[team_memberships invitations]
     end

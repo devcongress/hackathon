@@ -23,7 +23,15 @@ class HackerDashboardPortal::Hackathon::TeamPolicy < ::Hackathon::TeamPolicy
   end
 
   def edit_project?
-    user.owns_team?(record) && record.project_submission.present?
+    false
+  end
+
+  def submit_final_project?
+    record.invited? && user.owns_team?(record) && record.final_submission.nil?
+  end
+
+  def edit_final_project?
+    user.owns_team?(record) && record.final_submission.present?
   end
 
   # Core attributes

@@ -1,6 +1,5 @@
 <%= render Plutonium::UI::Layout::Sidebar.new do %>
-  <%=
-    render Plutonium::UI::SidebarMenu.new(
+  <%= render Plutonium::UI::SidebarMenu.new(
       Phlexi::Menu::Builder.new do |m|
         m.item "Dashboard",
           url: root_path,
@@ -11,13 +10,14 @@
           [Hacker, Phlex::TablerIcons::User],
           [Hackathon::Invitation, Phlex::TablerIcons::MailForward],
           [Hackathon::CheckIn, Phlex::TablerIcons::CircleCheck],
-          [Hackathon::Event, Phlex::TablerIcons::Calendar]
+          [Hackathon::Event, Phlex::TablerIcons::Calendar],
+          [Hackathon::ProjectSubmission, Phlex::TablerIcons::RocketOff],
+          [Hackathon::FinalSubmission, Phlex::TablerIcons::Rocket]
         ].each do |resource, icon|
           m.item resource.model_name.human.pluralize,
             url: resource_url_for(resource, parent: nil),
             icon: icon
         end
       end
-    )
-  %>
+    ) %>
 <% end %>

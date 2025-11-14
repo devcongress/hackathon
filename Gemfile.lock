@@ -341,7 +341,7 @@ GEM
       phlexi-field (~> 0.2.0)
       zeitwerk
     phonelib (0.10.12)
-    plutonium (0.27.0)
+    plutonium (0.28.0)
       action_policy (~> 0.7.0)
       listen (~> 3.8)
       pagy (~> 9.0)
